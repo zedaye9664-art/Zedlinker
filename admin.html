@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zedlinker Admin - Global Delete</title>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, onSnapshot, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyAl_WHbcds_nPnsdTmEt2_HT",
+  authDomain: "zedlinker-f9adc.firebaseapp.com",
+  projectId: "zedlinker-f9adc",
+  storageBucket: "zedlinker-f9adc.firebasestorage.app",
+  messagingSenderId: "509617294759",
+  appId: "1:509617294759:web:64c18b6d184f7d52f5efa82"
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const list = document.getElementById('list');
+onSnapshot(collection(db, "whatsapp_groups"), (snap) => {
+  list.innerHTML = "";
+  snap.forEach(d => {
+    const data = d.data();
+    list.innerHTML += `<div style="border:1px solid #ccc;padding:10px;margin:10px;border-radius:10px;display:flex;justify-content:space-between"><div><b>${data.name||'Link'}</b><br><small>${data.link||''}</small></div><button onclick="del('${d.id}')" style="background:red;color:white;border:none;padding:8px 14px;border-radius:6px">DELETE</button></div>`;
+  });
+});
+window.del = (id) => { if(confirm("Puri duniya se delete karna hai?")) deleteDoc(doc(db, "whatsapp_groups", id)); }
+</script>
+<style>body{font-family:sans-serif;padding:20px;max-width:700px;margin:auto} h1{color:green}</style>
+</head>
+<body>
+<h1>🔥 Zedlinker Admin</h1>
+<p>Yahan se Delete = Puri duniya se delete!</p>
+<div id="list">Loading links...</div>
+</body>
+</html>
