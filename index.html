@@ -1,1603 +1,5630 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- =========================================================
-ZED WHATSAPP LINKS
-Single File Website + Admin Dashboard
-GitHub / Vercel / Netlify Ready
+  <title>ZedLinker - WhatsApp & Telegram Groups and Channels</title>
 
-FIREBASE RULES NOTE:
-Do NOT use allow read, write: if true on a public website.
-For testing only, Firebase rules can be:
+  <meta name="description"
+        content="Find and submit the best WhatsApp Groups, WhatsApp Channels, Telegram Groups and Telegram Channels on ZedLinker.">
 
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if true;
+  <meta name="keywords"
+        content="WhatsApp groups, WhatsApp channels, Telegram groups, Telegram channels, Pakistan WhatsApp groups, ZedLinker">
+
+  <meta name="author" content="ZedLinker">
+
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:title"
+        content="ZedLinker - WhatsApp & Telegram Links">
+
+  <meta property="og:description"
+        content="Discover WhatsApp Groups, WhatsApp Channels, Telegram Groups and Telegram Channels.">
+
+  <meta property="og:type" content="website">
+
+  <meta name="theme-color" content="#25D366">
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-  }
-}
-
-For production, secure Firestore rules properly.
-========================================================= -->
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Zed WhatsApp Links - World's Largest Directory</title>
-
-<meta name="description"
-content="Discover, search, submit and join WhatsApp Groups, WhatsApp Channels, Telegram Groups and Telegram Channels.">
-
-<style>
-
-/* =========================
-   GLOBAL
-========================= */
-
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-font-family:Arial,Helvetica,sans-serif;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
-body{
-background:#f5f6f8;
-color:#182230;
-line-height:1.6;
-}
-
-a{
-text-decoration:none;
-color:inherit;
-}
-
-button{
-cursor:pointer;
-border:none;
-}
-
-.hidden{
-display:none!important;
-}
-
-.container{
-width:min(1150px,92%);
-margin:auto;
-}
-
-/* =========================
-HEADER
-========================= */
-
-header{
-position:sticky;
-top:0;
-z-index:1000;
-background:#ffffff;
-border-bottom:1px solid #e8e8e8;
-}
-
-.nav{
-min-height:72px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:15px;
-}
-
-.brand{
-display:flex;
-align-items:center;
-gap:10px;
-font-weight:800;
-font-size:20px;
-}
-
-.logo{
-width:42px;
-height:42px;
-background:#172033;
-color:white;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:10px;
-font-size:20px;
-font-weight:bold;
-}
-
-nav{
-display:flex;
-align-items:center;
-gap:20px;
-}
-
-nav a{
-font-size:14px;
-font-weight:600;
-color:#4a5568;
-}
-
-nav a:hover{
-color:#000;
-}
-
-.submit-nav{
-background:#172033;
-color:#fff!important;
-padding:12px 18px;
-border-radius:9px;
-}
-
-.mobile-menu{
-display:none;
-background:#eee;
-width:42px;
-height:42px;
-border-radius:50%;
-font-size:20px;
-}
-
-/* =========================
-HERO
-========================= */
-
-.hero{
-padding:70px 0 40px;
-background:linear-gradient(135deg,#fff,#edf2f7);
-}
-
-.badge{
-display:inline-block;
-padding:6px 12px;
-border-radius:30px;
-background:#fff4d6;
-color:#9a6b00;
-font-size:12px;
-font-weight:bold;
-margin-bottom:15px;
-}
-
-.hero h1{
-font-size:45px;
-max-width:700px;
-line-height:1.1;
-margin-bottom:18px;
-}
-
-.hero p{
-color:#667085;
-max-width:680px;
-font-size:17px;
-}
-
-.hero-buttons{
-margin-top:25px;
-display:flex;
-gap:12px;
-flex-wrap:wrap;
-}
-
-.primary-btn{
-background:#172033;
-color:#fff;
-padding:14px 22px;
-border-radius:10px;
-font-weight:bold;
-}
-
-.secondary-btn{
-background:#fff;
-border:1px solid #d9dce1;
-padding:14px 22px;
-border-radius:10px;
-font-weight:bold;
-}
-
-.stats{
-margin-top:40px;
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px;
-}
-
-.stat{
-background:white;
-padding:20px;
-border-radius:12px;
-border:1px solid #eee;
-}
-
-.stat strong{
-font-size:25px;
-display:block;
-}
-
-/* =========================
-SECTION
-========================= */
-
-section{
-padding:60px 0;
-}
-
-.section-title{
-font-size:30px;
-margin-bottom:10px;
-}
-
-.section-text{
-color:#667085;
-margin-bottom:25px;
-}
-
-/* =========================
-SEARCH
-========================= */
-
-.search-box{
-display:flex;
-gap:10px;
-background:#fff;
-padding:10px;
-border-radius:12px;
-border:1px solid #e5e7eb;
-margin-bottom:20px;
-}
-
-.search-box input{
-width:100%;
-border:none;
-outline:none;
-padding:10px;
-font-size:15px;
-}
-
-.filters{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-margin-bottom:30px;
-}
-
-.filter-btn{
-padding:10px 16px;
-border-radius:30px;
-background:#fff;
-border:1px solid #ddd;
-font-size:13px;
-font-weight:bold;
-}
-
-.filter-btn.active{
-background:#172033;
-color:#fff;
-}
-
-/* =========================
-LINK CARDS
-========================= */
-
-.links-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:18px;
-}
-
-.link-card{
-background:#fff;
-padding:20px;
-border-radius:15px;
-border:1px solid #e8e8e8;
-transition:.2s;
-}
-
-.link-card:hover{
-transform:translateY(-4px);
-box-shadow:0 12px 30px rgba(0,0,0,.08);
-}
-
-.card-top{
-display:flex;
-justify-content:space-between;
-gap:10px;
-align-items:center;
-margin-bottom:15px;
-}
-
-.platform-tag,
-.plan-tag,
-.category-tag{
-font-size:10px;
-font-weight:bold;
-padding:5px 9px;
-border-radius:20px;
-}
-
-.platform-tag{
-background:#e8f8ee;
-color:#15803d;
-}
-
-.plan-tag{
-background:#fff3cd;
-color:#9a6700;
-}
-
-.category-tag{
-background:#edf2f7;
-color:#475467;
-}
-
-.link-card h3{
-font-size:19px;
-margin-bottom:8px;
-}
-
-.link-card p{
-color:#667085;
-font-size:14px;
-margin-bottom:15px;
-min-height:50px;
-}
-
-.join-btn{
-display:block;
-text-align:center;
-background:#172033;
-color:white;
-padding:12px;
-border-radius:8px;
-font-weight:bold;
-}
-
-/* =========================
-PRODUCTS
-========================= */
-
-.products-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
-}
-
-.product-card{
-background:#fff;
-border-radius:15px;
-overflow:hidden;
-border:1px solid #e7e7e7;
-}
-
-.product-card img{
-width:100%;
-height:180px;
-object-fit:cover;
-background:#eee;
-}
-
-.product-content{
-padding:18px;
-}
-
-.product-content h3{
-margin-bottom:8px;
-}
-
-.product-content p{
-font-size:14px;
-color:#667085;
-margin-bottom:15px;
-}
-
-/* =========================
-PLANS
-========================= */
-
-.plans-grid{
-display:grid;
-grid-template-columns:repeat(5,1fr);
-gap:15px;
-}
-
-.plan-card{
-background:white;
-border:1px solid #e5e7eb;
-border-radius:14px;
-padding:20px;
-}
-
-.plan-card.featured{
-border:2px solid #e6c65b;
-}
-
-.plan-card.elite{
-background:#172033;
-color:white;
-}
-
-.plan-card h3{
-font-size:18px;
-}
-
-.price{
-font-size:24px;
-font-weight:bold;
-margin:10px 0;
-}
-
-/* =========================
-FORM
-========================= */
-
-.form-page{
-max-width:750px;
-margin:auto;
-background:white;
-padding:30px;
-border-radius:18px;
-border:1px solid #e8e8e8;
-}
-
-.form-group{
-margin-bottom:18px;
-}
-
-label{
-display:block;
-font-weight:bold;
-margin-bottom:7px;
-font-size:14px;
-}
-
-input,
-select,
-textarea{
-width:100%;
-padding:14px;
-border:1px solid #d7dce2;
-border-radius:9px;
-outline:none;
-font-size:15px;
-}
-
-textarea{
-min-height:120px;
-resize:vertical;
-}
-
-.submit-form-btn{
-width:100%;
-padding:15px;
-background:#172033;
-color:white;
-border-radius:9px;
-font-weight:bold;
-}
-
-/* =========================
-BLOG
-========================= */
-
-.blog-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:18px;
-}
-
-.blog-card{
-background:white;
-padding:22px;
-border-radius:14px;
-border:1px solid #e5e7eb;
-}
-
-.blog-card h3{
-margin-bottom:10px;
-}
-
-.blog-card p{
-color:#667085;
-font-size:14px;
-}
-
-/* =========================
-CONTACT
-========================= */
-
-.contact-box{
-background:#172033;
-color:white;
-padding:35px;
-border-radius:20px;
-display:flex;
-justify-content:space-between;
-gap:20px;
-align-items:center;
-}
-
-/* =========================
-FOOTER
-========================= */
-
-footer{
-background:#172033;
-color:white;
-padding:50px 0 20px;
-}
-
-.footer-grid{
-display:grid;
-grid-template-columns:2fr 1fr 1fr 1fr;
-gap:30px;
-}
-
-.footer-title{
-font-weight:bold;
-margin-bottom:12px;
-}
-
-.footer-links{
-display:flex;
-flex-direction:column;
-gap:8px;
-font-size:14px;
-color:#cbd5e1;
-}
-
-.copyright{
-border-top:1px solid #334155;
-margin-top:35px;
-padding-top:20px;
-color:#94a3b8;
-font-size:13px;
-}
-
-/* =========================
-WHATSAPP FLOAT
-========================= */
-
-.whatsapp-float{
-position:fixed;
-right:20px;
-bottom:20px;
-width:58px;
-height:58px;
-border-radius:50%;
-background:#25D366;
-color:white;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:30px;
-z-index:999;
-box-shadow:0 8px 25px rgba(0,0,0,.2);
-}
-
-/* =========================
-ADMIN
-========================= */
-
-#adminPage{
-background:#f1f3f6;
-min-height:100vh;
-padding-bottom:50px;
-}
-
-.admin-header{
-background:#172033;
-color:white;
-padding:18px;
-position:sticky;
-top:0;
-z-index:100;
-}
-
-.admin-header-inner{
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.admin-container{
-width:min(1200px,94%);
-margin:30px auto;
-}
-
-.admin-login{
-max-width:420px;
-margin:80px auto;
-background:white;
-padding:30px;
-border-radius:15px;
-}
-
-.admin-tabs{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-margin-bottom:20px;
-}
-
-.admin-tab{
-padding:10px 15px;
-border-radius:8px;
-background:white;
-border:1px solid #ddd;
-}
-
-.admin-tab.active{
-background:#172033;
-color:white;
-}
-
-.admin-panel{
-background:white;
-padding:25px;
-border-radius:15px;
-}
-
-.admin-table{
-width:100%;
-border-collapse:collapse;
-font-size:13px;
-}
-
-.admin-table th,
-.admin-table td{
-padding:12px;
-border-bottom:1px solid #eee;
-text-align:left;
-vertical-align:top;
-}
-
-.action-btn{
-padding:7px 10px;
-border-radius:6px;
-margin:2px;
-font-size:12px;
-}
-
-.approve{
-background:#dcfce7;
-color:#166534;
-}
-
-.reject{
-background:#fee2e2;
-color:#991b1b;
-}
-
-.delete-btn{
-background:#172033;
-color:white;
-}
-
-.edit-btn{
-background:#e0e7ff;
-color:#3730a3;
-}
-
-.small-input{
-padding:9px;
-margin-bottom:8px;
-}
-
-.admin-form{
-max-width:700px;
-}
-
-.message{
-padding:12px;
-margin:15px 0;
-border-radius:8px;
-display:none;
-}
-
-.success{
-background:#dcfce7;
-color:#166534;
-}
-
-.error{
-background:#fee2e2;
-color:#991b1b;
-}
-
-/* =========================
-RESPONSIVE
-========================= */
-
-@media(max-width:900px){
-
-nav{
-display:none;
-}
-
-.mobile-menu{
-display:block;
-}
-
-.hero h1{
-font-size:35px;
-}
-
-.links-grid,
-.products-grid,
-.blog-grid{
-grid-template-columns:repeat(2,1fr);
-}
-
-.plans-grid{
-grid-template-columns:repeat(2,1fr);
-}
-
-.footer-grid{
-grid-template-columns:repeat(2,1fr);
-}
-
-}
-
-@media(max-width:600px){
-
-.hero{
-padding-top:45px;
-}
-
-.hero h1{
-font-size:30px;
-}
-
-.stats{
-grid-template-columns:1fr;
-}
-
-.links-grid,
-.products-grid,
-.blog-grid{
-grid-template-columns:1fr;
-}
-
-.plans-grid{
-grid-template-columns:1fr;
-}
-
-.contact-box{
-flex-direction:column;
-align-items:flex-start;
-}
-
-.footer-grid{
-grid-template-columns:1fr;
-}
-
-.form-page{
-padding:20px;
-}
-
-.admin-table{
-display:block;
-overflow-x:auto;
-}
-
-}
-
-</style>
-</head>
-
-<body>
-
-<!-- =====================================================
-PUBLIC WEBSITE
-===================================================== -->
-
-<div id="publicPage">
-
-<header>
-
-<div class="container nav">
-
-<div class="brand">
-<div class="logo">Z</div>
-<span>ZEDLINKER</span>
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f7f9;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font-family: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .navbar {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .logo {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: #25D366;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 800;
+      box-shadow: 0 4px 12px rgba(37,211,102,0.25);
+    }
+
+    .logo-text {
+      font-size: 22px;
+      font-weight: 800;
+      color: #111827;
+    }
+
+    .logo-text span {
+      color: #25D366;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    nav a {
+      padding: 9px 13px;
+      border-radius: 8px;
+      color: #374151;
+      font-weight: 600;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      background: #ecfdf5;
+      color: #16a34a;
+    }
+
+    .submit-nav-btn {
+      background: #25D366 !important;
+      color: white !important;
+      padding: 10px 16px !important;
+      border-radius: 9px !important;
+    }
+
+    .submit-nav-btn:hover {
+      background: #1fbd59 !important;
+    }
+
+    .menu-btn {
+      display: none;
+      border: none;
+      background: transparent;
+      font-size: 28px;
+      color: #111827;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      background:
+        linear-gradient(
+          135deg,
+          #ecfdf5 0%,
+          #ffffff 50%,
+          #eff6ff 100%
+        );
+      padding: 75px 0 65px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: #dcfce7;
+      color: #15803d;
+      padding: 7px 15px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 6vw, 58px);
+      line-height: 1.1;
+      color: #111827;
+      margin-bottom: 18px;
+      font-weight: 850;
+    }
+
+    .hero h1 span {
+      color: #16a34a;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: auto;
+      color: #4b5563;
+      font-size: 17px;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      border: none;
+      padding: 13px 22px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .primary-btn {
+      background: #25D366;
+      color: white;
+      box-shadow: 0 5px 15px rgba(37,211,102,0.22);
+    }
+
+    .primary-btn:hover {
+      background: #1fbd59;
+      transform: translateY(-1px);
+    }
+
+    .secondary-btn {
+      background: white;
+      color: #111827;
+      border: 1px solid #d1d5db;
+    }
+
+    .secondary-btn:hover {
+      background: #f9fafb;
+    }
+
+    /* =========================
+       STATS
+    ========================= */
+
+    .stats {
+      padding: 28px 0;
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 18px;
+      border-radius: 12px;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+    }
+
+    .stat-card h3 {
+      font-size: 26px;
+      color: #16a34a;
+      margin-bottom: 2px;
+    }
+
+    .stat-card p {
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    /* =========================
+       SECTION
+    ========================= */
+
+    section {
+      padding: 65px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-title h2 {
+      font-size: 32px;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: #6b7280;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    /* =========================
+       SEARCH
+    ========================= */
+
+    .search-box {
+      max-width: 750px;
+      margin: 0 auto 25px;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 16px 20px;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      background: white;
+      font-size: 15px;
+      outline: none;
+      transition: 0.2s;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+    }
+
+    .search-box input:focus {
+      border-color: #25D366;
+      box-shadow: 0 0 0 3px rgba(37,211,102,0.12);
+    }
+
+    /* =========================
+       FILTERS
+    ========================= */
+
+    .filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 35px;
+    }
+
+    .filter-btn {
+      border: 1px solid #d1d5db;
+      background: white;
+      color: #374151;
+      padding: 9px 15px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: #25D366;
+      border-color: #25D366;
+      color: white;
+    }
+
+    /* =========================
+       LISTINGS GRID
+    ========================= */
+
+    .listings-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .listing-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 15px;
+      padding: 20px;
+      transition: 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .listing-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+      border-color: #bbf7d0;
+    }
+
+    .listing-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .listing-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 11px;
+      background: #ecfdf5;
+      color: #16a34a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .plan-badge {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 5px 8px;
+      border-radius: 6px;
+      background: #f3f4f6;
+      color: #4b5563;
+    }
+
+    .plan-elite {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .plan-premium {
+      background: #ede9fe;
+      color: #6d28d9;
+    }
+
+    .plan-pro {
+      background: #dbeafe;
+      color: #1d4ed8;
+    }
+
+    .plan-basic {
+      background: #dcfce7;
+      color: #15803d;
+    }
+
+    .listing-card h3 {
+      font-size: 18px;
+      color: #111827;
+      margin-bottom: 7px;
+      word-break: break-word;
+    }
+
+    .listing-type {
+      font-size: 12px;
+      color: #16a34a;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .listing-description {
+      color: #6b7280;
+      font-size: 13px;
+      margin-bottom: 15px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .listing-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 15px;
+    }
+
+    .meta-tag {
+      background: #f3f4f6;
+      color: #4b5563;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+    }
+
+    .join-btn {
+      width: 100%;
+      display: block;
+      text-align: center;
+      padding: 11px;
+      background: #25D366;
+      color: white;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 800;
+      border: none;
+    }
+
+    .join-btn:hover {
+      background: #1fbd59;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 55px 20px;
+      background: white;
+      border: 1px dashed #d1d5db;
+      border-radius: 15px;
+      color: #6b7280;
+    }
+
+    .empty-state h3 {
+      color: #374151;
+      margin-bottom: 6px;
+    }
+
+    /* =========================
+       SUBMIT SECTION
+    ========================= */
+
+    .submit-section {
+      background: #ffffff;
+    }
+
+    .submit-wrapper {
+      max-width: 850px;
+      margin: auto;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 30px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 17px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #374151;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 13px;
+      border: 1px solid #d1d5db;
+      border-radius: 9px;
+      background: white;
+      color: #111827;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #25D366;
+      box-shadow: 0 0 0 3px rgba(37,211,102,0.1);
+    }
+
+    .form-group textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .plan-info {
+      margin-top: 20px;
+      padding: 14px;
+      border-radius: 10px;
+      background: #ecfdf5;
+      color: #166534;
+      font-size: 13px;
+      border: 1px solid #bbf7d0;
+    }
+
+    .submit-form-btn {
+      width: 100%;
+      margin-top: 20px;
+      border: none;
+      background: #25D366;
+      color: white;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .submit-form-btn:hover {
+      background: #1fbd59;
+    }
+
+    .form-message {
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      display: none;
+    }
+
+    .form-message.success {
+      display: block;
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .form-message.error {
+      display: block;
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    /* =========================
+       PLANS
+    ========================= */
+
+    .plans-section {
+      background: #f9fafb;
+    }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
+    }
+
+    .plan-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 15px;
+      padding: 22px 16px;
+      text-align: center;
+      position: relative;
+    }
+
+    .plan-card.featured {
+      border: 2px solid #25D366;
+      transform: translateY(-5px);
+    }
+
+    .plan-card h3 {
+      font-size: 20px;
+      margin-bottom: 7px;
+      color: #111827;
+    }
+
+    .plan-price {
+      font-size: 25px;
+      font-weight: 850;
+      color: #16a34a;
+      margin-bottom: 4px;
+    }
+
+    .plan-duration {
+      color: #6b7280;
+      font-size: 12px;
+      margin-bottom: 17px;
+    }
+
+    .plan-card ul {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 18px;
+    }
+
+    .plan-card li {
+      font-size: 12px;
+      color: #4b5563;
+      margin-bottom: 8px;
+    }
+
+    .plan-card li::before {
+      content: "✓";
+      color: #16a34a;
+      font-weight: 800;
+      margin-right: 6px;
+    }
+
+    .plan-contact {
+      width: 100%;
+      border: none;
+      background: #25D366;
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+      align-items: center;
+    }
+
+    .about-content h2 {
+      font-size: 32px;
+      margin-bottom: 15px;
+      color: #111827;
+    }
+
+    .about-content p {
+      color: #6b7280;
+      margin-bottom: 12px;
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .feature-box {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 11px;
+      padding: 15px;
+    }
+
+    .feature-box strong {
+      display: block;
+      color: #111827;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    .feature-box span {
+      color: #6b7280;
+      font-size: 12px;
+    }
+
+    .about-visual {
+      background: #ecfdf5;
+      border-radius: 20px;
+      padding: 45px 25px;
+      text-align: center;
+      border: 1px solid #bbf7d0;
+    }
+
+    .about-visual .big-logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 25px;
+      margin: 0 auto 18px;
+      background: #25D366;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      font-weight: 900;
+    }
+
+    .about-visual h3 {
+      font-size: 24px;
+      color: #111827;
+    }
+
+    /* =========================
+       BLOG
+    ========================= */
+
+    .blog-section {
+      background: #ffffff;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .blog-card {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .blog-image {
+      width: 100%;
+      height: 180px;
+      background: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6b7280;
+      font-size: 13px;
+      overflow: hidden;
+    }
+
+    .blog-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .blog-content {
+      padding: 18px;
+    }
+
+    .blog-content h3 {
+      color: #111827;
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+
+    .blog-content p {
+      color: #6b7280;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .read-more {
+      color: #16a34a;
+      font-size: 13px;
+      font-weight: 800;
+      border: none;
+      background: transparent;
+      padding: 0;
+    }
+
+    /* =========================
+       PRODUCTS
+    ========================= */
+
+    .products-section {
+      background: #f9fafb;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .product-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 170px;
+      background: #f3f4f6;
+      overflow: hidden;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-content {
+      padding: 16px;
+    }
+
+    .product-content h3 {
+      font-size: 15px;
+      color: #111827;
+      margin-bottom: 7px;
+    }
+
+    .product-content p {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 12px;
+    }
+
+    .product-btn {
+      display: block;
+      text-align: center;
+      background: #111827;
+      color: white;
+      padding: 9px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact-section {
+      background: #ffffff;
+    }
+
+    .contact-box {
+      max-width: 700px;
+      margin: auto;
+      text-align: center;
+      background: #ecfdf5;
+      border: 1px solid #bbf7d0;
+      border-radius: 18px;
+      padding: 35px 25px;
+    }
+
+    .contact-box h2 {
+      font-size: 28px;
+      color: #111827;
+      margin-bottom: 10px;
+    }
+
+    .contact-box p {
+      color: #6b7280;
+      margin-bottom: 20px;
+    }
+
+    .whatsapp-contact {
+      display: inline-block;
+      background: #25D366;
+      color: white;
+      padding: 12px 22px;
+      border-radius: 9px;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: #111827;
+      color: white;
+      padding: 45px 0 20px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 35px;
+    }
+
+    .footer-brand .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 12px;
+    }
+
+    .footer-logo-icon {
+      width: 40px;
+      height: 40px;
+      background: #25D366;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 20px;
+    }
+
+    .footer-brand p {
+      color: #9ca3af;
+      font-size: 13px;
+      max-width: 300px;
+    }
+
+    .footer-column h4 {
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .footer-column a {
+      display: block;
+      color: #9ca3af;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #374151;
+      padding-top: 18px;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 11px;
+    }
+
+    /* =========================
+       MODAL
+    ========================= */
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 5000;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .modal.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      width: 100%;
+      max-width: 700px;
+      background: white;
+      border-radius: 16px;
+      padding: 25px;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+
+    .modal-close {
+      position: absolute;
+      right: 15px;
+      top: 12px;
+      width: 35px;
+      height: 35px;
+      border: none;
+      background: #f3f4f6;
+      border-radius: 50%;
+      font-size: 20px;
+      color: #374151;
+    }
+
+    .modal-content h2 {
+      margin-bottom: 18px;
+      color: #111827;
+    }
+
+    <!-- =========================
+     LOADING
+========================= -->
+
+<div class="loading">
+  <div class="spinner"></div>
+  <p>Loading links...</p>
 </div>
 
-<nav>
-<a href="#home">Home</a>
-<a href="#plans">Plans</a>
-<a href="#contact">Contact</a>
-<a href="#about">About</a>
-<a href="#directory">Search</a>
-<a href="#submit" class="submit-nav">Submit</a>
-</nav>
-
-<button class="mobile-menu" onclick="toggleMobileMenu()">☰</button>
-
 </div>
-
-<div id="mobileNav"
-style="display:none;padding:15px;background:white;border-top:1px solid #eee;">
-
-<div class="container"
-style="display:flex;flex-direction:column;gap:15px;">
-
-<a href="#home">Home</a>
-<a href="#plans">Plans</a>
-<a href="#contact">Contact</a>
-<a href="#about">About</a>
-<a href="#directory">Search</a>
-<a href="#submit">Submit Your Link</a>
-
 </div>
-
-</div>
-
-</header>
+</section>
 
 
-<!-- HERO -->
+<!-- =========================
+     SUBMIT LINK SECTION
+========================= -->
 
-<section class="hero" id="home">
+<section id="submit" class="section">
+  <div class="container">
 
-<div class="container">
+    <div class="section-title">
+      <h2>Submit Your Link</h2>
+      <p>Add your WhatsApp or Telegram group/channel to Zed WhatsApp Links.</p>
+    </div>
 
-<div class="badge">
-🌍 WORLD'S LARGEST DIRECTORY
-</div>
+    <div class="form-card">
 
-<h1>Zed WhatsApp Links</h1>
+      <form id="submitForm">
 
-<p>
-World's Largest Directory of WhatsApp & Telegram Groups and Channels.
-Discover, search, submit, and join WhatsApp Groups, WhatsApp Channels,
-Telegram Groups, and Telegram Channels from one platform.
-</p>
+        <!-- Link Type -->
+        <div class="form-group">
+          <label for="linkType">Link Type</label>
 
-<div class="hero-buttons">
+          <select id="linkType" required>
+            <option value="">Select Link Type</option>
+            <option value="WhatsApp Group">WhatsApp Group</option>
+            <option value="WhatsApp Channel">WhatsApp Channel</option>
+            <option value="Telegram Group">Telegram Group</option>
+            <option value="Telegram Channel">Telegram Channel</option>
+          </select>
+        </div>
 
-<a href="#directory" class="primary-btn">
-Explore Links
-</a>
 
-<a href="#submit" class="secondary-btn">
-Submit Your Link
-</a>
+        <!-- Name -->
+        <div class="form-group">
+          <label for="linkName">Group / Channel Name</label>
 
-</div>
+          <input
+            type="text"
+            id="linkName"
+            placeholder="Enter group or channel name"
+            required
+          >
+        </div>
 
-<div class="stats">
 
-<div class="stat">
-<strong id="activeLinksCount">0</strong>
-Active Links
-</div>
+        <!-- Link -->
+        <div class="form-group">
+          <label for="groupLink">Group / Channel Link</label>
 
-<div class="stat">
-<strong>✓</strong>
-Admin Verified
-</div>
+          <input
+            type="url"
+            id="groupLink"
+            placeholder="https://chat.whatsapp.com/..."
+            required
+          >
+        </div>
 
-<div class="stat">
-<strong>⚡</strong>
-Instant Join
-</div>
 
-</div>
+        <!-- Category -->
+        <div class="form-group">
+          <label for="category">Category</label>
 
-</div>
+          <select id="category" required>
+            <option value="">Select Category</option>
+            <option value="Jobs">Jobs</option>
+            <option value="Education">Education</option>
+            <option value="Scholarships">Scholarships</option>
+            <option value="Technology">Technology</option>
+            <option value="Business">Business</option>
+            <option value="News">News</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Sports">Sports</option>
+            <option value="Islamic">Islamic</option>
+            <option value="General">General</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email Address</label>
+
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+          >
+        </div>
+
+
+        <!-- WhatsApp Number -->
+        <div class="form-group">
+          <label for="whatsappNumber">WhatsApp Number</label>
+
+          <input
+            type="tel"
+            id="whatsappNumber"
+            placeholder="03XXXXXXXXX"
+            required
+          >
+        </div>
+
+
+        <!-- Description -->
+        <div class="form-group">
+          <label for="description">Description</label>
+
+          <textarea
+            id="description"
+            rows="5"
+            placeholder="Write a short description about your group or channel..."
+            required
+          ></textarea>
+        </div>
+
+
+        <!-- Plan -->
+        <div class="form-group">
+          <label for="plan">Select Plan</label>
+
+          <select id="plan" required>
+            <option value="">Select Plan</option>
+            <option value="Free">Free - 1 Month</option>
+            <option value="Basic">Basic - 3 Months</option>
+            <option value="Pro">Pro - 6 Months</option>
+            <option value="Premium">Premium - 1 Year</option>
+            <option value="Elite">Elite - Lifetime</option>
+          </select>
+        </div>
+
+
+        <!-- Selected Plan Price -->
+        <div id="selectedPlanInfo" class="plan-info">
+          Select a plan to see the price.
+        </div>
+
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="btn btn-primary submit-btn"
+          id="submitLinkBtn"
+        >
+          Submit for Approval
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================
+     PLANS SECTION
+========================= -->
+
+<section id="plans" class="section plans-section">
+
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Our Plans</h2>
+      <p>Choose the best plan for your WhatsApp or Telegram link.</p>
+    </div>
+
+
+    <!-- Plan Type Selector -->
+
+    <div class="plan-type-selector">
+
+      <button
+        type="button"
+        class="plan-type-btn active"
+        data-type="WhatsApp Group"
+      >
+        WhatsApp Group
+      </button>
+
+      <button
+        type="button"
+        class="plan-type-btn"
+        data-type="WhatsApp Channel"
+      >
+        WhatsApp Channel
+      </button>
+
+      <button
+        type="button"
+        class="plan-type-btn"
+        data-type="Telegram Group"
+      >
+        Telegram Group
+      </button>
+
+      <button
+        type="button"
+        class="plan-type-btn"
+        data-type="Telegram Channel"
+      >
+        Telegram Channel
+      </button>
+
+    </div>
+
+
+    <!-- Plans Grid -->
+
+    <div class="plans-grid" id="plansGrid">
+
+      <!-- FREE -->
+
+      <div class="plan-card">
+
+        <div class="plan-header">
+          <h3>Free</h3>
+          <div class="price">
+            <span class="currency">PKR</span>
+            <span class="amount">0</span>
+          </div>
+          <p>1 Month</p>
+        </div>
+
+        <div class="plan-body">
+
+          <ul>
+            <li>✓ Link Listing</li>
+            <li>✓ Basic Visibility</li>
+            <li>✓ Category Listing</li>
+            <li>✓ Free Submission</li>
+          </ul>
+
+          <button
+            type="button"
+            class="btn btn-outline select-plan"
+            data-plan="Free"
+          >
+            Select Free
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- BASIC -->
+
+      <div class="plan-card">
+
+        <div class="plan-header">
+          <h3>Basic</h3>
+
+          <div class="price">
+            <span class="currency">PKR</span>
+            <span
+              class="amount dynamic-price"
+              data-plan-price="Basic"
+            >
+              299
+            </span>
+          </div>
+
+          <p>3 Months</p>
+        </div>
+
+        <div class="plan-body">
+
+          <ul>
+            <li>✓ Link Listing</li>
+            <li>✓ Better Visibility</li>
+            <li>✓ Category Listing</li>
+            <li>✓ 3 Months Listing</li>
+          </ul>
+
+          <button
+            type="button"
+            class="btn btn-primary select-plan"
+            data-plan="Basic"
+          >
+            Select Basic
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- PRO -->
+
+      <div class="plan-card">
+
+        <div class="plan-header">
+
+          <h3>Pro</h3>
+
+          <div class="price">
+            <span class="currency">PKR</span>
+
+            <span
+              class="amount dynamic-price"
+              data-plan-price="Pro"
+            >
+              499
+            </span>
+          </div>
+
+          <p>6 Months</p>
+
+        </div>
+
+        <div class="plan-body">
+
+          <ul>
+            <li>✓ Link Listing</li>
+            <li>✓ High Visibility</li>
+            <li>✓ Category Listing</li>
+            <li>✓ 6 Months Listing</li>
+          </ul>
+
+          <button
+            type="button"
+            class="btn btn-primary select-plan"
+            data-plan="Pro"
+          >
+            Select Pro
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- PREMIUM -->
+
+      <div class="plan-card featured-plan">
+
+        <div class="popular-badge">
+          Most Popular
+        </div>
+
+        <div class="plan-header">
+
+          <h3>Premium</h3>
+
+          <div class="price">
+
+            <span class="currency">PKR</span>
+
+            <span
+              class="amount dynamic-price"
+              data-plan-price="Premium"
+            >
+              1099
+            </span>
+
+          </div>
+
+          <p>1 Year</p>
+
+        </div>
+
+        <div class="plan-body">
+
+          <ul>
+            <li>✓ Premium Visibility</li>
+            <li>✓ Priority Listing</li>
+            <li>✓ Category Listing</li>
+            <li>✓ 1 Year Listing</li>
+          </ul>
+
+          <button
+            type="button"
+            class="btn btn-primary select-plan"
+            data-plan="Premium"
+          >
+            Select Premium
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- ELITE -->
+
+      <div class="plan-card elite-plan">
+
+        <div class="plan-header">
+
+          <h3>Elite</h3>
+
+          <div class="price">
+
+            <span class="currency">PKR</span>
+
+            <span
+              class="amount dynamic-price"
+              data-plan-price="Elite"
+            >
+              1499
+            </span>
+
+          </div>
+
+          <p>Lifetime</p>
+
+        </div>
+
+        <div class="plan-body">
+
+          <ul>
+            <li>✓ Top Priority Listing</li>
+            <li>✓ Maximum Visibility</li>
+            <li>✓ Featured Listing</li>
+            <li>✓ Lifetime Listing</li>
+          </ul>
+
+          <button
+            type="button"
+            class="btn btn-primary select-plan"
+            data-plan="Elite"
+          >
+            Select Elite
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+    <!-- =========================
+     FEATURED LINKS SECTION
+========================= -->
+
+<section id="featured" class="section">
+
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Featured Links</h2>
+      <p>Discover popular and featured WhatsApp & Telegram communities.</p>
+    </div>
+
+    <div
+      class="featured-grid"
+      id="featuredLinks"
+    >
+
+      <div class="empty-state">
+        <div class="empty-icon">⭐</div>
+        <h3>No Featured Links Yet</h3>
+        <p>Featured links will appear here after approval.</p>
+      </div>
+
+    </div>
+
+  </div>
 
 </section>
 
 
-<!-- LIVE DIRECTORY -->
+<!-- =========================
+     CATEGORIES SECTION
+========================= -->
 
-<section id="directory">
+<section id="categories" class="section categories-section">
 
-<div class="container">
+  <div class="container">
 
-<h2 class="section-title">
-Live Directory Preview
-</h2>
+    <div class="section-title">
+      <h2>Browse Categories</h2>
+      <p>Find groups and channels according to your interests.</p>
+    </div>
 
-<p class="section-text">
-Search and discover communities from WhatsApp and Telegram.
-</p>
+    <div class="categories-grid">
 
-
-<div class="search-box">
-
-<input
-id="searchInput"
-type="text"
-placeholder="Search Groups and Channels..."
-oninput="renderLinks()">
-
-</div>
-
-
-<div class="filters">
-
-<button class="filter-btn active"
-onclick="setFilter('All',this)">
-All
-</button>
-
-<button class="filter-btn"
-onclick="setFilter('WhatsApp Group',this)">
-WhatsApp Group
-</button>
-
-<button class="filter-btn"
-onclick="setFilter('WhatsApp Channel',this)">
-WhatsApp Channel
-</button>
-
-<button class="filter-btn"
-onclick="setFilter('Telegram Group',this)">
-Telegram Group
-</button>
-
-<button class="filter-btn"
-onclick="setFilter('Telegram Channel',this)">
-Telegram Channel
-</button>
-
-</div>
+      <button
+        class="category-card"
+        data-category="Jobs"
+        type="button"
+      >
+        <span class="category-icon">💼</span>
+        <span class="category-name">Jobs</span>
+      </button>
 
 
-<div id="linksContainer"
-class="links-grid">
-
-<p>No approved links found.</p>
-
-</div>
-
-</div>
-
-</section>
+      <button
+        class="category-card"
+        data-category="Education"
+        type="button"
+      >
+        <span class="category-icon">📚</span>
+        <span class="category-name">Education</span>
+      </button>
 
 
-<!-- PRODUCTS -->
-
-<section>
-
-<div class="container">
-
-<h2 class="section-title">
-Featured Products
-</h2>
-
-<p class="section-text">
-Sponsored and affiliate products.
-</p>
-
-<div id="productsContainer"
-class="products-grid">
-
-</div>
-
-</div>
-
-</section>
+      <button
+        class="category-card"
+        data-category="Scholarships"
+        type="button"
+      >
+        <span class="category-icon">🎓</span>
+        <span class="category-name">Scholarships</span>
+      </button>
 
 
-<!-- ADS -->
-
-<div class="container"
-style="margin-bottom:30px;">
-
-<div style="
-background:white;
-border:1px dashed #ccc;
-padding:25px;
-text-align:center;
-border-radius:10px;
-color:#888;">
-
-Ad Space • Between Links
-
-</div>
-
-</div>
+      <button
+        class="category-card"
+        data-category="Technology"
+        type="button"
+      >
+        <span class="category-icon">💻</span>
+        <span class="category-name">Technology</span>
+      </button>
 
 
-<!-- PLANS -->
-
-<section id="plans">
-
-<div class="container">
-
-<h2 class="section-title">
-Plans & Pricing
-</h2>
-
-<p class="section-text">
-Elite → Premium → Pro → Basic → Free
-(Highest priority first)
-</p>
-
-<h3 style="margin:20px 0;">
-WhatsApp Group / Telegram Group
-</h3>
-
-<div id="groupPlans"
-class="plans-grid">
-
-</div>
+      <button
+        class="category-card"
+        data-category="Business"
+        type="button"
+      >
+        <span class="category-icon">📈</span>
+        <span class="category-name">Business</span>
+      </button>
 
 
-<h3 style="margin:45px 0 20px;">
-WhatsApp Channel / Telegram Channel
-</h3>
+      <button
+        class="category-card"
+        data-category="News"
+        type="button"
+      >
+        <span class="category-icon">📰</span>
+        <span class="category-name">News</span>
+      </button>
 
-<div id="channelPlans"
-class="plans-grid">
 
-</div>
+      <button
+        class="category-card"
+        data-category="Entertainment"
+        type="button"
+      >
+        <span class="category-icon">🎬</span>
+        <span class="category-name">Entertainment</span>
+      </button>
 
-</div>
+
+      <button
+        class="category-card"
+        data-category="Sports"
+        type="button"
+      >
+        <span class="category-icon">⚽</span>
+        <span class="category-name">Sports</span>
+      </button>
+
+
+      <button
+        class="category-card"
+        data-category="Islamic"
+        type="button"
+      >
+        <span class="category-icon">🕌</span>
+        <span class="category-name">Islamic</span>
+      </button>
+
+
+      <button
+        class="category-card"
+        data-category="General"
+        type="button"
+      >
+        <span class="category-icon">🌐</span>
+        <span class="category-name">General</span>
+      </button>
+
+    </div>
+
+  </div>
 
 </section>
 
 
-<!-- SUBMIT -->
+<!-- =========================
+     AFFILIATE PRODUCTS
+========================= -->
 
-<section id="submit">
+<section id="products" class="section">
 
-<div class="container">
+  <div class="container">
 
-<h2 class="section-title"
-style="text-align:center;">
-Submit Your Link
-</h2>
+    <div class="section-title">
+      <h2>Recommended Products</h2>
+      <p>Useful products and deals recommended by Zed WhatsApp Links.</p>
+    </div>
 
-<p class="section-text"
-style="text-align:center;">
-Submit your community for admin approval.
-</p>
 
+    <div
+      class="products-grid"
+      id="productsGrid"
+    >
 
-<div class="form-page">
+      <div class="empty-state">
 
-<div id="submitMessage"
-class="message"></div>
+        <div class="empty-icon">🛍️</div>
 
+        <h3>Loading Products...</h3>
 
-<form id="submitForm">
+        <p>
+          Recommended products will appear here.
+        </p>
 
-<div class="form-group">
+      </div>
 
-<label>What are you submitting?</label>
+    </div>
 
-<select id="linkType"
-required
-onchange="changeFormLabels()">
-
-<option value="">
-Select Option
-</option>
-
-<option value="WhatsApp Group">
-WhatsApp Group
-</option>
-
-<option value="WhatsApp Channel">
-WhatsApp Channel
-</option>
-
-<option value="Telegram Group">
-Telegram Group
-</option>
-
-<option value="Telegram Channel">
-Telegram Channel
-</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label id="nameLabel">
-Name
-</label>
-
-<input
-id="linkName"
-type="text"
-placeholder="Enter name"
-required>
-
-</div>
-
-
-<div class="form-group">
-
-<label id="linkLabel">
-Link
-</label>
-
-<input
-id="linkUrl"
-type="url"
-placeholder="Paste your link here"
-required>
-
-</div>
-
-
-<div class="form-group">
-
-<label>Category</label>
-
-<input
-id="category"
-type="text"
-placeholder="Example: Jobs, Education, Technology"
-required>
-
-</div>
-
-
-<div class="form-group">
-
-<label>Email Address</label>
-
-<input
-id="email"
-type="email"
-placeholder="Your email address"
-required>
-
-</div>
-
-
-<div class="form-group">
-
-<label>WhatsApp Number</label>
-
-<input
-id="whatsapp"
-type="tel"
-placeholder="Example: 03710536394"
-required>
-
-</div>
-
-
-<div class="form-group">
-
-<label>Description</label>
-
-<textarea
-id="description"
-placeholder="Tell users about your group or channel..."
-required></textarea>
-
-</div>
-
-
-<div class="form-group">
-
-<label>Select Plan</label>
-
-<select id="plan" required>
-
-<option value="Free">
-Free
-</option>
-
-<option value="Basic">
-Basic
-</option>
-
-<option value="Pro">
-Pro
-</option>
-
-<option value="Premium">
-Premium
-</option>
-
-<option value="Elite">
-Elite
-</option>
-
-</select>
-
-</div>
-
-
-<div id="paidPlanInfo"
-style="
-display:none;
-background:#fff4d6;
-padding:15px;
-border-radius:8px;
-margin-bottom:15px;">
-
-For paid plans, please contact the admin on WhatsApp.
-
-<a
-href="https://wa.me/923710536394?text=Hello%20I%20want%20to%20purchase%20a%20plan%20for%20Zed%20WhatsApp%20Links"
-target="_blank"
-style="font-weight:bold;color:#075e54;">
-
-Contact Admin on WhatsApp
-
-</a>
-
-</div>
-
-
-<button
-type="submit"
-class="submit-form-btn">
-
-Submit For Approval
-
-</button>
-
-</form>
-
-</div>
-
-</div>
+  </div>
 
 </section>
 
 
-<!-- BLOG -->
+<!-- =========================
+     BLOG SECTION
+========================= -->
 
-<section id="blog">
+<section id="blog" class="section blog-section">
 
-<div class="container">
+  <div class="container">
 
-<h2 class="section-title">
-Latest Blog
-</h2>
+    <div class="section-title">
 
-<div id="blogContainer"
-class="blog-grid">
+      <h2>Latest Blog Posts</h2>
 
-</div>
+      <p>
+        Helpful articles, guides, tips and latest updates.
+      </p>
 
-</div>
-
-</section>
-
-
-<!-- ABOUT -->
-
-<section id="about">
-
-<div class="container">
-
-<h2 class="section-title">
-About Us
-</h2>
-
-<p class="section-text">
-Zed WhatsApp Links is a directory platform designed to help users
-discover and join WhatsApp Groups, WhatsApp Channels, Telegram Groups
-and Telegram Channels from one platform.
-</p>
-
-</div>
-
-</section>
+    </div>
 
 
-<!-- CONTACT -->
+    <div
+      class="blog-grid"
+      id="blogGrid"
+    >
 
-<section id="contact">
+      <div class="empty-state">
 
-<div class="container">
+        <div class="empty-icon">📝</div>
 
-<div class="contact-box">
+        <h3>Loading Blog Posts...</h3>
 
-<div>
+        <p>
+          Latest articles will appear here.
+        </p>
 
-<h2>Need Help?</h2>
+      </div>
 
-<p>
-Contact Zed WhatsApp Links support team.
-</p>
+    </div>
 
-<p>
-WhatsApp: 03710536394
-</p>
 
-<p>
-Email: zedaye9664@gmail.com
-</p>
+    <div class="center-button">
 
-</div>
+      <button
+        type="button"
+        class="btn btn-outline"
+        id="viewAllBlogs"
+      >
+        View All Blogs
+      </button>
 
-<a
-class="secondary-btn"
-href="https://wa.me/923710536394"
-target="_blank">
+    </div>
 
-💬 Chat on WhatsApp
-
-</a>
-
-</div>
-
-</div>
+  </div>
 
 </section>
 
 
-<!-- FOOTER -->
+<!-- =========================
+     ABOUT SECTION
+========================= -->
 
-<footer>
+<section id="about" class="section about-section">
 
-<div class="container">
+  <div class="container">
 
-<div class="footer-grid">
+    <div class="about-content">
 
-<div>
+      <div class="about-text">
 
-<!-- Hidden Admin Trigger -->
-<div
-id="secretLogo"
-class="logo"
-style="margin-bottom:15px;cursor:pointer;">
-Z
-</div>
+        <span class="section-label">
+          About Zed WhatsApp Links
+        </span>
 
-<h3>Zed WhatsApp Links</h3>
+        <h2>
+          The Easy Way to Discover WhatsApp & Telegram Communities
+        </h2>
 
-<p style="color:#cbd5e1;margin-top:10px;">
-The world's largest directory platform designed to help users
-discover and join communities.
-</p>
+        <p>
+          Zed WhatsApp Links is a directory platform where users
+          can discover useful WhatsApp Groups, WhatsApp Channels,
+          Telegram Groups and Telegram Channels in one place.
+        </p>
 
-</div>
-
-
-<div>
-
-<div class="footer-title">
-Links
-</div>
-
-<div class="footer-links">
-
-<a href="#about">About Us</a>
-
-<a href="#contact">Contact</a>
-
-<a href="#plans">Plans</a>
-
-<a href="#submit">Submit</a>
-
-<a href="#directory">Explore</a>
-
-</div>
-
-</div>
+        <p>
+          Our goal is to make it easier for people to find
+          communities related to jobs, education, scholarships,
+          technology, business, news, entertainment and many
+          other categories.
+        </p>
 
 
-<div>
+        <div class="about-features">
 
-<div class="footer-title">
-Categories
-</div>
+          <div class="about-feature">
 
-<div class="footer-links">
+            <span class="feature-icon">🔍</span>
 
-<a href="#directory">
-WhatsApp Groups
-</a>
+            <div>
+              <h4>Easy Search</h4>
 
-<a href="#directory">
-WhatsApp Channels
-</a>
+              <p>
+                Quickly find groups and channels using search
+                and categories.
+              </p>
+            </div>
 
-<a href="#directory">
-Telegram Groups
-</a>
-
-<a href="#directory">
-Telegram Channels
-</a>
-
-</div>
-
-</div>
+          </div>
 
 
-<div>
+          <div class="about-feature">
 
-<div class="footer-title">
-Content
-</div>
+            <span class="feature-icon">📱</span>
 
-<div class="footer-links">
+            <div>
 
-<a href="#blog">
-Blog
-</a>
+              <h4>Mobile Friendly</h4>
 
-<a href="#">
-Privacy Policy
-</a>
+              <p>
+                Designed to work smoothly on mobile phones,
+                tablets and computers.
+              </p>
 
-<a href="#">
-Terms & Conditions
-</a>
+            </div>
 
-<a href="#">
-Disclaimer
-</a>
-
-<a
-href="https://wa.me/923710536394"
-target="_blank">
-
-Support
-
-</a>
-
-</div>
-
-</div>
-
-</div>
+          </div>
 
 
-<div class="copyright">
+          <div class="about-feature">
 
-© 2026 Zed WhatsApp Links.
-All Rights Reserved.
+            <span class="feature-icon">✅</span>
 
-</div>
+            <div>
 
-</div>
+              <h4>Approved Links</h4>
+
+              <p>
+                Submitted links are reviewed before they are
+                published publicly.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="about-feature">
+
+            <span class="feature-icon">🚀</span>
+
+            <div>
+
+              <h4>Fast Discovery</h4>
+
+              <p>
+                Find useful communities without searching
+                across many different websites.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="about-card">
+
+        <div class="about-logo">
+          Z
+        </div>
+
+        <h3>
+          Zed WhatsApp Links
+        </h3>
+
+        <p>
+          WhatsApp & Telegram Groups and Channels Directory
+        </p>
+
+        <div class="about-stats">
+
+          <div class="about-stat">
+
+            <strong id="aboutLinksCount">
+              0
+            </strong>
+
+            <span>
+              Links
+            </span>
+
+          </div>
+
+
+          <div class="about-stat">
+
+            <strong>
+              4
+            </strong>
+
+            <span>
+              Platforms
+            </span>
+
+          </div>
+
+
+          <div class="about-stat">
+
+            <strong>
+              10+
+            </strong>
+
+            <span>
+              Categories
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT SECTION
+========================= -->
+
+<section id="contact" class="section contact-section">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>Contact Us</h2>
+
+      <p>
+        Have a question or need help? Get in touch with us.
+      </p>
+
+    </div>
+
+
+    <div class="contact-grid">
+
+
+      <div class="contact-card">
+
+        <div class="contact-icon">
+          💬
+        </div>
+
+        <h3>
+          WhatsApp
+        </h3>
+
+        <p>
+          Contact our admin for paid plans and support.
+        </p>
+
+        <a
+          href="https://wa.me/923710536394"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary"
+        >
+          Chat on WhatsApp
+        </a>
+
+      </div>
+
+
+      <div class="contact-card">
+
+        <div class="contact-icon">
+          📧
+        </div>
+
+        <h3>
+          Email
+        </h3>
+
+        <p>
+          Send us your questions and suggestions by email.
+        </p>
+
+        <a
+          href="mailto:zedaye9664@gmail.com"
+          class="btn btn-outline"
+        >
+          Send Email
+        </a>
+
+      </div>
+
+
+      <div class="contact-card">
+
+        <div class="contact-icon">
+          📢
+        </div>
+
+        <h3>
+          Submit a Link
+        </h3>
+
+        <p>
+          Want your group or channel listed on our website?
+        </p>
+
+        <button
+          type="button"
+          class="btn btn-outline"
+          id="contactSubmitBtn"
+        >
+          Submit Your Link
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+    <!-- =========================
+     PRIVACY POLICY SECTION
+========================= -->
+
+<section id="privacy" class="section legal-section">
+
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Privacy Policy</h2>
+      <p>Learn how Zed WhatsApp Links handles your information.</p>
+    </div>
+
+    <div class="legal-card">
+
+      <h3>1. Introduction</h3>
+
+      <p>
+        Zed WhatsApp Links respects your privacy and is committed
+        to protecting the information provided by our users.
+      </p>
+
+
+      <h3>2. Information We Collect</h3>
+
+      <p>
+        When you submit a group or channel, we may collect
+        information such as the group name, link, category,
+        email address, WhatsApp number and description.
+      </p>
+
+
+      <h3>3. How We Use Information</h3>
+
+      <p>
+        The information provided through the submission form may
+        be used to review, approve, manage and display submitted
+        links on our website.
+      </p>
+
+
+      <h3>4. Link Information</h3>
+
+      <p>
+        Publicly approved group and channel information may be
+        visible to website visitors. Do not submit private or
+        confidential information.
+      </p>
+
+
+      <h3>5. Third-Party Services</h3>
+
+      <p>
+        Our website may use third-party services such as Firebase,
+        Google services, advertising networks and affiliate
+        platforms to provide website functionality.
+      </p>
+
+
+      <h3>6. Cookies</h3>
+
+      <p>
+        We may use cookies or similar technologies to improve
+        website functionality, analytics and advertising
+        experiences.
+      </p>
+
+
+      <h3>7. External Links</h3>
+
+      <p>
+        Zed WhatsApp Links may contain links to third-party
+        websites, WhatsApp, Telegram and other services. We are
+        not responsible for the privacy practices of external
+        websites.
+      </p>
+
+
+      <h3>8. Policy Updates</h3>
+
+      <p>
+        This Privacy Policy may be updated from time to time.
+        Changes will be published on this page.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     TERMS & CONDITIONS
+========================= -->
+
+<section id="terms" class="section legal-section">
+
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Terms & Conditions</h2>
+      <p>Please read these terms before using our website.</p>
+    </div>
+
+    <div class="legal-card">
+
+      <h3>1. Acceptance of Terms</h3>
+
+      <p>
+        By using Zed WhatsApp Links, you agree to follow these
+        Terms & Conditions and use the website responsibly.
+      </p>
+
+
+      <h3>2. Link Submission</h3>
+
+      <p>
+        Users may submit WhatsApp and Telegram group or channel
+        links for review. Submission does not guarantee approval
+        or publication.
+      </p>
+
+
+      <h3>3. Prohibited Content</h3>
+
+      <p>
+        Users must not submit illegal, harmful, misleading,
+        abusive, fraudulent or inappropriate links.
+      </p>
+
+
+      <h3>4. Approval Rights</h3>
+
+      <p>
+        Zed WhatsApp Links reserves the right to approve, reject,
+        edit or remove submitted links at any time.
+      </p>
+
+
+      <h3>5. Paid Plans</h3>
+
+      <p>
+        Paid plans provide additional listing benefits according
+        to the selected plan. Payment instructions may be
+        provided through our official contact channel.
+      </p>
+
+
+      <h3>6. No Guarantee</h3>
+
+      <p>
+        We do not guarantee the availability, quality, safety or
+        activity of any WhatsApp or Telegram group or channel
+        listed on the website.
+      </p>
+
+
+      <h3>7. External Platforms</h3>
+
+      <p>
+        WhatsApp and Telegram are third-party platforms. Users
+        should follow the rules and policies of those platforms.
+      </p>
+
+
+      <h3>8. Changes to Terms</h3>
+
+      <p>
+        These Terms & Conditions may be changed or updated when
+        necessary.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     DISCLAIMER SECTION
+========================= -->
+
+<section id="disclaimer" class="section legal-section">
+
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Disclaimer</h2>
+      <p>Important information about our directory.</p>
+    </div>
+
+    <div class="legal-card">
+
+      <h3>General Disclaimer</h3>
+
+      <p>
+        Zed WhatsApp Links is a directory platform. We list
+        publicly submitted WhatsApp and Telegram groups and
+        channels for informational and discovery purposes.
+      </p>
+
+
+      <h3>Third-Party Content</h3>
+
+      <p>
+        We do not own or control the groups, channels, products,
+        websites or other external content linked from our
+        platform.
+      </p>
+
+
+      <h3>User Responsibility</h3>
+
+      <p>
+        Users should independently verify any group, channel,
+        offer, job information, educational material or other
+        content before taking action.
+      </p>
+
+
+      <h3>Affiliate Disclaimer</h3>
+
+      <p>
+        Some product links on this website may be affiliate links.
+        If you purchase something through an affiliate link, we
+        may receive a commission at no additional cost to you.
+      </p>
+
+
+      <h3>Accuracy</h3>
+
+      <p>
+        Although we try to keep information updated, we cannot
+        guarantee that every listing or external link will always
+        remain accurate or active.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     FAQ SECTION
+========================= -->
+
+<section id="faq" class="section faq-section">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>Frequently Asked Questions</h2>
+
+      <p>
+        Find answers to common questions about Zed WhatsApp Links.
+      </p>
+
+    </div>
+
+
+    <div class="faq-list">
+
+
+      <div class="faq-item">
+
+        <button
+          type="button"
+          class="faq-question"
+        >
+
+          <span>
+            What is Zed WhatsApp Links?
+          </span>
+
+          <span class="faq-icon">
+            +
+          </span>
+
+        </button>
+
+        <div class="faq-answer">
+
+          <p>
+            Zed WhatsApp Links is a directory where users can
+            discover WhatsApp Groups, WhatsApp Channels, Telegram
+            Groups and Telegram Channels.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <button
+          type="button"
+          class="faq-question"
+        >
+
+          <span>
+            How can I submit my group?
+          </span>
+
+          <span class="faq-icon">
+            +
+          </span>
+
+        </button>
+
+        <div class="faq-answer">
+
+          <p>
+            Open the Submit Link section, enter your group or
+            channel information, select a plan and submit the form
+            for approval.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <button
+          type="button"
+          class="faq-question"
+        >
+
+          <span>
+            Are submitted links published immediately?
+          </span>
+
+          <span class="faq-icon">
+            +
+          </span>
+
+        </button>
+
+        <div class="faq-answer">
+
+          <p>
+            No. Submitted links are first reviewed. Only approved
+            links are displayed publicly on the website.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <button
+          type="button"
+          class="faq-question"
+        >
+
+          <span>
+            Is there a free plan?
+          </span>
+
+          <span class="faq-icon">
+            +
+          </span>
+
+        </button>
+
+        <div class="faq-answer">
+
+          <p>
+            Yes. You can submit a link using the Free plan.
+            Paid plans provide longer listing periods and
+            additional visibility benefits.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <button
+          type="button"
+          class="faq-question"
+        >
+
+          <span>
+            How can I contact the admin?
+          </span>
+
+          <span class="faq-icon">
+            +
+          </span>
+
+        </button>
+
+        <div class="faq-answer">
+
+          <p>
+            You can contact the admin through the WhatsApp contact
+            option or by email available on the Contact section.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <button
+          type="button"
+          class="faq-question"
+        >
+
+          <span>
+            Can I remove my submitted link?
+          </span>
+
+          <span class="faq-icon">
+            +
+          </span>
+
+        </button>
+
+        <div class="faq-answer">
+
+          <p>
+            If you need to remove or update a listing, contact the
+            website administrator with the relevant information.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="faq-item">
+
+        <button
+          type="button"
+          class="faq-question"
+        >
+
+          <span>
+            Does Zed WhatsApp Links own these groups?
+          </span>
+
+          <span class="faq-icon">
+            +
+          </span>
+
+        </button>
+
+        <div class="faq-answer">
+
+          <p>
+            No. The listed groups and channels belong to their
+            respective owners or administrators.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+    <!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+  <div class="container">
+
+    <div class="footer-grid">
+
+
+      <!-- BRAND -->
+
+      <div class="footer-column footer-brand">
+
+        <div class="footer-logo">
+          <span class="logo-z">Z</span>
+        </div>
+
+        <h3>
+          Zed WhatsApp Links
+        </h3>
+
+        <p>
+          Discover the best WhatsApp Groups, WhatsApp Channels,
+          Telegram Groups and Telegram Channels in one place.
+        </p>
+
+
+        <div class="social-links">
+
+          <a
+            href="https://wa.me/923710536394"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+          >
+            WhatsApp
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- QUICK LINKS -->
+
+      <div class="footer-column">
+
+        <h4>
+          Quick Links
+        </h4>
+
+        <ul>
+
+          <li>
+            <a href="#home">
+              Home
+            </a>
+          </li>
+
+          <li>
+            <a href="#featured">
+              Featured Links
+            </a>
+          </li>
+
+          <li>
+            <a href="#categories">
+              Categories
+            </a>
+          </li>
+
+          <li>
+            <a href="#plans">
+              Plans
+            </a>
+          </li>
+
+          <li>
+            <a href="#submit">
+              Submit Link
+            </a>
+          </li>
+
+          <li>
+            <a href="#blog">
+              Blog
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- INFORMATION -->
+
+      <div class="footer-column">
+
+        <h4>
+          Information
+        </h4>
+
+        <ul>
+
+          <li>
+            <a href="#about">
+              About Us
+            </a>
+          </li>
+
+          <li>
+            <a href="#contact">
+              Contact Us
+            </a>
+          </li>
+
+          <li>
+            <a href="#faq">
+              FAQ
+            </a>
+          </li>
+
+          <li>
+            <a href="#privacy">
+              Privacy Policy
+            </a>
+          </li>
+
+          <li>
+            <a href="#terms">
+              Terms & Conditions
+            </a>
+          </li>
+
+          <li>
+            <a href="#disclaimer">
+              Disclaimer
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- CONTACT -->
+
+      <div class="footer-column">
+
+        <h4>
+          Contact Us
+        </h4>
+
+        <ul class="contact-list">
+
+          <li>
+            <span>💬</span>
+
+            <a
+              href="https://wa.me/923710536394"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Chat on WhatsApp
+            </a>
+
+          </li>
+
+
+          <li>
+            <span>📧</span>
+
+            <a
+              href="mailto:zedaye9664@gmail.com"
+            >
+              zedaye9664@gmail.com
+            </a>
+
+          </li>
+
+        </ul>
+
+
+        <a
+          href="#submit"
+          class="btn btn-primary footer-submit"
+        >
+          Submit Your Link
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- FOOTER BOTTOM -->
+
+    <div class="footer-bottom">
+
+      <p>
+        © <span id="currentYear"></span>
+        Zed WhatsApp Links. All Rights Reserved.
+      </p>
+
+
+      <div class="footer-bottom-links">
+
+        <a href="#privacy">
+          Privacy
+        </a>
+
+        <a href="#terms">
+          Terms
+        </a>
+
+        <a href="#disclaimer">
+          Disclaimer
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
 
 </footer>
 
 
-<a
-href="https://wa.me/923710536394?text=Hello%20Zed%20WhatsApp%20Links"
-target="_blank"
-class="whatsapp-float">
-
-☎
-
-</a>
-
-</div>
-
-
-<!-- =====================================================
-ADMIN PAGE
-===================================================== -->
-
-<div id="adminPage"
-class="hidden">
-
-
-<div class="admin-header">
-
-<div class="container admin-header-inner">
-
-<div style="font-weight:bold;">
-ZedLinker Admin Dashboard
-</div>
-
-<div>
-
-<span id="adminEmailDisplay"></span>
-
-<button
-onclick="adminLogout()"
-style="
-margin-left:15px;
-padding:8px 12px;
-border-radius:6px;">
-
-Logout
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- ADMIN LOGIN -->
+<!-- =========================
+     SUCCESS MESSAGE
+========================= -->
 
 <div
-id="adminLoginBox"
-class="admin-login">
+  id="successMessage"
+  class="toast-message success-toast"
+  role="alert"
+  aria-live="polite"
+>
 
-<h2>
-Admin Login
-</h2>
+  <div class="toast-icon">
+    ✓
+  </div>
 
-<p style="
-color:#667085;
-margin-bottom:20px;">
+  <div class="toast-content">
 
-Authorized administrator only.
+    <strong>
+      Submission Successful
+    </strong>
 
-</p>
+    <p>
+      Your link has been submitted for admin approval.
+    </p>
 
+  </div>
 
-<div id="adminLoginMessage"
-class="message"></div>
-
-
-<input
-id="adminEmail"
-type="email"
-placeholder="Admin Email"
-style="margin-bottom:12px;">
-
-<input
-id="adminPassword"
-type="password"
-placeholder="Password"
-style="margin-bottom:12px;">
-
-
-<button
-onclick="adminLogin()"
-class="submit-form-btn">
-
-Login
-
-</button>
+  <button
+    type="button"
+    class="toast-close"
+    id="successToastClose"
+    aria-label="Close"
+  >
+    ×
+  </button>
 
 </div>
 
 
-<!-- ADMIN DASHBOARD -->
+<!-- =========================
+     ERROR MESSAGE
+========================= -->
 
 <div
-id="adminDashboard"
-class="hidden">
+  id="errorMessage"
+  class="toast-message error-toast"
+  role="alert"
+  aria-live="assertive"
+>
 
-<div class="admin-container">
+  <div class="toast-icon">
+    !
+  </div>
+
+  <div class="toast-content">
+
+    <strong>
+      Something Went Wrong
+    </strong>
+
+    <p id="errorMessageText">
+      Please try again.
+    </p>
+
+  </div>
+
+  <button
+    type="button"
+    class="toast-close"
+    id="errorToastClose"
+    aria-label="Close"
+  >
+    ×
+  </button>
+
+</div>
 
 
-<div class="admin-tabs">
+<!-- =========================
+     SCROLL TO TOP
+========================= -->
 
 <button
-class="admin-tab active"
-onclick="openAdminTab('links',this)">
-
-Links
-
+  type="button"
+  id="scrollTopBtn"
+  class="scroll-top-btn"
+  aria-label="Scroll to top"
+>
+  ↑
 </button>
 
-<button
-class="admin-tab"
-onclick="openAdminTab('plansAdmin',this)">
 
-Plans
+<!-- =========================
+     FIREBASE & MAIN JAVASCRIPT
+========================= -->
 
-</button>
+<script type="module">
 
-<button
-class="admin-tab"
-onclick="openAdminTab('productsAdmin',this)">
+  import {
+    initializeApp
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-Products
 
-</butto
+  import {
+    getFirestore,
+    collection,
+    addDoc,
+    query,
+    where,
+    onSnapshot,
+    serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+  /* =========================
+     FIREBASE CONFIG
+  ========================= */
+
+  const firebaseConfig = {
+
+    apiKey:
+      "AIzaSyBpJKcOaqc99cX-sxCTQPwPYIQD7IWmwg",
+
+    authDomain:
+      "zedlinker-new.firebaseapp.com",
+
+    projectId:
+      "zedlinker-new",
+
+    storageBucket:
+      "zedlinker-new.firebasestorage.app",
+
+    messagingSenderId:
+      "1055785931642",
+
+    appId:
+      "1:1055785931642:web:8040da3ec6c0e121103cc3"
+
+  };
+
+
+  /* =========================
+     INITIALIZE FIREBASE
+  ========================= */
+
+  const app =
+    initializeApp(firebaseConfig);
+
+
+  const db =
+    getFirestore(app);
+
+
+  /* =========================
+     GLOBAL DATA
+  ========================= */
+
+  let allListings = [];
+
+  let currentFilter = "all";
+
+  let currentCategory = "all";
+
+
+  /* =========================
+     PLAN PRICES
+  ========================= */
+
+  const planPrices = {
+
+    "WhatsApp Group": {
+
+      Free: 0,
+      Basic: 299,
+      Pro: 499,
+      Premium: 1099,
+      Elite: 1499
+
+    },
+
+    "WhatsApp Channel": {
+
+      Free: 0,
+      Basic: 399,
+      Pro: 599,
+      Premium: 1199,
+      Elite: 1599
+
+    },
+
+    "Telegram Group": {
+
+      Free: 0,
+      Basic: 299,
+      Pro: 499,
+      Premium: 1099,
+      Elite: 1499
+
+    },
+
+    "Telegram Channel": {
+
+      Free: 0,
+      Basic: 399,
+      Pro: 599,
+      Premium: 1199,
+      Elite: 1599
+
+    }
+
+  };
+
+
+  /* =========================
+     PLAN PRIORITY
+  ========================= */
+
+  const planPriority = {
+
+    Elite: 5,
+    Premium: 4,
+    Pro: 3,
+    Basic: 2,
+    Free: 1
+
+  };
+
+
+  /* =========================
+     SAFE TEXT
+  ========================= */
+
+  function escapeHTML(value) {
+
+    if (value === undefined || value === null) {
+      return "";
+    }
+
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
+  }
+
+
+  /* =========================
+     SAFE URL
+  ========================= */
+
+  function safeURL(value) {
+
+    try {
+
+      const url =
+        new URL(value);
+
+      if (
+        url.protocol === "https:" ||
+        url.protocol === "http:"
+      ) {
+
+        return url.href;
+
+      }
+
+    } catch (error) {}
+
+    return "#";
+
+  }
+
+
+  /* =========================
+     SHOW TOAST
+  ========================= */
+
+  function showToast(type, message) {
+
+    const success =
+      document.getElementById("successMessage");
+
+    const error =
+      document.getElementById("errorMessage");
+
+    if (type === "success") {
+
+      success.classList.add("show");
+
+      error.classList.remove("show");
+
+      setTimeout(() => {
+
+        success.classList.remove("show");
+
+      }, 5000);
+
+    } else {
+
+      document.getElementById(
+        "errorMessageText"
+      ).textContent = message;
+
+      error.classList.add("show");
+
+      success.classList.remove("show");
+
+      setTimeout(() => {
+
+        error.classList.remove("show");
+
+      }, 6000);
+
+    }
+
+  }
+
+
+  /* =========================
+     LOAD APPROVED LINKS
+  ========================= */
+
+  const listingsQuery =
+    query(
+      collection(db, "listings"),
+      where("status", "==", "approved")
+    );
+
+
+  onSnapshot(
+    listingsQuery,
+
+    (snapshot) => {
+
+      allListings =
+        snapshot.docs.map(doc => ({
+
+          id: doc.id,
+          ...doc.data()
+
+        }));
+
+
+      allListings.sort((a, b) => {
+
+        const planA =
+          planPriority[a.plan] || 0;
+
+        const planB =
+          planPriority[b.plan] || 0;
+
+        if (planB !== planA) {
+
+          return planB - planA;
+
+        }
+
+        return (
+          (a.name || "")
+            .toLowerCase()
+            .localeCompare(
+              (b.name || "").toLowerCase()
+            )
+        );
+
+      });
+
+
+      renderListings();
+
+      renderFeatured();
+
+      updateStatistics();
+
+
+      const loading =
+        document.querySelector(".loading");
+
+      if (loading) {
+
+        loading.style.display = "none";
+
+      }
+
+    },
+
+    (error) => {
+
+      console.error(
+        "Firebase Error:",
+        error
+      );
+
+      showToast(
+        "error",
+        "Unable to load links. Please try again."
+      );
+
+    }
+
+  );
+
+
+  /* =========================
+     RENDER LISTINGS
+  ========================= */
+
+  function renderListings() {
+
+    const container =
+      document.getElementById("listingsGrid");
+
+    if (!container) {
+      return;
+    }
+
+
+    let filtered =
+      [...allListings];
+
+
+    if (currentFilter !== "all") {
+
+      filtered =
+        filtered.filter(
+          item =>
+            item.type === currentFilter
+        );
+
+    }
+
+
+    if (currentCategory !== "all") {
+
+      filtered =
+        filtered.filter(
+          item =>
+            item.category === currentCategory
+        );
+
+    }
+
+
+    if (filtered.length === 0) {
+
+      container.innerHTML = `
+
+        <div class="empty-state">
+
+          <div class="empty-icon">
+            🔍
+          </div>
+
+          <h3>
+            No Links Found
+          </h3>
+
+          <p>
+            No approved links are available for
+            this selection yet.
+          </p>
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    container.innerHTML =
+      filtered.map(item => {
+
+        const name =
+          escapeHTML(item.name);
+
+        const type =
+          escapeHTML(item.type);
+
+        const category =
+          escapeHTML(item.category);
+
+        const description =
+          escapeHTML(
+            item.description ||
+            "Join this community."
+          );
+
+        const plan =
+          escapeHTML(
+            item.plan || "Free"
+          );
+
+        const url =
+          safeURL(item.link);
+
+
+        return `
+
+          <article class="listing-card">
+
+            <div class="listing-card-top">
+
+              <span class="listing-type">
+                ${type}
+              </span>
+
+              <span class="listing-plan plan-${plan.toLowerCase()}">
+                ${plan}
+              </span>
+
+            </div>
+
+
+            <h3 class="listing-title">
+              ${name}
+            </h3>
+
+
+            <span class="listing-category">
+              ${category}
+            </span>
+
+
+            <p class="listing-description">
+              ${description}
+            </p>
+
+
+            <a
+              href="${url}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary join-btn"
+            >
+              Join Now
+            </a>
+
+          </article>
+
+        `;
+
+      }).join("");
+
+  }
+
+
+</script>
+<script type="module">
+
+  /* =========================
+     RENDER FEATURED LINKS
+  ========================= */
+
+  function renderFeatured() {
+
+    const container =
+      document.getElementById("featuredLinks");
+
+    if (!container) {
+      return;
+    }
+
+
+    const featured =
+      allListings
+        .filter(item =>
+          item.plan === "Elite" ||
+          item.plan === "Premium"
+        )
+        .slice(0, 6);
+
+
+    if (featured.length === 0) {
+
+      container.innerHTML = `
+
+        <div class="empty-state">
+
+          <div class="empty-icon">⭐</div>
+
+          <h3>
+            No Featured Links Yet
+          </h3>
+
+          <p>
+            Premium and Elite links will appear here
+            after admin approval.
+          </p>
+
+        </div>
+
+      `;
+
+      return;
+    }
+
+
+    container.innerHTML =
+      featured.map(item => {
+
+        const name =
+          escapeHTML(item.name);
+
+        const type =
+          escapeHTML(item.type);
+
+        const category =
+          escapeHTML(item.category);
+
+        const description =
+          escapeHTML(
+            item.description ||
+            "Join this featured community."
+          );
+
+        const plan =
+          escapeHTML(
+            item.plan || "Premium"
+          );
+
+        const url =
+          safeURL(item.link);
+
+
+        return `
+
+          <article class="featured-card">
+
+            <div class="featured-badge">
+              ⭐ Featured
+            </div>
+
+            <div class="listing-card-top">
+
+              <span class="listing-type">
+                ${type}
+              </span>
+
+              <span class="listing-plan">
+                ${plan}
+              </span>
+
+            </div>
+
+
+            <h3>
+              ${name}
+            </h3>
+
+
+            <span class="listing-category">
+              ${category}
+            </span>
+
+
+            <p>
+              ${description}
+            </p>
+
+
+            <a
+              href="${url}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary"
+            >
+              Join Now
+            </a>
+
+          </article>
+
+        `;
+
+      }).join("");
+
+  }
+
+
+  /* =========================
+     UPDATE STATISTICS
+  ========================= */
+
+  function updateStatistics() {
+
+    const count =
+      allListings.length;
+
+
+    const totalElement =
+      document.getElementById("totalLinksCount");
+
+    if (totalElement) {
+
+      totalElement.textContent =
+        count.toLocaleString();
+
+    }
+
+
+    const aboutCount =
+      document.getElementById("aboutLinksCount");
+
+    if (aboutCount) {
+
+      aboutCount.textContent =
+        count.toLocaleString();
+
+    }
+
+
+    const heroCount =
+      document.getElementById("heroLinksCount");
+
+    if (heroCount) {
+
+      heroCount.textContent =
+        count.toLocaleString();
+
+    }
+
+  }
+
+
+  /* =========================
+     SEARCH FUNCTION
+  ========================= */
+
+  const searchInput =
+    document.getElementById("searchInput");
+
+
+  if (searchInput) {
+
+    searchInput.addEventListener(
+      "input",
+      function () {
+
+        const searchTerm =
+          this.value
+            .trim()
+            .toLowerCase();
+
+
+        const container =
+          document.getElementById("listingsGrid");
+
+
+        if (!container) {
+          return;
+        }
+
+
+        let results =
+          [...allListings];
+
+
+        if (currentFilter !== "all") {
+
+          results =
+            results.filter(
+              item =>
+                item.type === currentFilter
+            );
+
+        }
+
+
+        if (currentCategory !== "all") {
+
+          results =
+            results.filter(
+              item =>
+                item.category === currentCategory
+            );
+
+        }
+
+
+        if (searchTerm) {
+
+          results =
+            results.filter(item => {
+
+              const searchableText = [
+
+                item.name,
+                item.type,
+                item.category,
+                item.description,
+                item.plan
+
+              ]
+                .filter(Boolean)
+                .join(" ")
+                .toLowerCase();
+
+
+              return searchableText
+                .includes(searchTerm);
+
+            });
+
+        }
+
+
+        renderFilteredResults(results);
+
+      }
+    );
+
+  }
+
+
+  /* =========================
+     RENDER SEARCH RESULTS
+  ========================= */
+
+  function renderFilteredResults(results) {
+
+    const container =
+      document.getElementById("listingsGrid");
+
+
+    if (!container) {
+      return;
+    }
+
+
+    if (results.length === 0) {
+
+      container.innerHTML = `
+
+        <div class="empty-state">
+
+          <div class="empty-icon">
+            🔎
+          </div>
+
+          <h3>
+            No Matching Links
+          </h3>
+
+          <p>
+            Try another keyword or category.
+          </p>
+
+        </div>
+
+      `;
+
+      return;
+    }
+
+
+    container.innerHTML =
+      results.map(item => {
+
+        const name =
+          escapeHTML(item.name);
+
+        const type =
+          escapeHTML(item.type);
+
+        const category =
+          escapeHTML(item.category);
+
+        const description =
+          escapeHTML(
+            item.description ||
+            "Join this community."
+          );
+
+        const plan =
+          escapeHTML(
+            item.plan || "Free"
+          );
+
+        const url =
+          safeURL(item.link);
+
+
+        return `
+
+          <article class="listing-card">
+
+            <div class="listing-card-top">
+
+              <span class="listing-type">
+                ${type}
+              </span>
+
+              <span class="listing-plan">
+                ${plan}
+              </span>
+
+            </div>
+
+
+            <h3 class="listing-title">
+              ${name}
+            </h3>
+
+
+            <span class="listing-category">
+              ${category}
+            </span>
+
+
+            <p class="listing-description">
+              ${description}
+            </p>
+
+
+            <a
+              href="${url}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary join-btn"
+            >
+              Join Now
+            </a>
+
+          </article>
+
+        `;
+
+      }).join("");
+
+  }
+
+
+  /* =========================
+     FILTER BUTTONS
+  ========================= */
+
+  const filterButtons =
+    document.querySelectorAll(
+      ".filter-btn"
+    );
+
+
+  filterButtons.forEach(button => {
+
+    button.addEventListener(
+      "click",
+      function () {
+
+        filterButtons.forEach(btn => {
+
+          btn.classList.remove(
+            "active"
+          );
+
+        });
+
+
+        this.classList.add(
+          "active"
+        );
+
+
+        currentFilter =
+          this.dataset.filter ||
+          "all";
+
+
+        renderListings();
+
+      }
+    );
+
+  });
+
+
+  /* =========================
+     CATEGORY BUTTONS
+  ========================= */
+
+  const categoryButtons =
+    document.querySelectorAll(
+      ".category-card"
+    );
+
+
+  categoryButtons.forEach(button => {
+
+    button.addEventListener(
+      "click",
+      function () {
+
+        currentCategory =
+          this.dataset.category ||
+          "all";
+
+
+        const listingsSection =
+          document.getElementById(
+            "directory"
+          );
+
+
+        if (listingsSection) {
+
+          listingsSection.scrollIntoView({
+            behavior: "smooth"
+          });
+
+        }
+
+
+        renderListings();
+
+      }
+    );
+
+  });
+
+
+  /* =========================
+     PLAN TYPE BUTTONS
+  ========================= */
+
+  const planTypeButtons =
+    document.querySelectorAll(
+      ".plan-type-btn"
+    );
+
+
+  planTypeButtons.forEach(button => {
+
+    button.addEventListener(
+      "click",
+      function () {
+
+        planTypeButtons.forEach(btn => {
+
+          btn.classList.remove(
+            "active"
+          );
+
+        });
+
+
+        this.classList.add(
+          "active"
+        );
+
+
+        const selectedType =
+          this.dataset.type;
+
+
+        updatePlanPrices(
+          selectedType
+        );
+
+      }
+    );
+
+  });
+
+
+  /* =========================
+     UPDATE PLAN PRICES
+  ========================= */
+
+  function updatePlanPrices(type) {
+
+    const prices =
+      planPrices[type];
+
+
+    if (!prices) {
+      return;
+    }
+
+
+    document
+      .querySelectorAll(
+        ".dynamic-price"
+      )
+      .forEach(element => {
+
+        const plan =
+          element.dataset.planPrice;
+
+
+        if (
+          prices[plan] !== undefined
+        ) {
+
+          element.textContent =
+            prices[plan];
+
+        }
+
+      });
+
+  }
+
+
+  /* =========================
+     SELECT PLAN BUTTONS
+  ========================= */
+
+  const selectPlanButtons =
+    document.querySelectorAll(
+      ".select-plan"
+    );
+
+
+  selectPlanButtons.forEach(button => {
+
+    button.addEventListener(
+      "click",
+      function () {
+
+        const selectedPlan =
+          this.dataset.plan;
+
+
+        const planSelect =
+          document.getElementById(
+            "plan"
+          );
+
+
+        if (planSelect) {
+
+          planSelect.value =
+            selectedPlan;
+
+        }
+
+
+        const submitSection =
+          document.getElementById(
+            "submit"
+          );
+
+
+        if (submitSection) {
+
+          submitSection.scrollIntoView({
+            behavior: "smooth"
+          });
+
+        }
+
+
+        updateSelectedPlanInfo();
+
+      }
+    );
+
+  });
+
+
+  /* =========================
+     LINK TYPE CHANGE
+  ========================= */
+
+  const linkType =
+    document.getElementById(
+      "linkType"
+    );
+
+
+  if (linkType) {
+
+    linkType.addEventListener(
+      "change",
+      function () {
+
+        updateSelectedPlanInfo();
+
+        updatePlanPrices(
+          this.value
+        );
+
+      }
+    );
+
+  }
+
+
+  /* =========================
+     PLAN CHANGE
+  ========================= */
+
+  const planSelect =
+    document.getElementById(
+      "plan"
+    );
+
+
+  if (planSelect) {
+
+    planSelect.addEventListener(
+      "change",
+      updateSelectedPlanInfo
+    );
+
+  }
+
+
+  /* =========================
+     SELECTED PLAN INFO
+  ========================= */
+
+  function updateSelectedPlanInfo() {
+
+    const type =
+      document.getElementById(
+        "linkType"
+      )?.value;
+
+
+    const plan =
+      document.getElementById(
+        "plan"
+      )?.value;
+
+
+    const info =
+      document.getElementById(
+        "selectedPlanInfo"
+      );
+
+
+    if (!info) {
+      return;
+    }
+
+
+    if (!type || !plan) {
+
+      info.textContent =
+        "Select a plan to see the price.";
+
+      return;
+
+    }
+
+
+    const price =
+      planPrices[type]?.[plan] ?? 0;
+
+
+    if (price === 0) {
+
+      info.innerHTML = `
+        <strong>Free Plan</strong>
+        <br>
+        Your listing will be available
+        for 1 month after approval.
+      `;
+
+      return;
+
+    }
+
+
+    info.innerHTML = `
+      <strong>
+        ${escapeHTML(plan)} Plan
+      </strong>
+
+      <br>
+
+      Price:
+      <strong>
+        PKR ${price.toLocaleString()}
+      </strong>
+
+      <br>
+
+      After submission, contact admin
+      on WhatsApp for payment.
+    `;
+
+  }
+
+
+  /* =========================
+     SUBMIT LINK FORM
+  ========================= */
+
+  const submitForm =
+    document.getElementById(
+      "submitForm"
+    );
+
+
+  if (submitForm) {
+
+    submitForm.addEventListener(
+      "submit",
+      async function (event) {
+
+        event.preventDefault();
+
+
+        const submitButton =
+          document.getElementById(
+            "submitLinkBtn"
+          );
+
+
+        const type =
+          document.getElementById(
+            "linkType"
+          ).value.trim();
+
+
+        const name =
+          document.getElementById(
+            "linkName"
+          ).value.trim();
+
+
+        const link =
+          document.getElementById(
+            "groupLink"
+          ).value.trim();
+
+
+        const category =
+          document.getElementById(
+            "category"
+          ).value.trim();
+
+
+        const email =
+          document.getElementById(
+            "email"
+          ).value.trim();
+
+
+        const whatsappNumber =
+          document.getElementById(
+            "whatsappNumber"
+          ).value.trim();
+
+
+        const description =
+          document.getElementById(
+            "description"
+          ).value.trim();
+
+
+        const plan =
+          document.getElementById(
+            "plan"
+          ).value.trim();
+
+
+        /* =========================
+           BASIC VALIDATION
+        ========================= */
+
+        if (
+          !type ||
+          !name ||
+          !link ||
+          !category ||
+          !email ||
+          !whatsappNumber ||
+          !description ||
+          !plan
+        ) {
+
+          showToast(
+            "error",
+            "Please complete all required fields."
+          );
+
+          return;
+
+        }
+
+
+        /* =========================
+           URL VALIDATION
+        ========================= */
+
+        let validURL;
+
+        try {
+
+          validURL =
+            new URL(link);
+
+          if (
+            validURL.protocol !==
+              "https:" &&
+            validURL.protocol !==
+              "http:"
+          ) {
+
+            throw new Error(
+              "Invalid URL"
+            );
+
+          }
+
+        } catch (error) {
+
+          showToast(
+            "error",
+            "Please enter a valid group or channel link."
+          );
+
+          return;
+
+        }
+
+
+        /* =========================
+           DISABLE BUTTON
+        ========================= */
+
+        submitButton.disabled =
+          true;
+
+        submitButton.textContent =
+          "Submitting...";
+
+
+        try {
+
+          const price =
+            planPrices[type]?.[plan] ?? 0;
+
+
+          /* =========================
+             FIRESTORE DOCUMENT
+          ========================= */
+
+          await addDoc(
+            collection(
+              db,
+              "listings"
+            ),
+            {
+
+              type: type,
+
+              name: name,
+
+              link: validURL.href,
+
+              category: category,
+
+              email: email,
+
+              whatsappNumber:
+                whatsappNumber,
+
+              description:
+                description,
+
+              plan: plan,
+
+              price: price,
+
+              status: "pending",
+
+              createdAt:
+                serverTimestamp(),
+
+              updatedAt:
+                serverTimestamp()
+
+            }
+          );
+
+
+          /* =========================
+             SUCCESS
+          ========================= */
+
+          submitForm.reset();
+
+          updateSelectedPlanInfo();
+
+
+          showToast(
+            "success",
+            "Your link has been submitted for admin approval."
+          );
+
+
+          /* =========================
+             PAID PLAN CONTACT
+          ========================= */
+
+          if (price > 0) {
+
+            setTimeout(() => {
+
+              const confirmContact =
+                confirm(
+                  "Your link was submitted successfully. " +
+                  "For the selected paid plan, would you like " +
+                  "to contact the admin on WhatsApp?"
+                );
+
+
+              if (confirmContact) {
+
+                window.open(
+                  "https://wa.me/923710536394?text=" +
+                  encodeURIComponent(
+                    "Hello, I submitted a " +
+                    plan +
+                    " plan link on Zed WhatsApp Links."
+                  ),
+                  "_blank"
+                );
+
+              }
+
+            }, 800);
+
+          }
+
+
+        } catch (error) {
+
+          console.error(
+            "Submission Error:",
+            error
+          );
+
+
+          showToast(
+            "error",
+            "Unable to submit your link. Please try again."
+          );
+
+
+        } finally {
+
+          submitButton.disabled =
+            false;
+
+          submitButton.textContent =
+            "Submit for Approval";
+
+        }
+
+      }
+    );
+
+  }
+
+</script>
+          <script type="module">
+
+  /* =========================
+     CONTACT SUBMIT BUTTON
+  ========================= */
+
+  const contactSubmitBtn =
+    document.getElementById(
+      "contactSubmitBtn"
+    );
+
+
+  if (contactSubmitBtn) {
+
+    contactSubmitBtn.addEventListener(
+      "click",
+      function () {
+
+        const submitSection =
+          document.getElementById(
+            "submit"
+          );
+
+
+        if (submitSection) {
+
+          submitSection.scrollIntoView({
+            behavior: "smooth"
+          });
+
+        }
+
+      }
+    );
+
+  }
+
+
+  /* =========================
+     FAQ ACCORDION
+  ========================= */
+
+  const faqQuestions =
+    document.querySelectorAll(
+      ".faq-question"
+    );
+
+
+  faqQuestions.forEach(question => {
+
+    question.addEventListener(
+      "click",
+      function () {
+
+        const faqItem =
+          this.closest(
+            ".faq-item"
+          );
+
+
+        if (!faqItem) {
+          return;
+        }
+
+
+        const answer =
+          faqItem.querySelector(
+            ".faq-answer"
+          );
+
+
+        const icon =
+          faqItem.querySelector(
+            ".faq-icon"
+          );
+
+
+        const isOpen =
+          faqItem.classList.contains(
+            "active"
+          );
+
+
+        /* Close all FAQ items */
+
+        document
+          .querySelectorAll(
+            ".faq-item"
+          )
+          .forEach(item => {
+
+            item.classList.remove(
+              "active"
+            );
+
+            const itemAnswer =
+              item.querySelector(
+                ".faq-answer"
+              );
+
+            const itemIcon =
+              item.querySelector(
+                ".faq-icon"
+              );
+
+
+            if (itemAnswer) {
+
+              itemAnswer.style.maxHeight =
+                null;
+
+            }
+
+
+            if (itemIcon) {
+
+              itemIcon.textContent =
+                "+";
+
+            }
+
+          });
+
+
+        /* Open selected item */
+
+        if (!isOpen) {
+
+          faqItem.classList.add(
+            "active"
+          );
+
+
+          if (answer) {
+
+            answer.style.maxHeight =
+              answer.scrollHeight +
+              "px";
+
+          }
+
+
+          if (icon) {
+
+            icon.textContent =
+              "−";
+
+          }
+
+        }
+
+      }
+
+    );
+
+  });
+
+
+  /* =========================
+     TOAST CLOSE BUTTONS
+  ========================= */
+
+  const successToastClose =
+    document.getElementById(
+      "successToastClose"
+    );
+
+
+  if (successToastClose) {
+
+    successToastClose.addEventListener(
+      "click",
+      function () {
+
+        const toast =
+          document.getElementById(
+            "successMessage"
+          );
+
+
+        if (toast) {
+
+          toast.classList.remove(
+            "show"
+          );
+
+        }
+
+      }
+    );
+
+  }
+
+
+  const errorToastClose =
+    document.getElementById(
+      "errorToastClose"
+    );
+
+
+  if (errorToastClose) {
+
+    errorToastClose.addEventListener(
+      "click",
+      function () {
+
+        const toast =
+          document.getElementById(
+            "errorMessage"
+          );
+
+
+        if (toast) {
+
+          toast.classList.remove(
+            "show"
+          );
+
+        }
+
+      }
+    );
+
+  }
+
+
+  /* =========================
+     SCROLL TO TOP
+  ========================= */
+
+  const scrollTopBtn =
+    document.getElementById(
+      "scrollTopBtn"
+    );
+
+
+  window.addEventListener(
+    "scroll",
+    function () {
+
+      if (!scrollTopBtn) {
+        return;
+      }
+
+
+      if (window.scrollY > 400) {
+
+        scrollTopBtn.classList.add(
+          "show"
+        );
+
+      } else {
+
+        scrollTopBtn.classList.remove(
+          "show"
+        );
+
+      }
+
+    }
+  );
+
+
+  if (scrollTopBtn) {
+
+    scrollTopBtn.addEventListener(
+      "click",
+      function () {
+
+        window.scrollTo({
+
+          top: 0,
+
+          behavior: "smooth"
+
+        });
+
+      }
+    );
+
+  }
+
+
+  /* =========================
+     CURRENT YEAR
+  ========================= */
+
+  const currentYear =
+    document.getElementById(
+      "currentYear"
+    );
+
+
+  if (currentYear) {
+
+    currentYear.textContent =
+      new Date().getFullYear();
+
+  }
+
+
+  /* =========================
+     NAVIGATION LINKS
+  ========================= */
+
+  document
+    .querySelectorAll(
+      'a[href^="#"]'
+    )
+    .forEach(link => {
+
+      link.addEventListener(
+        "click",
+        function (event) {
+
+          const targetId =
+            this.getAttribute(
+              "href"
+            );
+
+
+          if (
+            !targetId ||
+            targetId === "#"
+          ) {
+
+            return;
+
+          }
+
+
+          const target =
+            document.querySelector(
+              targetId
+            );
+
+
+          if (target) {
+
+            event.preventDefault();
+
+
+            target.scrollIntoView({
+
+              behavior: "smooth",
+
+              block: "start"
+
+            });
+
+
+            /* Close mobile menu */
+
+            const navMenu =
+              document.getElementById(
+                "navMenu"
+              );
+
+
+            const menuToggle =
+              document.getElementById(
+                "menuToggle"
+              );
+
+
+            if (navMenu) {
+
+              navMenu.classList.remove(
+                "active"
+              );
+
+            }
+
+
+            if (menuToggle) {
+
+              menuToggle.classList.remove(
+                "active"
+              );
+
+            }
+
+          }
+
+        }
+
+      );
+
+    });
+
+
+  /* =========================
+     MOBILE MENU
+  ========================= */
+
+  const menuToggle =
+    document.getElementById(
+      "menuToggle"
+    );
+
+
+  const navMenu =
+    document.getElementById(
+      "navMenu"
+    );
+
+
+  if (
+    menuToggle &&
+    navMenu
+  ) {
+
+    menuToggle.addEventListener(
+      "click",
+      function () {
+
+        navMenu.classList.toggle(
+          "active"
+        );
+
+        menuToggle.classList.toggle(
+          "active"
+        );
+
+      }
+    );
+
+  }
+
+
+  /* =========================
+     VIEW ALL BLOGS
+  ========================= */
+
+  const viewAllBlogs =
+    document.getElementById(
+      "viewAllBlogs"
+    );
+
+
+  if (viewAllBlogs) {
+
+    viewAllBlogs.addEventListener(
+      "click",
+      function () {
+
+        const blogGrid =
+          document.getElementById(
+            "blogGrid"
+          );
+
+
+        if (!blogGrid) {
+          return;
+        }
+
+
+        const blogCards =
+          blogGrid.querySelectorAll(
+            ".blog-card"
+          );
+
+
+        blogCards.forEach(card => {
+
+          card.style.display =
+            "block";
+
+        });
+
+
+        this.style.display =
+          "none";
+
+      }
+    );
+
+  }
+
+
+  /* =========================
+     LOAD BLOGS FROM FIRESTORE
+  ========================= */
+
+  try {
+
+    const blogsCollection =
+      collection(
+        db,
+        "blogs"
+      );
+
+
+    onSnapshot(
+      blogsCollection,
+      snapshot => {
+
+        const blogGrid =
+          document.getElementById(
+            "blogGrid"
+          );
+
+
+        if (!blogGrid) {
+          return;
+        }
+
+
+        const blogs =
+          snapshot.docs
+            .map(doc => ({
+
+              id: doc.id,
+
+              ...doc.data()
+
+            }))
+            .filter(blog =>
+              blog.status !== "draft"
+            );
+
+
+        if (blogs.length === 0) {
+
+          blogGrid.innerHTML = `
+
+            <div class="empty-state">
+
+              <div class="empty-icon">
+                📝
+              </div>
+
+              <h3>
+                No Blog Posts Yet
+              </h3>
+
+              <p>
+                New articles will appear here soon.
+              </p>
+
+            </div>
+
+          `;
+
+          return;
+
+        }
+
+
+        blogs.sort((a, b) => {
+
+          const dateA =
+            a.createdAt?.seconds ||
+            0;
+
+          const dateB =
+            b.createdAt?.seconds ||
+            0;
+
+
+          return dateB - dateA;
+
+        });
+
+
+        blogGrid.innerHTML =
+          blogs.map(
+            (blog, index) => {
+
+              const title =
+                escapeHTML(
+                  blog.title ||
+                  "Untitled Blog"
+                );
+
+
+              const description =
+                escapeHTML(
+                  blog.description ||
+                  blog.excerpt ||
+                  "Read this latest article."
+                );
+
+
+              const category =
+                escapeHTML(
+                  blog.category ||
+                  "General"
+                );
+
+
+              const image =
+                safeURL(
+                  blog.image ||
+                  ""
+                );
+
+
+              const blogLink =
+                blog.url ||
+                blog.link ||
+                "";
+
+
+              const safeBlogLink =
+                blogLink
+                  ? safeURL(blogLink)
+                  : "#";
+
+
+              return `
+
+                <article
+                  class="blog-card"
+                  style="${
+                    index > 5
+                      ? "display:none;"
+                      : ""
+                  }"
+                >
+
+                  ${
+                    image !== "#"
+                    ? `
+                      <div class="blog-image">
+
+                        <img
+                          src="${image}"
+                          alt="${title}"
+                          loading="lazy"
+                        >
+
+                      </div>
+                    `
+                    : `
+                      <div class="blog-image-placeholder">
+                        📝
+                      </div>
+                    `
+                  }
+
+
+                  <div class="blog-content">
+
+                    <span class="blog-category">
+                      ${category}
+                    </span>
+
+
+                    <h3>
+                      ${title}
+                    </h3>
+
+
+                    <p>
+                      ${description}
+                    </p>
+
+
+                    ${
+                      safeBlogLink !== "#"
+                      ? `
+                        <a
+                          href="${safeBlogLink}"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="read-more"
+                        >
+                          Read More →
+                        </a>
+                      `
+                      : ""
+                    }
+
+                  </div>
+
+                </article>
+
+              `;
+
+            }
+          ).join("");
+
+
+        if (blogs.length <= 6) {
+
+          if (viewAllBlogs) {
+
+            viewAllBlogs.style.display =
+              "none";
+
+          }
+
+        } else {
+
+          if (viewAllBlogs) {
+
+            viewAllBlogs.style.display =
+              "inline-flex";
+
+          }
+
+        }
+
+      },
+
+      error => {
+
+        console.error(
+          "Blog Loading Error:",
+          error
+        );
+
+      }
+
+    );
+
+  } catch (error) {
+
+    console.error(
+      "Blog Initialization Error:",
+      error
+    );
+
+  }
+
+
+  /* =========================
+     LOAD AFFILIATE PRODUCTS
+  ========================= */
+
+  try {
+
+    const productsCollection =
+      collection(
+        db,
+        "products"
+      );
+
+
+    onSnapshot(
+      productsCollection,
+      snapshot => {
+
+        const productsGrid =
+          document.getElementById(
+            "productsGrid"
+          );
+
+
+        if (!productsGrid) {
+          return;
+        }
+
+
+        const products =
+          snapshot.docs
+            .map(doc => ({
+
+              id: doc.id,
+
+              ...doc.data()
+
+            }))
+            .filter(product =>
+              product.status !== "inactive"
+            );
+
+
+        if (products.length === 0) {
+
+          productsGrid.innerHTML = `
+
+            <div class="empty-state">
+
+              <div class="empty-icon">
+                🛍️
+              </div>
+
+              <h3>
+                No Products Yet
+              </h3>
+
+              <p>
+                Recommended products will appear here soon.
+              </p>
+
+            </div>
+
+          `;
+
+          return;
+
+        }
+
+
+        productsGrid.innerHTML =
+          products
+            .slice(0, 8)
+            .map(product => {
+
+              const title =
+                escapeHTML(
+                  product.title ||
+                  product.name ||
+                  "Recommended Product"
+                );
+
+
+              const description =
+                escapeHTML(
+                  product.description ||
+                  "Check this recommended product."
+                );
+
+
+              const image =
+                safeURL(
+                  product.image ||
+                  ""
+                );
+
+
+              const affiliateLink =
+                safeURL(
+                  product.affiliateLink ||
+                  product.url ||
+                  product.link ||
+                  ""
+                );
+
+
+              const price =
+                escapeHTML(
+                  product.price ||
+                  ""
+                );
+
+
+              return `
+
+                <article class="product-card">
+
+                  ${
+                    image !== "#"
+                    ? `
+                      <div class="product-image">
+
+                        <img
+                          src="${image}"
+                          alt="${title}"
+                          loading="lazy"
+                        >
+
+                      </div>
+                    `
+                    : `
+                      <div class="product-image-placeholder">
+                        🛍️
+                      </div>
+                    `
+                  }
+
+
+                  <div class="product-content">
+
+                    <h3>
+                      ${title}
+                    </h3>
+
+
+                    ${
+                      price
+                      ? `
+                        <div class="product-price">
+                          ${price}
+                        </div>
+                      `
+                      : ""
+                    }
+
+
+                    <p>
+                      ${description}
+                    </p>
+
+
+                    ${
+                      affiliateLink !== "#"
+                      ? `
+                        <a
+                          href="${affiliateLink}"
+                          target="_blank"
+                          rel="nofollow sponsored noopener noreferrer"
+                          class="btn btn-primary"
+                        >
+                          View Product
+                        </a>
+                      `
+                      : ""
+                    }
+
+                  </div>
+
+                </article>
+
+              `;
+
+            })
+            .join("");
+
+      },
+
+      error => {
+
+        console.error(
+          "Product Loading Error:",
+          error
+        );
+
+      }
+
+    );
+
+  } catch (error) {
+
+    console.error(
+      "Product Initialization Error:",
+      error
+    );
+
+  }
+
+
+  /* =========================
+     DEFAULT PLAN TYPE
+  ========================= */
+
+  updatePlanPrices(
+    "WhatsApp Group"
+  );
+
+
+  /* =========================
+     INITIAL PLAN INFO
+  ========================= */
+
+  updateSelectedPlanInfo();
+
+
+  /* =========================
+     PAGE READY
+  ========================= */
+
+  document.body.classList.add(
+    "page-ready"
+  );
+
+
+</script>
+
+    <!-- =========================
+     FINAL WEBSITE JAVASCRIPT
+========================= -->
+
+<script type="module">
+
+  /* =========================
+     PAGE LOADING COMPLETE
+  ========================= */
+
+  window.addEventListener(
+    "load",
+    function () {
+
+      document.body.classList.add(
+        "loaded"
+      );
+
+
+      const loading =
+        document.querySelector(
+          ".loading"
+        );
+
+
+      if (loading) {
+
+        setTimeout(() => {
+
+          loading.style.display =
+            "none";
+
+        }, 500);
+
+      }
+
+    }
+  );
+
+
+  /* =========================
+     HANDLE BROWSER BACK
+  ========================= */
+
+  window.addEventListener(
+    "popstate",
+    function () {
+
+      const hash =
+        window.location.hash;
+
+
+      if (hash) {
+
+        const target =
+          document.querySelector(
+            hash
+          );
+
+
+        if (target) {
+
+          setTimeout(() => {
+
+            target.scrollIntoView({
+              behavior: "smooth"
+            });
+
+          }, 50);
+
+        }
+
+      }
+
+    }
+  );
+
+
+  /* =========================
+     CLOSE MOBILE MENU
+     WHEN CLICKING OUTSIDE
+  ========================= */
+
+  document.addEventListener(
+    "click",
+    function (event) {
+
+      const navMenu =
+        document.getElementById(
+          "navMenu"
+        );
+
+
+      const menuToggle =
+        document.getElementById(
+          "menuToggle"
+        );
+
+
+      if (
+        !navMenu ||
+        !menuToggle
+      ) {
+
+        return;
+
+      }
+
+
+      const clickedInsideMenu =
+        navMenu.contains(
+          event.target
+        );
+
+
+      const clickedToggle =
+        menuToggle.contains(
+          event.target
+        );
+
+
+      if (
+        !clickedInsideMenu &&
+        !clickedToggle
+      ) {
+
+        navMenu.classList.remove(
+          "active"
+        );
+
+        menuToggle.classList.remove(
+          "active"
+        );
+
+      }
+
+    }
+  );
+
+
+  /* =========================
+     ENTER KEY SEARCH
+  ========================= */
+
+  if (searchInput) {
+
+    searchInput.addEventListener(
+      "keydown",
+      function (event) {
+
+        if (
+          event.key === "Enter"
+        ) {
+
+          event.preventDefault();
+
+
+          const listingsSection =
+            document.getElementById(
+              "directory"
+            );
+
+
+          if (listingsSection) {
+
+            listingsSection.scrollIntoView({
+              behavior: "smooth"
+            });
+
+          }
+
+        }
+
+      }
+    );
+
+  }
+
+
+  /* =========================
+     WHATSAPP CONTACT
+  ========================= */
+
+  document
+    .querySelectorAll(
+      ".whatsapp-contact"
+    )
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        function () {
+
+          window.open(
+            "https://wa.me/923710536394",
+            "_blank"
+          );
+
+        }
+      );
+
+    });
+
+
+  /* =========================
+     EMAIL CONTACT
+  ========================= */
+
+  document
+    .querySelectorAll(
+      ".email-contact"
+    )
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        function () {
+
+          window.location.href =
+            "mailto:zedaye9664@gmail.com";
+
+        }
+      );
+
+    });
+
+
+  /* =========================
+     PREVENT INVALID LINKS
+  ========================= */
+
+  document.addEventListener(
+    "click",
+    function (event) {
+
+      const link =
+        event.target.closest(
+          "a"
+        );
+
+
+      if (!link) {
+        return;
+      }
+
+
+      const href =
+        link.getAttribute(
+          "href"
+        );
+
+
+      if (
+        !href ||
+        href === "#"
+      ) {
+
+        return;
+
+      }
+
+
+      if (
+        href.startsWith(
+          "javascript:"
+        )
+      ) {
+
+        event.preventDefault();
+
+      }
+
+    }
+  );
+
+
+  /* =========================
+     CONNECTION STATUS
+  ========================= */
+
+  window.addEventListener(
+    "online",
+    function () {
+
+      console.log(
+        "Internet connection restored."
+      );
+
+    }
+  );
+
+
+  window.addEventListener(
+    "offline",
+    function () {
+
+      showToast(
+        "error",
+        "You are offline. Please check your internet connection."
+      );
+
+    }
+  );
+
+
+  /* =========================
+     INITIALIZE WEBSITE
+  ========================= */
+
+  function initializeWebsite() {
+
+    updatePlanPrices(
+      "WhatsApp Group"
+    );
+
+
+    updateSelectedPlanInfo();
+
+
+    renderListings();
+
+
+    renderFeatured();
+
+
+    updateStatistics();
+
+  }
+
+
+  initializeWebsite();
+
+
+  /* =========================
+     PERFORMANCE
+  ========================= */
+
+  if ("requestIdleCallback" in window) {
+
+    requestIdleCallback(
+      () => {
+
+        console.log(
+          "Zed WhatsApp Links initialized."
+        );
+
+      }
+    );
+
+  } else {
+
+    setTimeout(() => {
+
+      console.log(
+        "Zed WhatsApp Links initialized."
+      );
+
+    }, 100);
+
+  }
+
+</script>
+
+
+<!-- =========================
+     FINAL HTML CLOSING
+========================= -->
+
+</body>
+
+  </html>
+  
