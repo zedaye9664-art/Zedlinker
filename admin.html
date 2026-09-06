@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Zed WhatsApp Links - Admin Dashboard</title>
+<title>ZedLinker Admin Dashboard</title>
 
 <style>
 
@@ -24,7 +24,7 @@ body{
     display:none !important;
 }
 
-/* LOGIN */
+/* ================= LOGIN ================= */
 
 #loginScreen{
     min-height:100vh;
@@ -37,11 +37,11 @@ body{
 .login-box{
     width:100%;
     max-width:400px;
-    background:white;
+    background:#ffffff;
     padding:35px;
     border-radius:20px;
-    box-shadow:0 10px 40px rgba(0,0,0,.12);
     text-align:center;
+    box-shadow:0 10px 40px rgba(0,0,0,.12);
 }
 
 .logo{
@@ -52,8 +52,8 @@ body{
     color:white;
     border-radius:18px;
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
     font-size:32px;
     font-weight:bold;
 }
@@ -78,10 +78,6 @@ body{
     cursor:pointer;
 }
 
-.login-btn:disabled{
-    opacity:.6;
-}
-
 .login-btn:hover{
     background:#15803d;
 }
@@ -92,7 +88,7 @@ body{
     color:#6b7280;
 }
 
-/* DASHBOARD */
+/* ================= DASHBOARD ================= */
 
 #dashboard{
     min-height:100vh;
@@ -175,7 +171,7 @@ body{
     cursor:pointer;
 }
 
-/* MAIN */
+/* ================= MAIN ================= */
 
 .main{
     margin-left:250px;
@@ -196,10 +192,9 @@ body{
     padding:12px 15px;
     border-radius:10px;
     box-shadow:0 3px 10px rgba(0,0,0,.05);
-    word-break:break-all;
 }
 
-/* STATS */
+/* ================= STATS ================= */
 
 .stats{
     display:grid;
@@ -226,7 +221,7 @@ body{
     margin-top:10px;
 }
 
-/* SECTIONS */
+/* ================= SECTIONS ================= */
 
 .section{
     display:none;
@@ -252,7 +247,7 @@ body{
     margin-bottom:20px;
 }
 
-/* TABLE */
+/* ================= TABLE ================= */
 
 .table-wrapper{
     overflow-x:auto;
@@ -277,7 +272,7 @@ th{
     background:#f9fafb;
 }
 
-/* BADGES */
+/* ================= BADGES ================= */
 
 .badge{
     padding:6px 9px;
@@ -302,12 +297,7 @@ th{
     color:#991b1b;
 }
 
-.elite{
-    background:#ede9fe;
-    color:#6d28d9;
-}
-
-/* BUTTONS */
+/* ================= BUTTONS ================= */
 
 .btn{
     padding:8px 10px;
@@ -338,7 +328,8 @@ th{
     color:white;
 }
 
-.btn-add{
+.btn-add,
+.btn-save{
     padding:11px 16px;
     background:#16a34a;
     color:white;
@@ -347,16 +338,7 @@ th{
     cursor:pointer;
 }
 
-.btn-save{
-    padding:12px 18px;
-    background:#16a34a;
-    color:white;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-}
-
-/* FORM */
+/* ================= FORMS ================= */
 
 .form-grid{
     display:grid;
@@ -390,7 +372,7 @@ textarea{
     resize:vertical;
 }
 
-/* MODAL */
+/* ================= MODAL ================= */
 
 .modal{
     position:fixed;
@@ -445,7 +427,7 @@ textarea{
     color:#6b7280;
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 
 @media(max-width:800px){
 
@@ -492,412 +474,449 @@ textarea{
 
 <body>
 
-<!-- LOGIN SCREEN -->
+
+<!-- ================= LOGIN ================= -->
 
 <div id="loginScreen">
 
-    <div class="login-box">
+<div class="login-box">
 
-        <div class="logo">Z</div>
+<div class="logo">Z</div>
 
-        <h1>Admin Dashboard</h1>
+<h1>Admin Dashboard</h1>
 
-        <p>Zed WhatsApp Links Management Panel</p>
+<p>ZedLinker Management Panel</p>
 
-        <button class="login-btn" id="googleLogin">
-            Sign in with Google
-        </button>
+<button class="login-btn" id="googleLogin">
+Sign in with Google
+</button>
 
-        <div class="login-message" id="loginMessage">
-            Authorized administrator access only.
-        </div>
+<div class="login-message" id="loginMessage">
+Authorized administrator access only.
+</div>
 
-    </div>
+</div>
 
 </div>
 
 
-<!-- DASHBOARD -->
+<!-- ================= DASHBOARD ================= -->
 
 <div id="dashboard" class="hidden">
 
 <div class="sidebar">
 
-    <div class="sidebar-brand">
+<div class="sidebar-brand">
 
-        <div class="sidebar-logo">Z</div>
+<div class="sidebar-logo">Z</div>
 
-        <div>
-            <h2>ZEDLINKER</h2>
-            <p>ADMIN PANEL</p>
-        </div>
+<div>
+<h2>ZEDLINKER</h2>
+<p>ADMIN PANEL</p>
+</div>
 
-    </div>
+</div>
 
-    <div class="menu">
 
-        <button class="active" onclick="showSection('overview',this)">
-            📊 <span>Dashboard</span>
-        </button>
+<div class="menu">
 
-        <button onclick="showSection('links',this)">
-            🔗 <span>Manage Links</span>
-        </button>
+<button class="active" onclick="showSection('overview',this)">
+📊 <span>Dashboard</span>
+</button>
 
-        <button onclick="showSection('plans',this)">
-            💳 <span>Plans & Pricing</span>
-        </button>
+<button onclick="showSection('links',this)">
+🔗 <span>Manage Links</span>
+</button>
 
-        <button onclick="showSection('products',this)">
-            🛍️ <span>Affiliate Products</span>
-        </button>
+<button onclick="showSection('plans',this)">
+💳 <span>Plans</span>
+</button>
 
-        <button onclick="showSection('blog',this)">
-            📝 <span>Blog Manager</span>
-        </button>
+<button onclick="showSection('products',this)">
+🛍️ <span>Products</span>
+</button>
 
-        <button onclick="showSection('ads',this)">
-            📢 <span>Ad Settings</span>
-        </button>
+<button onclick="showSection('blog',this)">
+📝 <span>Blog</span>
+</button>
 
-        <button onclick="showSection('settings',this)">
-            ⚙️ <span>Website Settings</span>
-        </button>
+<button onclick="showSection('ads',this)">
+📢 <span>Advertisements</span>
+</button>
 
-    </div>
+<button onclick="showSection('settings',this)">
+⚙️ <span>Settings</span>
+</button>
 
-    <button class="logout-btn" id="logoutBtn">
-        🚪 <span>Logout</span>
-    </button>
+</div>
+
+
+<button class="logout-btn" id="logoutBtn">
+🚪 <span>Logout</span>
+</button>
 
 </div>
 
 
 <div class="main">
 
-    <div class="topbar">
+<div class="topbar">
 
-        <h1 id="pageTitle">Dashboard Overview</h1>
+<h1 id="pageTitle">Dashboard Overview</h1>
 
-        <div class="admin-info">
-            👤 <span id="adminEmail"></span>
-        </div>
+<div class="admin-info">
+👤 <span id="adminEmail"></span>
+</div>
 
-    </div>
+</div>
 
 
-    <!-- OVERVIEW -->
+<!-- ================= OVERVIEW ================= -->
 
-    <div id="overview" class="section active">
+<div id="overview" class="section active">
 
-        <div class="stats">
+<div class="stats">
 
-            <div class="stat-card">
-                <h3>Total Links</h3>
-                <strong id="totalLinks">0</strong>
-            </div>
+<div class="stat-card">
+<h3>Total Links</h3>
+<strong id="totalLinks">0</strong>
+</div>
 
-            <div class="stat-card">
-                <h3>Approved Links</h3>
-                <strong id="approvedLinks">0</strong>
-            </div>
+<div class="stat-card">
+<h3>Approved Links</h3>
+<strong id="approvedLinks">0</strong>
+</div>
 
-            <div class="stat-card">
-                <h3>Pending Review</h3>
-                <strong id="pendingLinks">0</strong>
-            </div>
+<div class="stat-card">
+<h3>Pending Links</h3>
+<strong id="pendingLinks">0</strong>
+</div>
 
-            <div class="stat-card">
-                <h3>Total Products</h3>
-                <strong id="totalProducts">0</strong>
-            </div>
+<div class="stat-card">
+<h3>Total Products</h3>
+<strong id="totalProducts">0</strong>
+</div>
 
-        </div>
+</div>
 
-        <div class="card">
 
-            <div class="card-header">
-                <h2>Recent Link Submissions</h2>
-            </div>
+<div class="card">
 
-            <div id="recentLinks">
-                Loading...
-            </div>
+<div class="card-header">
+<h2>Recent Link Submissions</h2>
+</div>
 
-        </div>
-
-    </div>
-
-
-    <!-- LINKS -->
-
-    <div id="links" class="section">
-
-        <div class="card">
-
-            <div class="card-header">
-                <h2>Manage Submitted Links</h2>
-            </div>
-
-            <div class="table-wrapper">
-
-                <table>
-
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Type</th>
-                            <th>Category</th>
-                            <th>Plan</th>
-                            <th>Email</th>
-                            <th>WhatsApp</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="linksTable"></tbody>
-
-                </table>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- PLANS -->
-
-    <div id="plans" class="section">
-
-        <div class="card">
-
-            <div class="card-header">
-
-                <h2>Plans & Pricing Manager</h2>
-
-                <button class="btn-add" onclick="openPlanModal()">
-                    + Add New Plan
-                </button>
-
-            </div>
-
-            <div class="table-wrapper">
-
-                <table>
-
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Type</th>
-                            <th>Duration</th>
-                            <th>Price</th>
-                            <th>Priority</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="plansTable"></tbody>
-
-                </table>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- PRODUCTS -->
-
-    <div id="products" class="section">
-
-        <div class="card">
-
-            <div class="card-header">
-
-                <h2>Affiliate Marketing Products</h2>
-
-                <button class="btn-add" onclick="openProductModal()">
-                    + Add Product
-                </button>
-
-            </div>
-
-            <div class="table-wrapper">
-
-                <table>
-
-                    <thead>
-                        <tr>
-                            <th>Image</th>
-                            <th>Title</th>
-                            <th>Platform</th>
-                            <th>Description</th>
-                            <th>Affiliate Link</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="productsTable"></tbody>
-
-                </table>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- BLOG -->
-
-    <div id="blog" class="section">
-
-        <div class="card">
-
-            <div class="card-header">
-
-                <h2>Blog Manager</h2>
-
-                <button class="btn-add" onclick="openBlogModal()">
-                    + Add New Blog
-                </button>
-
-            </div>
-
-            <div id="blogList"></div>
-
-        </div>
-
-    </div>
-
-
-    <!-- ADS -->
-
-    <div id="ads" class="section">
-
-        <div class="card">
-
-            <h2>Advertisement Settings</h2>
-
-            <br>
-
-            <div class="form-group">
-
-                <label>Google AdSense Publisher ID</label>
-
-                <input id="adsensePublisher"
-                placeholder="ca-pub-xxxxxxxxxxxxxxxx">
-
-            </div>
-
-            <div class="form-group">
-
-                <label>Header Advertisement Code</label>
-
-                <textarea id="headerAdCode"
-                placeholder="Paste advertisement code here"></textarea>
-
-            </div>
-
-            <div class="form-group">
-
-                <label>Between Links Advertisement Code</label>
-
-                <textarea id="middleAdCode"
-                placeholder="Paste advertisement code here"></textarea>
-
-            </div>
-
-            <div class="form-group">
-
-                <label>Footer Advertisement Code</label>
-
-                <textarea id="footerAdCode"
-                placeholder="Paste advertisement code here"></textarea>
-
-            </div>
-
-            <button class="btn-save" onclick="saveAdsSettings()">
-                Save Advertisement Settings
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- SETTINGS -->
-
-    <div id="settings" class="section">
-
-        <div class="card">
-
-            <h2>Website Settings</h2>
-
-            <br>
-
-            <div class="form-grid">
-
-                <div class="form-group">
-                    <label>Website Name</label>
-                    <input id="siteName">
-                </div>
-
-                <div class="form-group">
-                    <label>Website Tagline</label>
-                    <input id="siteTagline">
-                </div>
-
-                <div class="form-group">
-                    <label>Admin WhatsApp Number</label>
-                    <input id="adminWhatsapp"
-                    placeholder="923710536394">
-                </div>
-
-                <div class="form-group">
-                    <label>Support Email</label>
-                    <input id="supportEmail">
-                </div>
-
-            </div>
-
-            <div class="form-group">
-                <label>About Website</label>
-                <textarea id="aboutText"></textarea>
-            </div>
-
-            <div class="form-group">
-                <label>Privacy Policy</label>
-                <textarea id="privacyText"></textarea>
-            </div>
-
-            <div class="form-group">
-                <label>Terms & Conditions</label>
-                <textarea id="termsText"></textarea>
-            </div>
-
-            <div class="form-group">
-                <label>Disclaimer</label>
-                <textarea id="disclaimerText"></textarea>
-            </div>
-
-            <button class="btn-save" onclick="saveWebsiteSettings()">
-                Save Website Settings
-            </button>
-
-        </div>
-
-    </div>
+<div id="recentLinks">
+Loading...
+</div>
 
 </div>
 
 </div>
 
 
-<!-- LINK MODAL -->
+<!-- ================= LINKS ================= -->
+
+<div id="links" class="section">
+
+<div class="card">
+
+<div class="card-header">
+<h2>Manage Submitted Links</h2>
+</div>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Category</th>
+<th>Plan</th>
+<th>Email</th>
+<th>WhatsApp</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+</thead>
+
+<tbody id="linksTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= PLANS ================= -->
+
+<div id="plans" class="section">
+
+<div class="card">
+
+<div class="card-header">
+
+<h2>Plans & Pricing</h2>
+
+<button class="btn-add" onclick="openPlanModal()">
++ Add Plan
+</button>
+
+</div>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Duration</th>
+<th>Price</th>
+<th>Priority</th>
+<th>Actions</th>
+</tr>
+</thead>
+
+<tbody id="plansTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<div id="products" class="section">
+
+<div class="card">
+
+<div class="card-header">
+
+<h2>Affiliate Products</h2>
+
+<button class="btn-add" onclick="openProductModal()">
++ Add Product
+</button>
+
+</div>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+<tr>
+<th>Image</th>
+<th>Title</th>
+<th>Platform</th>
+<th>Description</th>
+<th>Affiliate Link</th>
+<th>Actions</th>
+</tr>
+</thead>
+
+<tbody id="productsTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= BLOG ================= -->
+
+<div id="blog" class="section">
+
+<div class="card">
+
+<div class="card-header">
+
+<h2>Blog Manager</h2>
+
+<button class="btn-add" onclick="openBlogModal()">
++ Add Blog
+</button>
+
+</div>
+
+<div id="blogList"></div>
+
+</div>
+
+</div>
+
+
+<!-- ================= ADS ================= -->
+
+<div id="ads" class="section">
+
+<div class="card">
+
+<h2>Advertisement Settings</h2>
+
+<br>
+
+<div class="form-group">
+
+<label>Google AdSense Publisher ID</label>
+
+<input id="adsensePublisher"
+placeholder="ca-pub-xxxxxxxxxxxxxxxx">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Header Advertisement Code</label>
+
+<textarea id="headerAdCode"></textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Middle Advertisement Code</label>
+
+<textarea id="middleAdCode"></textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Footer Advertisement Code</label>
+
+<textarea id="footerAdCode"></textarea>
+
+</div>
+
+
+<button class="btn-save" onclick="saveAdsSettings()">
+Save Advertisement Settings
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ================= SETTINGS ================= -->
+
+<div id="settings" class="section">
+
+<div class="card">
+
+<h2>Website Settings</h2>
+
+<br>
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>Website Name</label>
+
+<input id="siteName">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Website Tagline</label>
+
+<input id="siteTagline">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Admin WhatsApp Number</label>
+
+<input id="adminWhatsapp"
+placeholder="923710536394">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Support Email</label>
+
+<input id="supportEmail">
+
+</div>
+
+</div>
+
+
+<div class="form-group">
+
+<label>About Website</label>
+
+<textarea id="aboutText"></textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Privacy Policy</label>
+
+<textarea id="privacyText"></textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Terms & Conditions</label>
+
+<textarea id="termsText"></textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Disclaimer</label>
+
+<textarea id="disclaimerText"></textarea>
+
+</div>
+
+
+<button class="btn-save" onclick="saveWebsiteSettings()">
+Save Website Settings
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= LINK MODAL ================= -->
 
 <div class="modal" id="linkModal">
 
@@ -915,52 +934,75 @@ onclick="closeModal('linkModal')">X</button>
 <div class="form-grid">
 
 <div class="form-group">
+
 <label>Name</label>
+
 <input id="editLinkName">
+
 </div>
 
+
 <div class="form-group">
+
 <label>Type</label>
 
 <select id="editLinkType">
+
 <option>WhatsApp Group</option>
 <option>WhatsApp Channel</option>
 <option>Telegram Group</option>
 <option>Telegram Channel</option>
+
 </select>
 
 </div>
 
+
 <div class="form-group">
+
 <label>Category</label>
+
 <input id="editLinkCategory">
+
 </div>
+
 
 <div class="form-group">
 
 <label>Plan</label>
 
 <select id="editLinkPlan">
+
 <option>Free</option>
 <option>Basic</option>
 <option>Pro</option>
 <option>Premium</option>
 <option>Elite</option>
+
 </select>
 
 </div>
 
 </div>
 
-<div class="form-group">
-<label>Group / Channel Link</label>
-<input id="editLinkUrl">
-</div>
 
 <div class="form-group">
-<label>Description</label>
-<textarea id="editLinkDescription"></textarea>
+
+<label>Link URL</label>
+
+<input id="editLinkUrl">
+
 </div>
+
+
+<div class="form-group">
+
+<label>Description</label>
+
+<textarea id="editLinkDescription"></textarea>
+
+</div>
+
 
 <button class="btn-save" onclick="saveEditedLink()">
 Save Changes
@@ -971,7 +1013,7 @@ Save Changes
 </div>
 
 
-<!-- PLAN MODAL -->
+<!-- ================= PLAN MODAL ================= -->
 
 <div class="modal" id="planModal">
 
@@ -989,39 +1031,58 @@ onclick="closeModal('planModal')">X</button>
 <div class="form-grid">
 
 <div class="form-group">
+
 <label>Plan Name</label>
+
 <input id="planName">
+
 </div>
+
 
 <div class="form-group">
 
 <label>Link Type</label>
 
 <select id="planType">
+
 <option>WhatsApp Group</option>
 <option>WhatsApp Channel</option>
 <option>Telegram Group</option>
 <option>Telegram Channel</option>
+
 </select>
 
 </div>
 
+
 <div class="form-group">
+
 <label>Duration</label>
+
 <input id="planDuration">
+
 </div>
 
+
 <div class="form-group">
+
 <label>Price</label>
+
 <input id="planPrice">
+
 </div>
+
 
 <div class="form-group">
-<label>Priority (1 = Highest)</label>
+
+<label>Priority</label>
+
 <input type="number" id="planPriority">
+
 </div>
 
 </div>
+
 
 <button class="btn-save" onclick="savePlan()">
 Save Plan
@@ -1032,7 +1093,7 @@ Save Plan
 </div>
 
 
-<!-- PRODUCT MODAL -->
+<!-- ================= PRODUCT MODAL ================= -->
 
 <div class="modal" id="productModal">
 
@@ -1048,36 +1109,56 @@ onclick="closeModal('productModal')">X</button>
 <input type="hidden" id="productId">
 
 <div class="form-group">
+
 <label>Product Title</label>
+
 <input id="productTitle">
+
 </div>
+
 
 <div class="form-group">
 
 <label>Platform</label>
 
 <select id="productPlatform">
+
 <option>Daraz</option>
 <option>Alibaba</option>
+<option>AliExpress</option>
 <option>Other</option>
+
 </select>
 
 </div>
 
+
 <div class="form-group">
+
 <label>Product Image URL</label>
+
 <input id="productImage">
+
 </div>
 
+
 <div class="form-group">
+
 <label>Affiliate Link</label>
+
 <input id="productLink">
+
 </div>
 
+
 <div class="form-group">
+
 <label>Description</label>
+
 <textarea id="productDescription"></textarea>
+
 </div>
+
 
 <button class="btn-save" onclick="saveProduct()">
 Save Product
@@ -1088,7 +1169,7 @@ Save Product
 </div>
 
 
-<!-- BLOG MODAL -->
+<!-- ================= BLOG MODAL ================= -->
 
 <div class="modal" id="blogModal">
 
@@ -1104,22 +1185,32 @@ onclick="closeModal('blogModal')">X</button>
 <input type="hidden" id="blogId">
 
 <div class="form-group">
+
 <label>Blog Title</label>
+
 <input id="blogTitle">
+
 </div>
 
+
 <div class="form-group">
+
 <label>Blog Image URL</label>
+
 <input id="blogImage">
+
 </div>
 
+
 <div class="form-group">
+
 <label>Blog Content</label>
 
 <textarea id="blogContent"
 style="min-height:250px;"></textarea>
 
 </div>
+
 
 <button class="btn-save" onclick="saveBlog()">
 Publish Blog
@@ -1130,11 +1221,13 @@ Publish Blog
 </div>
 
 
+<!-- ================= FIREBASE JAVASCRIPT ================= -->
+
 <script type="module">
 
-/* ======================================
+/* =====================================
 FIREBASE IMPORTS
-====================================== */
+===================================== */
 
 import {
 initializeApp
@@ -1169,12 +1262,4237 @@ signOut
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 
-/* ======================================
+/* =====================================
 FIREBASE CONFIGURATION
-====================================== */
+===================================== */
 
 const firebaseConfig = {
 
 apiKey: "AIzaSyBpJKcOaqc99cXK-sxCTQPwPYIQD7IWmwg",
 
-authDomain: "zedlinker-new.fire
+authDomain: "zedlinker-new.firebaseapp.com",
+
+projectId: "zedlinker-new",
+
+storageBucket: "zedlinker-new.firebasestorage.app",
+
+messagingSenderId: "1055785931642",
+
+appId: "1:1055785931642:web:8040da3ec6c0e121103cc3"
+
+};
+
+
+/* =====================================
+INITIALIZE FIREBASE
+===================================== */
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+const auth = getAuth(app);
+
+const provider = new GoogleAuthProvider();
+
+
+/* =====================================
+ADMIN EMAIL
+===================================== */
+
+const ADMIN_EMAIL = "zedaye9664@gmail.com";
+
+
+/* =====================================
+GLOBAL DATA
+===================================== */
+
+let linksData = [];
+
+let productsData = [];
+
+let plansData = [];
+
+let blogData = [];
+
+
+/* =====================================
+GOOGLE REDIRECT RESULT
+===================================== */
+
+getRedirectResult(auth)
+
+.then(async(result)=>{
+
+    if(result && result.user){
+
+        const user = result.user;
+
+        if(user.email !== ADMIN_EMAIL){
+
+            alert("Access Denied! You are not the authorized administrator.");
+
+            await signOut(auth);
+
+        }
+
+    }
+
+})
+
+.catch((error)=>{
+
+    console.error("Redirect Login Error:",error);
+
+    if(error.code !== "auth/null-user"){
+        document.getElementById("loginMessage").textContent =
+        "Google Login Error: " + error.message;
+    }
+
+});
+
+
+/* =====================================
+GOOGLE LOGIN
+===================================== */
+
+document.getElementById("googleLogin")
+
+.addEventListener("click",async()=>{
+
+    try{
+
+        document.getElementById("loginMessage").textContent =
+        "Redirecting to Google...";
+
+        await signInWithRedirect(auth,provider);
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        document.getElementById("loginMessage").textContent =
+        "Login Error: " + error.message;
+
+    }
+
+});
+
+
+/* ======================================
+AUTO AUTH STATE CHECK
+====================================== */
+
+onAuthStateChanged(auth, async (user) => {
+
+    if (user && user.email === ADMIN_EMAIL) {
+
+        document
+            .getElementById("loginScreen")
+            .classList.add("hidden");
+
+        document
+            .getElementById("dashboard")
+            .classList.remove("hidden");
+
+        document
+            .getElementById("adminEmail")
+            .textContent = user.email;
+
+        startDashboard();
+
+    } else {
+
+        document
+            .getElementById("loginScreen")
+            .classList.remove("hidden");
+
+        document
+            .getElementById("dashboard")
+            .classList.add("hidden");
+
+    }
+
+});
+
+
+/* ======================================
+LOGOUT
+====================================== */
+
+document
+    .getElementById("logoutBtn")
+    .addEventListener("click", async () => {
+
+        try {
+
+            await signOut(auth);
+
+            alert("You have been logged out.");
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert("Logout Error: " + error.message);
+
+        }
+
+    });
+
+
+/* ======================================
+GLOBAL DATA
+====================================== */
+
+let linksData = [];
+
+let plansData = [];
+
+let productsData = [];
+
+let blogData = [];
+
+
+/* ======================================
+START DASHBOARD
+====================================== */
+
+function startDashboard() {
+
+    loadLinks();
+
+    loadPlans();
+
+    loadProducts();
+
+    loadBlogs();
+
+    loadWebsiteSettings();
+
+    loadAdsSettings();
+
+}
+
+
+/* ======================================
+SHOW SECTION
+====================================== */
+
+window.showSection = function(sectionId, button) {
+
+    document.querySelectorAll(".section")
+        .forEach(section => {
+
+            section.classList.remove("active");
+
+        });
+
+    const selectedSection =
+        document.getElementById(sectionId);
+
+    if (selectedSection) {
+
+        selectedSection.classList.add("active");
+
+    }
+
+
+    document.querySelectorAll(".menu button")
+        .forEach(btn => {
+
+            btn.classList.remove("active");
+
+        });
+
+
+    if (button) {
+
+        button.classList.add("active");
+
+    }
+
+
+    const titles = {
+
+        overview: "Dashboard Overview",
+
+        links: "Manage Links",
+
+        plans: "Plans & Pricing",
+
+        products: "Affiliate Products",
+
+        blog: "Blog Manager",
+
+        ads: "Advertisement Settings",
+
+        settings: "Website Settings"
+
+    };
+
+
+    document.getElementById("pageTitle")
+        .textContent =
+        titles[sectionId] || "Admin Dashboard";
+
+};
+
+
+/* ======================================
+ESCAPE HTML
+====================================== */
+
+function escapeHTML(value) {
+
+    if (value === null || value === undefined) {
+
+        return "";
+
+    }
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* ======================================
+LOAD LINKS
+====================================== */
+
+function loadLinks() {
+
+    const linksRef =
+        collection(db, "links");
+
+
+    onSnapshot(
+        linksRef,
+
+        (snapshot) => {
+
+            linksData = [];
+
+
+            snapshot.forEach((documentItem) => {
+
+                linksData.push({
+
+                    id: documentItem.id,
+
+                    ...documentItem.data()
+
+                });
+
+            });
+
+
+            renderLinks();
+
+            renderStats();
+
+            renderRecentLinks();
+
+        },
+
+        (error) => {
+
+            console.error(
+                "Links Load Error:",
+                error
+            );
+
+        }
+
+    );
+
+}
+
+
+/* ======================================
+RENDER LINKS
+====================================== */
+
+function renderLinks() {
+
+    const table =
+        document.getElementById("linksTable");
+
+
+    table.innerHTML = "";
+
+
+    if (linksData.length === 0) {
+
+        table.innerHTML = `
+
+            <tr>
+
+                <td colspan="8"
+                class="empty">
+
+                    No links submitted yet.
+
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    linksData.forEach((item) => {
+
+        const status =
+            item.status || "pending";
+
+
+        const statusClass =
+            status.toLowerCase();
+
+
+        table.innerHTML += `
+
+            <tr>
+
+                <td>
+
+                    ${escapeHTML(
+                        item.name ||
+                        item.title ||
+                        "No Name"
+                    )}
+
+                </td>
+
+
+                <td>
+
+                    ${escapeHTML(
+                        item.type || "-"
+                    )}
+
+                </td>
+
+
+                <td>
+
+                    ${escapeHTML(
+                        item.category || "-"
+                    )}
+
+                </td>
+
+
+                <td>
+
+                    ${escapeHTML(
+                        item.plan || "Free"
+                    )}
+
+                </td>
+
+
+                <td>
+
+                    ${escapeHTML(
+                        item.email || "-"
+                    )}
+
+                </td>
+
+
+                <td>
+
+                    ${escapeHTML(
+                        item.whatsapp ||
+                        item.phone ||
+                        "-"
+                    )}
+
+                </td>
+
+
+                <td>
+
+                    <span class="badge ${statusClass}">
+
+                        ${escapeHTML(status)}
+
+                    </span>
+
+                </td>
+
+
+                <td>
+
+                    <button
+                    class="btn btn-approve"
+                    onclick="approveLink('${item.id}')">
+
+                        Approve
+
+                    </button>
+
+
+                    <button
+                    class="btn btn-reject"
+                    onclick="rejectLink('${item.id}')">
+
+                        Reject
+
+                    </button>
+
+
+                    <button
+                    class="btn btn-edit"
+                    onclick="editLink('${item.id}')">
+
+                        Edit
+
+                    </button>
+
+
+                    <button
+                    class="btn btn-delete"
+                    onclick="deleteLink('${item.id}')">
+
+                        Delete
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+        `;
+
+    });
+
+}
+
+
+/* ======================================
+RENDER STATISTICS
+====================================== */
+
+function renderStats() {
+
+    const total =
+        linksData.length;
+
+
+    const approved =
+        linksData.filter(item =>
+            String(item.status)
+                .toLowerCase() === "approved"
+        ).length;
+
+
+    const pending =
+        linksData.filter(item => {
+
+            const status =
+                String(
+                    item.status || "pending"
+                ).toLowerCase();
+
+            return status === "pending";
+
+        }).length;
+
+
+    document
+        .getElementById("totalLinks")
+        .textContent = total;
+
+
+    document
+        .getElementById("approvedLinks")
+        .textContent = approved;
+
+
+    document
+        .getElementById("pendingLinks")
+        .textContent = pending;
+
+
+    document
+        .getElementById("totalProducts")
+        .textContent =
+        productsData.length;
+
+}
+
+
+/* ======================================
+RECENT LINKS
+====================================== */
+
+function renderRecentLinks() {
+
+    const container =
+        document.getElementById("recentLinks");
+
+
+    if (linksData.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                No recent submissions.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    const recent =
+        linksData.slice(0, 5);
+
+
+    container.innerHTML = "";
+
+
+    recent.forEach((item) => {
+
+        container.innerHTML += `
+
+            <div class="blog-item">
+
+                <strong>
+
+                    ${escapeHTML(
+                        item.name ||
+                        item.title ||
+                        "Unnamed Link"
+                    )}
+
+                </strong>
+
+                <br>
+
+                <small>
+
+                    ${escapeHTML(
+                        item.type || ""
+                    )}
+
+                    •
+                    
+                    ${escapeHTML(
+                        item.status ||
+                        "pending"
+                    )}
+
+                </small>
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+
+/* ======================================
+APPROVE LINK
+====================================== */
+
+window.approveLink =
+async function(id) {
+
+    try {
+
+        await updateDoc(
+
+            doc(db, "links", id),
+
+            {
+
+                status: "approved",
+
+                updatedAt:
+                serverTimestamp()
+
+            }
+
+        );
+
+
+        alert(
+            "Link approved successfully!"
+        );
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Error: " + error.message
+        );
+
+    }
+
+};
+
+
+/* ======================================
+REJECT LINK
+====================================== */
+
+window.rejectLink =
+async function(id) {
+
+    try {
+
+        await updateDoc(
+
+            doc(db, "links", id),
+
+            {
+
+                status: "rejected",
+
+                updatedAt:
+                serverTimestamp()
+
+            }
+
+        );
+
+
+        alert(
+            "Link rejected."
+        );
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Error: " + error.message
+        );
+
+    }
+
+};
+
+
+/* ======================================
+DELETE LINK
+====================================== */
+
+window.deleteLink =
+async function(id) {
+
+    const confirmDelete =
+        confirm(
+            "Are you sure you want to delete this link?"
+        );
+
+
+    if (!confirmDelete) {
+
+        return;
+
+    }
+
+
+    try {
+
+        await deleteDoc(
+
+            doc(db, "links", id)
+
+        );
+
+
+        alert(
+            "Link deleted successfully."
+        );
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Delete Error: " +
+            error.message
+        );
+
+    }
+
+};
+
+
+/* ======================================
+EDIT LINK
+====================================== */
+
+window.editLink =
+function(id) {
+
+    const item =
+        linksData.find(
+            item => item.id === id
+        );
+
+
+    if (!item) {
+
+        return;
+
+    }
+
+
+    document
+        .getElementById("editLinkId")
+        .value = item.id;
+
+
+    document
+        .getElementById("editLinkName")
+        .value =
+        item.name ||
+        item.title ||
+        "";
+
+
+    document
+        .getElementById("editLinkType")
+        .value =
+        item.type ||
+        "WhatsApp Group";
+
+
+    document
+        .getElementById("editLinkCategory")
+        .value =
+        item.category ||
+        "";
+
+
+    document
+        .getElementById("editLinkPlan")
+        .value =
+        item.plan ||
+        "Free";
+
+
+    document
+        .getElementById("editLinkUrl")
+        .value =
+        item.url ||
+        item.link ||
+        "";
+
+
+    document
+        .getElementById("editLinkDescription")
+        .value =
+        item.description ||
+        "";
+
+
+    document
+        .getElementById("linkModal")
+        .classList.add("show");
+
+};
+
+
+/* ======================================
+SAVE EDITED LINK
+====================================== */
+
+window.saveEditedLink =
+async function() {
+
+    const id =
+        document
+            .getElementById("editLinkId")
+            .value;
+
+
+    if (!id) {
+
+        alert("Link ID not found.");
+
+        return;
+
+    }
+
+
+    try {
+
+        await updateDoc(
+
+            doc(db, "links", id),
+
+            {
+
+                name:
+                document
+                    .getElementById("editLinkName")
+                    .value
+                    .trim(),
+
+                type:
+                document
+                    .getElementById("editLinkType")
+                    .value,
+
+                category:
+                document
+                    .getElementById("editLinkCategory")
+                    .value
+                    .trim(),
+
+                plan:
+                document
+                    .getElementById("editLinkPlan")
+                    .value,
+
+                url:
+                document
+                    .getElementById("editLinkUrl")
+                    .value
+                    .trim(),
+
+                description:
+                document
+                    .getElementById(
+                        "editLinkDescription"
+                    )
+                    .value
+                    .trim(),
+
+                updatedAt:
+                serverTimestamp()
+
+            }
+
+        );
+
+
+        closeModal("linkModal");
+
+        alert(
+            "Link updated successfully!"
+        );
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Update Error: " +
+            error.message
+        );
+
+    }
+
+};
+
+
+/* ======================================
+LOAD PLANS
+====================================== */
+
+function loadPlans() {
+
+    const plansRef =
+        collection(db, "plans");
+
+
+    onSnapshot(
+
+        plansRef,
+
+        (snapshot) => {
+
+            plansData = [];
+
+
+            snapshot.forEach(
+                (documentItem) => {
+
+                    plansData.push({
+
+                        id:
+                        documentItem.id,
+
+                        ...documentItem.data()
+
+                    });
+
+                }
+            );
+
+
+            renderPlans();
+
+        },
+
+        (error) => {
+
+            console.error(
+                "Plans Error:",
+                error
+            );
+
+        }
+
+    );
+
+}
+
+
+/* ======================================
+RENDER PLANS
+====================================== */
+
+function renderPlans() {
+
+    const table =
+        document
+            .getElementById("plansTable");
+
+
+    table.innerHTML = "";
+
+
+    if (plansData.length === 0) {
+
+        table.innerHTML = `
+
+            <tr>
+
+                <td colspan="6"
+                class="empty">
+
+                    No plans added yet.
+
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    plansData
+        .sort((a, b) =>
+            Number(a.priority || 999) -
+            Number(b.priority || 999)
+        )
+        .forEach((item) => {
+
+            table.innerHTML += `
+
+                <tr>
+
+                    <td>
+
+                        ${escapeHTML(
+                            item.name
+                        )}
+
+                    </td>
+
+
+                    <td>
+
+                        ${escapeHTML(
+                            item.type
+                        )}
+
+                    </td>
+
+
+                    <td>
+
+                        ${escapeHTML(
+                            item.duration
+                        )}
+
+                    </td>
+
+
+                    <td>
+
+                        ${escapeHTML(
+                            item.price
+                        )}
+
+                    </td>
+
+
+                    <td>
+
+                        ${escapeHTML(
+                            item.priority
+                        )}
+
+                    </td>
+
+
+                    <td>
+
+                        <button
+                        class="btn btn-edit"
+                        onclick="editPlan('${item.id}')">
+
+                            Edit
+
+                        </button>
+
+
+                        <button
+                        class="btn btn-delete"
+                        onclick="deletePlan('${item.id}')">
+
+                            Delete
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        });
+
+}
+
+
+/* ======================================
+OPEN PLAN MODAL
+====================================== */
+
+window.openPlanModal =
+function() {
+
+    document
+        .getElementById("planId")
+        .value = "";
+
+
+    document
+        .getElementById("planName")
+        .value = "";
+
+
+    document
+        .getElementById("planType")
+        .value =
+        "WhatsApp Group";
+
+
+    document
+        .getElementById("planDuration")
+        .value = "";
+
+
+    document
+        .getElementById("planPrice")
+        .value = "";
+
+
+    document
+        .getElementById("planPriority")
+        .value = "";
+
+
+    document
+        .getElementById("planModal")
+        .classList.add("show");
+
+};
+
+
+/* ======================================
+EDIT PLAN
+====================================== */
+
+window.editPlan =
+function(id) {
+
+    const item =
+        plansData.find(
+            item => item.id === id
+        );
+
+
+    if (!item) return;
+
+
+    document
+        .getElementById("planId")
+        .value = item.id;
+
+
+    document
+        .getElementById("planName")
+        .value =
+        item.name || "";
+
+
+    document
+        .getElementById("planType")
+        .value =
+        item.type ||
+        "WhatsApp Group";
+
+
+    document
+        .getElementById("planDuration")
+        .value =
+        item.duration || "";
+
+
+    document
+        .getElementById("planPrice")
+        .value =
+        item.price || "";
+
+
+    document
+        .getElementById("planPriority")
+        .value =
+        item.priority || "";
+
+
+    document
+        .getElementById("planModal")
+        .classList.add("show");
+
+};
+
+
+/* ======================================
+SAVE PLAN
+====================================== */
+
+window.savePlan =
+async function() {
+
+    const id =
+        document
+            .getElementById("planId")
+            .value;
+
+
+    const planData = {
+
+        name:
+        document
+            .getElementById("planName")
+            .value
+            .trim(),
+
+        type:
+        document
+            .getElementById("planType")
+            .value,
+
+        duration:
+        document
+            .getElementById("planDuration")
+            .value
+            .trim(),
+
+        price:
+        document
+            .getElementById("planPrice")
+            .value
+            .trim(),
+
+        priority:
+        Number(
+            document
+                .getElementById("planPriority")
+                .value
+        ) || 999,
+
+        updatedAt:
+        serverTimestamp()
+
+    };
+
+
+    if (!planData.name) {
+
+        alert(
+            "Please enter plan name."
+        );
+
+        return;
+
+    }
+
+
+    try {
+
+        if (id) {
+
+            await updateDoc(
+
+                doc(db, "plans", id),
+
+                planData
+
+            );
+
+        } else {
+
+            planData.createdAt =
+                serverTimestamp();
+
+
+            await addDoc(
+
+                collection(db, "plans"),
+
+                planData
+
+            );
+
+        }
+
+
+        closeModal("planModal");
+
+        alert(
+            "Plan saved successfully!"
+        );
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Error: " +
+            error.message
+        );
+
+    }
+
+};
+
+
+/* ======================================
+DELETE PLAN
+====================================== */
+
+window.deletePlan =
+async function(id) {
+
+    if (!confirm(
+        "Delete this plan?"
+    )) return;
+
+
+    try {
+
+        await deleteDoc(
+
+            doc(db, "plans", id)
+
+        );
+
+
+        alert(
+            "Plan deleted."
+        );
+
+    } catch (error) {
+
+        alert(
+            "Error: " +
+            error.message
+        );
+
+    }
+
+};
+
+/* ======================================
+LOAD PRODUCTS
+====================================== */
+
+function loadProducts(){
+
+    const productsRef = collection(db, "products");
+
+    onSnapshot(productsRef, (snapshot) => {
+
+        productsData = [];
+
+        snapshot.forEach((document) => {
+
+            productsData.push({
+                id: document.id,
+                ...document.data()
+            });
+
+        });
+
+        renderProducts();
+        renderStats();
+
+    }, (error) => {
+
+        console.error("Products Error:", error);
+
+    });
+
+}
+
+
+/* ======================================
+RENDER PRODUCTS
+====================================== */
+
+function renderProducts(){
+
+    const table = document.getElementById("productsTable");
+
+    if(!table) return;
+
+    table.innerHTML = "";
+
+    if(productsData.length === 0){
+
+        table.innerHTML = `
+        <tr>
+            <td colspan="6" class="empty">
+                No affiliate products added yet.
+            </td>
+        </tr>
+        `;
+
+        return;
+    }
+
+    productsData.forEach((product) => {
+
+        table.innerHTML += `
+
+        <tr>
+
+            <td>
+
+                ${
+                    product.image
+                    ? `<img src="${escapeHtml(product.image)}"
+                       class="small-image"
+                       alt="Product">`
+                    : "No Image"
+                }
+
+            </td>
+
+            <td>
+                ${escapeHtml(product.title || "")}
+            </td>
+
+            <td>
+                ${escapeHtml(product.platform || "")}
+            </td>
+
+            <td>
+                ${escapeHtml(product.description || "")}
+            </td>
+
+            <td>
+
+                ${
+                    product.link
+                    ? `<a href="${escapeHtml(product.link)}"
+                         target="_blank"
+                         rel="noopener noreferrer">
+                         Open Link
+                       </a>`
+                    : "-"
+                }
+
+            </td>
+
+            <td>
+
+                <button
+                    class="btn btn-edit"
+                    onclick="editProduct('${product.id}')">
+
+                    Edit
+
+                </button>
+
+                <button
+                    class="btn btn-delete"
+                    onclick="deleteProduct('${product.id}')">
+
+                    Delete
+
+                </button>
+
+            </td>
+
+        </tr>
+
+        `;
+
+    });
+
+}
+
+
+/* ======================================
+OPEN PRODUCT MODAL
+====================================== */
+
+window.openProductModal = function(){
+
+    document.getElementById("productId").value = "";
+
+    document.getElementById("productTitle").value = "";
+
+    document.getElementById("productPlatform").value = "Daraz";
+
+    document.getElementById("productImage").value = "";
+
+    document.getElementById("productLink").value = "";
+
+    document.getElementById("productDescription").value = "";
+
+    document
+    .getElementById("productModal")
+    .classList
+    .add("show");
+
+};
+
+
+/* ======================================
+EDIT PRODUCT
+====================================== */
+
+window.editProduct = function(id){
+
+    const product = productsData.find(
+        item => item.id === id
+    );
+
+    if(!product) return;
+
+    document.getElementById("productId").value =
+    product.id;
+
+    document.getElementById("productTitle").value =
+    product.title || "";
+
+    document.getElementById("productPlatform").value =
+    product.platform || "Daraz";
+
+    document.getElementById("productImage").value =
+    product.image || "";
+
+    document.getElementById("productLink").value =
+    product.link || "";
+
+    document.getElementById("productDescription").value =
+    product.description || "";
+
+    document
+    .getElementById("productModal")
+    .classList
+    .add("show");
+
+};
+
+
+/* ======================================
+SAVE PRODUCT
+====================================== */
+
+window.saveProduct = async function(){
+
+    try{
+
+        const id =
+        document.getElementById("productId").value;
+
+        const title =
+        document
+        .getElementById("productTitle")
+        .value
+        .trim();
+
+        const platform =
+        document
+        .getElementById("productPlatform")
+        .value;
+
+        const image =
+        document
+        .getElementById("productImage")
+        .value
+        .trim();
+
+        const link =
+        document
+        .getElementById("productLink")
+        .value
+        .trim();
+
+        const description =
+        document
+        .getElementById("productDescription")
+        .value
+        .trim();
+
+
+        if(!title){
+
+            alert("Please enter product title.");
+
+            return;
+
+        }
+
+
+        const productData = {
+
+            title: title,
+
+            platform: platform,
+
+            image: image,
+
+            link: link,
+
+            description: description,
+
+            updatedAt: serverTimestamp()
+
+        };
+
+
+        if(id){
+
+            await updateDoc(
+
+                doc(db, "products", id),
+
+                productData
+
+            );
+
+            alert("Product updated successfully!");
+
+        }else{
+
+            productData.createdAt =
+            serverTimestamp();
+
+            await addDoc(
+
+                collection(db, "products"),
+
+                productData
+
+            );
+
+            alert("Product added successfully!");
+
+        }
+
+
+        closeModal("productModal");
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Error saving product: "
+            + error.message
+        );
+
+    }
+
+};
+
+
+/* ======================================
+DELETE PRODUCT
+====================================== */
+
+window.deleteProduct = async function(id){
+
+    const confirmDelete = confirm(
+
+        "Are you sure you want to delete this product?"
+
+    );
+
+    if(!confirmDelete) return;
+
+
+    try{
+
+        await deleteDoc(
+
+            doc(db, "products", id)
+
+        );
+
+        alert("Product deleted successfully!");
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+
+            "Error deleting product: "
+            + error.message
+
+        );
+
+    }
+
+};
+
+
+/* ======================================
+LOAD PLANS
+====================================== */
+
+function loadPlans(){
+
+    const plansRef = collection(db, "plans");
+
+    onSnapshot(plansRef, (snapshot) => {
+
+        plansData = [];
+
+        snapshot.forEach((document) => {
+
+            plansData.push({
+
+                id: document.id,
+
+                ...document.data()
+
+            });
+
+        });
+
+
+        renderPlans();
+
+    }, (error) => {
+
+        console.error("Plans Error:", error);
+
+    });
+
+}
+
+
+/* ======================================
+RENDER PLANS
+====================================== */
+
+function renderPlans(){
+
+    const table =
+    document.getElementById("plansTable");
+
+    if(!table) return;
+
+    table.innerHTML = "";
+
+
+    if(plansData.length === 0){
+
+        table.innerHTML = `
+
+        <tr>
+
+            <td colspan="6" class="empty">
+
+                No plans added yet.
+
+            </td>
+
+        </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    plansData.sort((a, b) => {
+
+        return Number(a.priority || 999)
+        - Number(b.priority || 999);
+
+    });
+
+
+    plansData.forEach((plan) => {
+
+        table.innerHTML += `
+
+        <tr>
+
+            <td>
+                ${escapeHtml(plan.name || "")}
+            </td>
+
+            <td>
+                ${escapeHtml(plan.type || "")}
+            </td>
+
+            <td>
+                ${escapeHtml(plan.duration || "")}
+            </td>
+
+            <td>
+                ${escapeHtml(plan.price || "")}
+            </td>
+
+            <td>
+                ${escapeHtml(
+                    String(plan.priority || "")
+                )}
+            </td>
+
+            <td>
+
+                <button
+                    class="btn btn-edit"
+                    onclick="editPlan('${plan.id}')">
+
+                    Edit
+
+                </button>
+
+
+                <button
+                    class="btn btn-delete"
+                    onclick="deletePlan('${plan.id}')">
+
+                    Delete
+
+                </button>
+
+            </td>
+
+        </tr>
+
+        `;
+
+    });
+
+}
+
+
+/* ======================================
+OPEN PLAN MODAL
+====================================== */
+
+window.openPlanModal = function(){
+
+    document.getElementById("planId").value = "";
+
+    document.getElementById("planName").value = "";
+
+    document.getElementById("planType").value =
+    "WhatsApp Group";
+
+    document.getElementById("planDuration").value = "";
+
+    document.getElementById("planPrice").value = "";
+
+    document.getElementById("planPriority").value = "";
+
+    document
+    .getElementById("planModal")
+    .classList
+    .add("show");
+
+};
+
+
+/* ======================================
+EDIT PLAN
+====================================== */
+
+window.editPlan = function(id){
+
+    const plan = plansData.find(
+
+        item => item.id === id
+
+    );
+
+    if(!plan) return;
+
+
+    document.getElementById("planId").value =
+    plan.id;
+
+    document.getElementById("planName").value =
+    plan.name || "";
+
+    document.getElementById("planType").value =
+    plan.type || "WhatsApp Group";
+
+    document.getElementById("planDuration").value =
+    plan.duration || "";
+
+    document.getElementById("planPrice").value =
+    plan.price || "";
+
+    document.getElementById("planPriority").value =
+    plan.priority || "";
+
+
+    document
+    .getElementById("planModal")
+    .classList
+    .add("show");
+
+};
+
+
+/* ======================================
+SAVE PLAN
+====================================== */
+
+window.savePlan = async function(){
+
+    try{
+
+        const id =
+        document.getElementById("planId").value;
+
+        const name =
+        document
+        .getElementById("planName")
+        .value
+        .trim();
+
+        const type =
+        document
+        .getElementById("planType")
+        .value;
+
+        const duration =
+        document
+        .getElementById("planDuration")
+        .value
+        .trim();
+
+        const price =
+        document
+        .getElementById("planPrice")
+        .value
+        .trim();
+
+        const priority =
+        Number(
+
+            document
+            .getElementById("planPriority")
+            .value
+
+        );
+
+
+        if(!name){
+
+            alert("Please enter plan name.");
+
+            return;
+
+        }
+
+
+        const planData = {
+
+            name: name,
+
+            type: type,
+
+            duration: duration,
+
+            price: price,
+
+            priority: priority || 999,
+
+            updatedAt: serverTimestamp()
+
+        };
+
+
+        if(id){
+
+            await updateDoc(
+
+                doc(db, "plans", id),
+
+                planData
+
+            );
+
+            alert("Plan updated successfully!");
+
+        }else{
+
+            planData.createdAt =
+            serverTimestamp();
+
+            await addDoc(
+
+                collection(db, "plans"),
+
+                planData
+
+            );
+
+            alert("Plan added successfully!");
+
+        }
+
+
+        closeModal("planModal");
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+
+            "Error saving plan: "
+            + error.message
+
+        );
+
+    }
+
+};
+
+
+/* ======================================
+DELETE PLAN
+====================================== */
+
+window.deletePlan = async function(id){
+
+    if(!confirm("Delete this plan?")){
+
+        return;
+
+    }
+
+
+    try{
+
+        await deleteDoc(
+
+            doc(db, "plans", id)
+
+        );
+
+        alert("Plan deleted successfully!");
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+
+            "Error deleting plan: "
+            + error.message
+
+        );
+
+    }
+
+};
+
+
+/* ======================================
+LOAD BLOGS
+====================================== */
+
+function loadBlogs(){
+
+    const blogsRef = collection(db, "blogs");
+
+    onSnapshot(blogsRef, (snapshot) => {
+
+        blogData = [];
+
+        snapshot.forEach((document) => {
+
+            blogData.push({
+
+                id: document.id,
+
+                ...document.data()
+
+            });
+
+        });
+
+
+        renderBlogs();
+
+    }, (error) => {
+
+        console.error("Blogs Error:", error);
+
+    });
+
+}
+
+
+/* ======================================
+RENDER BLOGS
+====================================== */
+
+function renderBlogs(){
+
+    const container =
+    document.getElementById("blogList");
+
+    if(!container) return;
+
+    container.innerHTML = "";
+
+
+    if(blogData.length === 0){
+
+        container.innerHTML = `
+
+        <div class="empty">
+
+            No blogs published yet.
+
+        </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    blogData.forEach((blog) => {
+
+        container.innerHTML += `
+
+        <div class="blog-item">
+
+            <h3>
+
+                ${escapeHtml(blog.title || "")}
+
+            </h3>
+
+            <br>
+
+            <p>
+
+                ${escapeHtml(
+
+                    (blog.content || "")
+                    .substring(0, 200)
+
+                )}
+
+            </p>
+
+            <br>
+
+            <button
+                class="btn btn-edit"
+                onclick="editBlog('${blog.id}')">
+
+                Edit
+
+            </button>
+
+
+            <button
+                class="btn btn-delete"
+                onclick="deleteBlog('${blog.id}')">
+
+                Delete
+
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+/* ======================================
+OPEN BLOG MODAL
+====================================== */
+
+window.openBlogModal = function(){
+
+    document.getElementById("blogId").value = "";
+
+    document.getElementById("blogTitle").value = "";
+
+    document.getElementById("blogImage").value = "";
+
+    document.getElementById("blogContent").value = "";
+
+
+    document
+    .getElementById("blogModal")
+    .classList
+    .add("show");
+
+};
+
+
+/* ======================================
+EDIT BLOG
+====================================== */
+
+window.editBlog = function(id){
+
+    const blog = blogData.find(
+
+        item => item.id === id
+
+    );
+
+    if(!blog) return;
+
+
+    document.getElementById("blogId").value =
+    blog.id;
+
+    document.getElementById("blogTitle").value =
+    blog.title || "";
+
+    document.getElementById("blogImage").value =
+    blog.image || "";
+
+    document.getElementById("blogContent").value =
+    blog.content || "";
+
+
+    document
+    .getElementById("blogModal")
+    .classList
+    .add("show");
+
+};
+
+
+/* ======================================
+SAVE BLOG
+====================================== */
+
+window.saveBlog = async function(){
+
+    try{
+
+        const id =
+        document.getElementById("blogId").value;
+
+        const title =
+        document
+        .getElementById("blogTitle")
+        .value
+        .trim();
+
+        const image =
+        document
+        .getElementById("blogImage")
+        .value
+        .trim();
+
+        const content =
+        document
+        .getElementById("blogContent")
+        .value
+        .trim();
+
+
+        if(!title || !content){
+
+            alert(
+
+                "Please enter blog title and content."
+
+            );
+
+            return;
+
+        }
+
+
+        const blogInfo = {
+
+            title: title,
+
+            image: image,
+
+            content: content,
+
+            updatedAt: serverTimestamp()
+
+        };
+
+
+        if(id){
+
+            await updateDoc(
+
+                doc(db, "blogs", id),
+
+                blogInfo
+
+            );
+
+            alert("Blog updated successfully!");
+
+        }else{
+
+            blogInfo.createdAt =
+            serverTimestamp();
+
+            await addDoc(
+
+                collection(db, "blogs"),
+
+                blogInfo
+
+            );
+
+            alert("Blog published successfully!");
+
+        }
+
+
+        closeModal("blogModal");
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+
+            "Error saving blog: "
+            + error.message
+
+        );
+
+    }
+
+};
+
+
+/* ======================================
+DELETE BLOG
+====================================== */
+
+window.deleteBlog = async function(id){
+
+    if(!confirm("Delete this blog?")){
+
+        return;
+
+    }
+
+
+    try{
+
+        await deleteDoc(
+
+            doc(db, "blogs", id)
+
+        );
+
+        alert("Blog deleted successfully!");
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+
+            "Error deleting blog: "
+            + error.message
+
+        );
+
+    }
+
+};
+
+
+/* ======================================
+SAVE WEBSITE SETTINGS
+====================================== */
+
+window.saveWebsiteSettings =
+async function(){
+
+    try{
+
+        const settingsData = {
+
+            siteName:
+
+            document
+            .getElementById("siteName")
+            .value
+            .trim(),
+
+            siteTagline:
+
+            document
+            .getElementById("siteTagline")
+            .value
+            .trim(),
+
+            adminWhatsapp:
+
+            document
+            .getElementById("adminWhatsapp")
+            .value
+            .trim(),
+
+            supportEmail:
+
+            document
+            .getElementById("supportEmail")
+            .value
+            .trim(),
+
+            aboutText:
+
+            document
+            .getElementById("aboutText")
+            .value
+            .trim(),
+
+            privacyText:
+
+            document
+            .getElementById("privacyText")
+            .value
+            .trim(),
+
+            termsText:
+
+            document
+            .getElementById("termsText")
+            .value
+            .trim(),
+
+            disclaimerText:
+
+            document
+            .getElementById("disclaimerText")
+            .value
+            .trim(),
+
+            updatedAt: serverTimestamp()
+
+        };
+
+
+        await setDoc(
+
+            doc(db, "settings", "website"),
+
+            settingsData,
+
+            {
+
+                merge: true
+
+            }
+
+        );
+
+
+        alert(
+
+            "Website settings saved successfully!"
+
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+
+            "Error saving settings: "
+            + error.message
+
+        );
+
+    }
+
+};
+
+
+/* ======================================
+LOAD WEBSITE SETTINGS
+====================================== */
+
+async function loadWebsiteSettings(){
+
+    try{
+
+        const settingsRef =
+
+        doc(
+
+            db,
+
+            "settings",
+
+            "website"
+
+        );
+
+
+        const snapshot =
+
+        await getDoc(settingsRef);
+
+
+        if(snapshot.exists()){
+
+            const data = snapshot.data();
+
+
+            document
+            .getElementById("siteName")
+            .value =
+            data.siteName || "";
+
+
+            document
+            .getElementById("siteTagline")
+            .value =
+            data.siteTagline || "";
+
+
+            document
+            .getElementById("adminWhatsapp")
+            .value =
+            data.adminWhatsapp || "";
+
+
+            document
+            .getElementById("supportEmail")
+            .value =
+            data.supportEmail || "";
+
+
+            document
+            .getElementById("aboutText")
+            .value =
+            data.aboutText || "";
+
+
+            document
+            .getElementById("privacyText")
+            .value =
+            data.privacyText || "";
+
+
+            document
+            .getElementById("termsText")
+            .value =
+            data.termsText || "";
+
+
+            document
+            .getElementById("disclaimerText")
+            .value =
+            data.disclaimerText || "";
+
+        }
+
+    }catch(error){
+
+        console.error(
+
+            "Settings Load Error:",
+
+            error
+
+        );
+
+    }
+
+}
+
+
+/* ======================================
+SAVE WEBSITE SETTINGS
+====================================== */
+
+window.saveWebsiteSettings = async function(){
+
+    try{
+
+        const settingsData = {
+
+            siteName:
+                document.getElementById("siteName").value.trim(),
+
+            siteTagline:
+                document.getElementById("siteTagline").value.trim(),
+
+            adminWhatsapp:
+                document.getElementById("adminWhatsapp").value.trim(),
+
+            supportEmail:
+                document.getElementById("supportEmail").value.trim(),
+
+            aboutText:
+                document.getElementById("aboutText").value.trim(),
+
+            privacyText:
+                document.getElementById("privacyText").value.trim(),
+
+            termsText:
+                document.getElementById("termsText").value.trim(),
+
+            disclaimerText:
+                document.getElementById("disclaimerText").value.trim(),
+
+            updatedAt:
+                serverTimestamp()
+
+        };
+
+        await setDoc(
+            doc(db,"settings","website"),
+            settingsData,
+            { merge:true }
+        );
+
+        alert("Website settings saved successfully!");
+
+    }catch(error){
+
+        console.error(
+            "Website Settings Error:",
+            error
+        );
+
+        alert(
+            "Failed to save website settings: "
+            + error.message
+        );
+
+    }
+
+};
+
+
+/* ======================================
+LOAD WEBSITE SETTINGS
+====================================== */
+
+async function loadWebsiteSettings(){
+
+    try{
+
+        const settingsRef =
+            doc(db,"settings","website");
+
+        const snapshot =
+            await getDoc(settingsRef);
+
+        if(!snapshot.exists()){
+
+            document.getElementById("siteName").value =
+                "Zed WhatsApp Links";
+
+            document.getElementById("siteTagline").value =
+                "WORLD'S LARGEST DIRECTORY";
+
+            document.getElementById("adminWhatsapp").value =
+                "923710536394";
+
+            document.getElementById("supportEmail").value =
+                "zedaye9664@gmail.com";
+
+            return;
+
+        }
+
+        const data = snapshot.data();
+
+        document.getElementById("siteName").value =
+            data.siteName || "";
+
+        document.getElementById("siteTagline").value =
+            data.siteTagline || "";
+
+        document.getElementById("adminWhatsapp").value =
+            data.adminWhatsapp || "923710536394";
+
+        document.getElementById("supportEmail").value =
+            data.supportEmail || "zedaye9664@gmail.com";
+
+        document.getElementById("aboutText").value =
+            data.aboutText || "";
+
+        document.getElementById("privacyText").value =
+            data.privacyText || "";
+
+        document.getElementById("termsText").value =
+            data.termsText || "";
+
+        document.getElementById("disclaimerText").value =
+            data.disclaimerText || "";
+
+    }catch(error){
+
+        console.error(
+            "Load Settings Error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* ======================================
+SAVE ADSENSE SETTINGS
+====================================== */
+
+window.saveAdsSettings = async function(){
+
+    try{
+
+        const adsData = {
+
+            publisherId:
+                document
+                .getElementById("adsensePublisher")
+                .value
+                .trim(),
+
+            headerCode:
+                document
+                .getElementById("headerAdCode")
+                .value
+                .trim(),
+
+            middleCode:
+                document
+                .getElementById("middleAdCode")
+                .value
+                .trim(),
+
+            footerCode:
+                document
+                .getElementById("footerAdCode")
+                .value
+                .trim(),
+
+            updatedAt:
+                serverTimestamp()
+
+        };
+
+        await setDoc(
+            doc(db,"settings","adsense"),
+            adsData,
+            {merge:true}
+        );
+
+        alert(
+            "AdSense settings saved successfully!"
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "AdSense save error: "
+            + error.message
+        );
+
+    }
+
+};
+
+
+/* ======================================
+LOAD ADSENSE SETTINGS
+====================================== */
+
+async function loadAdsSettings(){
+
+    try{
+
+        const snapshot =
+            await getDoc(
+                doc(db,"settings","adsense")
+            );
+
+        if(!snapshot.exists()) return;
+
+        const data = snapshot.data();
+
+        document.getElementById(
+            "adsensePublisher"
+        ).value =
+            data.publisherId || "";
+
+        document.getElementById(
+            "headerAdCode"
+        ).value =
+            data.headerCode || "";
+
+        document.getElementById(
+            "middleAdCode"
+        ).value =
+            data.middleCode || "";
+
+        document.getElementById(
+            "footerAdCode"
+        ).value =
+            data.footerCode || "";
+
+    }catch(error){
+
+        console.error(
+            "Load AdSense Error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* ======================================
+SHOW SECTION
+====================================== */
+
+window.showSection = function(
+    sectionId,
+    button
+){
+
+    document
+        .querySelectorAll(".section")
+        .forEach(section => {
+
+            section.classList.remove("active");
+
+        });
+
+    const section =
+        document.getElementById(sectionId);
+
+    if(section){
+
+        section.classList.add("active");
+
+    }
+
+    document
+        .querySelectorAll(".menu button")
+        .forEach(btn => {
+
+            btn.classList.remove("active");
+
+        });
+
+    if(button){
+
+        button.classList.add("active");
+
+    }
+
+    const titles = {
+
+        overview:
+            "Dashboard Overview",
+
+        links:
+            "Manage Submitted Links",
+
+        plans:
+            "Plans & Pricing",
+
+        products:
+            "Affiliate Products",
+
+        blog:
+            "Blog Manager",
+
+        ads:
+            "Advertisement Settings",
+
+        settings:
+            "Website Settings"
+
+    };
+
+    document.getElementById(
+        "pageTitle"
+    ).textContent =
+        titles[sectionId] || "Dashboard";
+
+};
+
+
+/* ======================================
+CLOSE MODAL
+====================================== */
+
+window.closeModal = function(modalId){
+
+    const modal =
+        document.getElementById(modalId);
+
+    if(modal){
+
+        modal.classList.remove("show");
+
+    }
+
+};
+
+
+/* ======================================
+OPEN PLAN MODAL
+====================================== */
+
+window.openPlanModal = function(){
+
+    document.getElementById("planId").value = "";
+
+    document.getElementById("planName").value = "";
+
+    document.getElementById("planDuration").value = "";
+
+    document.getElementById("planPrice").value = "";
+
+    document.getElementById("planPriority").value = "";
+
+    document.getElementById("planModal")
+        .classList.add("show");
+
+};
+
+
+/* ======================================
+OPEN PRODUCT MODAL
+====================================== */
+
+window.openProductModal = function(){
+
+    document.getElementById("productId").value = "";
+
+    document.getElementById("productTitle").value = "";
+
+    document.getElementById("productImage").value = "";
+
+    document.getElementById("productLink").value = "";
+
+    document.getElementById("productDescription").value = "";
+
+    document.getElementById("productModal")
+        .classList.add("show");
+
+};
+
+
+/* ======================================
+OPEN BLOG MODAL
+====================================== */
+
+window.openBlogModal = function(){
+
+    document.getElementById("blogId").value = "";
+
+    document.getElementById("blogTitle").value = "";
+
+    document.getElementById("blogImage").value = "";
+
+    document.getElementById("blogContent").value = "";
+
+    document.getElementById("blogModal")
+        .classList.add("show");
+
+};
+
+
+/* ======================================
+EDIT LINK
+====================================== */
+
+window.editLink = function(id){
+
+    const item =
+        linksData.find(
+            link => link.id === id
+        );
+
+    if(!item){
+
+        alert("Link not found.");
+
+        return;
+
+    }
+
+    document.getElementById(
+        "editLinkId"
+    ).value = id;
+
+    document.getElementById(
+        "editLinkName"
+    ).value =
+        item.name || "";
+
+    document.getElementById(
+        "editLinkType"
+    ).value =
+        item.type || "WhatsApp Group";
+
+    document.getElementById(
+        "editLinkCategory"
+    ).value =
+        item.category || "";
+
+    document.getElementById(
+        "editLinkPlan"
+    ).value =
+        item.plan || "Free";
+
+    document.getElementById(
+        "editLinkUrl"
+    ).value =
+        item.url || item.link || "";
+
+    document.getElementById(
+        "editLinkDescription"
+    ).value =
+        item.description || "";
+
+    document.getElementById(
+        "linkModal"
+    ).classList.add("show");
+
+};
+
+
+/* ======================================
+SAVE EDITED LINK
+====================================== */
+
+window.saveEditedLink = async function(){
+
+    const id =
+        document.getElementById(
+            "editLinkId"
+        ).value;
+
+    if(!id){
+
+        alert("Invalid link ID.");
+
+        return;
+
+    }
+
+    try{
+
+        await updateDoc(
+            doc(db,"links",id),
+            {
+
+                name:
+                    document
+                    .getElementById("editLinkName")
+                    .value
+                    .trim(),
+
+                type:
+                    document
+                    .getElementById("editLinkType")
+                    .value,
+
+                category:
+                    document
+                    .getElementById("editLinkCategory")
+                    .value
+                    .trim(),
+
+                plan:
+                    document
+                    .getElementById("editLinkPlan")
+                    .value,
+
+                url:
+                    document
+                    .getElementById("editLinkUrl")
+                    .value
+                    .trim(),
+
+                description:
+                    document
+                    .getElementById("editLinkDescription")
+                    .value
+                    .trim(),
+
+                updatedAt:
+                    serverTimestamp()
+
+            }
+        );
+
+        closeModal("linkModal");
+
+        alert(
+            "Link updated successfully!"
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Update error: "
+            + error.message
+        );
+
+    }
+
+};
+
+
+/* ======================================
+APPROVE LINK
+====================================== */
+
+window.approveLink = async function(id){
+
+    try{
+
+        await updateDoc(
+            doc(db,"links",id),
+            {
+
+                status:"approved",
+
+                approvedAt:
+                    serverTimestamp()
+
+            }
+        );
+
+        alert(
+            "Link approved successfully!"
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Approval error: "
+            + error.message
+        );
+
+    }
+
+};
+
+
+/* ======================================
+REJECT LINK
+====================================== */
+
+window.rejectLink = async function(id){
+
+    if(!confirm(
+        "Are you sure you want to reject this link?"
+    )) return;
+
+    try{
+
+        await updateDoc(
+            doc(db,"links",id),
+            {
+
+                status:"rejected",
+
+                rejectedAt:
+                    serverTimestamp()
+
+            }
+        );
+
+        alert(
+            "Link rejected."
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Reject error: "
+            + error.message
+        );
+
+    }
+
+};
+
+
+/* ======================================
+DELETE LINK
+====================================== */
+
+window.deleteLink = async function(id){
+
+    if(!confirm(
+        "Delete this link permanently?"
+    )) return;
+
+    try{
+
+        await deleteDoc(
+            doc(db,"links",id)
+        );
+
+        alert(
+            "Link deleted successfully!"
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Delete error: "
+            + error.message
+        );
+
+    }
+
+};
+
+
+/* ======================================
+SAVE PLAN
+====================================== */
+
+window.savePlan = async function(){
+
+    try{
+
+        const id =
+            document.getElementById(
+                "planId"
+            ).value;
+
+        const data = {
+
+            name:
+                document
+                .getElementById("planName")
+                .value
+                .trim(),
+
+            type:
+                document
+                .getElementById("planType")
+                .value,
+
+            duration:
+                document
+                .getElementById("planDuration")
+                .value
+                .trim(),
+
+            price:
+                document
+                .getElementById("planPrice")
+                .value
+                .trim(),
+
+            priority:
+                Number(
+                    document
+                    .getElementById("planPriority")
+                    .value
+                ) || 999,
+
+            updatedAt:
+                serverTimestamp()
+
+        };
+
+        if(!data.name){
+
+            alert("Please enter plan name.");
+
+            return;
+
+        }
+
+        if(id){
+
+            await updateDoc(
+                doc(db,"plans",id),
+                data
+            );
+
+        }else{
+
+            await addDoc(
+                collection(db,"plans"),
+                {
+
+                    ...data,
+
+                    createdAt:
+                        serverTimestamp()
+
+                }
+            );
+
+        }
+
+        closeModal("planModal");
+
+        alert(
+            "Plan saved successfully!"
+        );
+
+        loadPlans();
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Plan error: "
+            + error.message
+        );
+
+    }
+
+};
+
+
+/* ======================================
+DELETE PLAN
+====================================== */
+
+window.deletePlan = async function(id){
+
+    if(!confirm(
+        "Delete this plan?"
+    )) return;
+
+    try{
+
+        await deleteDoc(
+            doc(db,"plans",id)
+        );
+
+        alert(
+            "Plan deleted successfully!"
+        );
+
+        loadPlans();
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Delete plan error: "
+            + error.message
+        );
+
+    }
+
+};
+
+
+/* ======================================
+SAVE PRODUCT
+====================================== */
+
+window.saveProduct = async function(){
+
+    try{
+
+        const id =
+            document
+            .getElementById("productId")
+            .value;
+
+        const data = {
+
+            title:
+                document
+                .getElementById("productTitle")
+                .value
+                .trim(),
+
+            platform:
+                document
+                .getElementById("productPlatform")
+                .value,
+
+            image:
+                document
+                .getElementById("productImage")
+                .value
+                .trim(),
+
+            affiliateLink:
+                document
+                .getElementById("productLink")
+                .value
+                .trim(),
+
+            description:
+                document
+                .getElementById("productDescription")
+                .value
+                .trim(),
+
+            updatedAt:
+                serverTimestamp()
+
+        };
+
+        if(!data.title){
+
+            alert(
+                "Please enter product title."
+            );
+
+            return;
+
+        }
+
+        if(id){
+
+            await updateDoc(
+                doc(db,"products",id),
+                data
+            );
+
+        }else{
+
+            await addDoc(
+                collection(db,"products"),
+                {
+
+                    ...data,
+
+                    createdAt:
+                        serverTimestamp()
+
+                }
+            );
+
+        }
+
+        closeModal("productModal");
+
+        alert(
+            "Product saved successfully!"
+        );
+
+        loadProducts();
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Product error: "
+            + error.message
+        );
+
+    }
+
+};
+
+
+/* ======================================
+DELETE PRODUCT
+====================================== */
+
+window.deleteProduct = async function(id){
+
+    if(!confirm(
+        "Delete this product?"
+    )) return;
+
+    try{
+
+        await deleteDoc(
+            doc(db,"products",id)
+        );
+
+        alert(
+            "Product deleted successfully!"
+        );
+
+        loadProducts();
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Delete product error: "
+            + error.message
+        );
+
+    }
+
+};
+
+
+/* ======================================
+SAVE BLOG
+====================================== */
+
+window.saveBlog = async function(){
+
+    try{
+
+        const id =
+            document
+            .getElementById("blogId")
+            .value;
+
+        const data = {
+
+            title:
+                document
+                .getElementById("blogTitle")
+                .value
+                .trim(),
+
+            image:
+                document
+                .getElementById("blogImage")
+                .value
+                .trim(),
+
+            content:
+                document
+                .getElementById("blogContent")
+                .value
+                .trim(),
+
+            status:"published",
+
+            updatedAt:
+                serverTimestamp()
+
+        };
+
+        if(!data.title){
+
+            alert(
+                "Please enter blog title."
+            );
+
+            return;
+
+        }
+
+        if(id){
+
+            await updateDoc(
+                doc(db,"blogs",id),
+                data
+            );
+
+        }else{
+
+            await addDoc(
+                collection(db,"blogs"),
+                {
+
+                    ...data,
+
+                    createdAt:
+                        serverTimestamp()
+
+                }
+            );
+
+        }
+
+        closeModal("blogModal");
+
+        alert(
+            "Blog published successfully!"
+        );
+
+        loadBlogs();
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Blog error: "
+            + error.message
+        );
+
+    }
+
+};
+
+
+/* ======================================
+DELETE BLOG
+====================================== */
+
+window.deleteBlog = async function(id){
+
+    if(!confirm(
+        "Delete this blog?"
+    )) return;
+
+    try{
+
+        await deleteDoc(
+            doc(db,"blogs",id)
+        );
+
+        alert(
+            "Blog deleted successfully!"
+        );
+
+        loadBlogs();
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Delete blog error: "
+            + error.message
+        );
+
+    }
+
+};
+
+
+/* ======================================
+LOGOUT
+====================================== */
+
+document
+.getElementById("logoutBtn")
+.addEventListener(
+    "click",
+    async () => {
+
+        try{
+
+            await signOut(auth);
+
+        }catch(error){
+
+            console.error(error);
+
+            alert(
+                "Logout error: "
+                + error.message
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================
+   CLOSE MODAL / OUTSIDE CLICK
+========================= */
+
+window.closeModal = function(modalId) {
+    const modal = document.getElementById(modalId);
+
+    if (modal) {
+        modal.classList.remove("show");
+        modal.style.display = "none";
+    }
+};
+
+/* Close modal when clicking outside */
+window.addEventListener("click", function(event) {
+    document.querySelectorAll(".modal").forEach(function(modal) {
+        if (event.target === modal) {
+            modal.classList.remove("show");
+            modal.style.display = "none";
+        }
+    });
+});
+
+/* Close modal with ESC key */
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        document.querySelectorAll(".modal").forEach(function(modal) {
+            modal.classList.remove("show");
+            modal.style.display = "none";
+        });
+    }
+});
+
+
+/* =========================
+   GLOBAL FUNCTIONS
+   For inline onclick buttons
+========================= */
+
+window.showSection = showSection;
+window.openLinkModal = openLinkModal;
+window.openPlanModal = openPlanModal;
+window.openProductModal = openProductModal;
+window.openBlogModal = openBlogModal;
+
+window.editLink = editLink;
+window.deleteLink = deleteLink;
+window.approveLink = approveLink;
+window.rejectLink = rejectLink;
+
+window.editPlan = editPlan;
+window.deletePlan = deletePlan;
+
+window.editProduct = editProduct;
+window.deleteProduct = deleteProduct;
+
+window.editBlog = editBlog;
+window.deleteBlog = deleteBlog;
+
+window.closeModal = window.closeModal;
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+const logoutBtn = document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+    logoutBtn.addEventListener("click", async () => {
+        try {
+            await signOut(auth);
+            window.location.reload();
+        } catch (error) {
+            console.error("Logout Error:", error);
+            alert("Logout Error: " + error.message);
+        }
+    });
+}
+
+
+/* =========================
+   GOOGLE REDIRECT LOGIN
+========================= */
+
+const googleLogin = document.getElementById("googleLogin");
+
+if (googleLogin) {
+    googleLogin.addEventListener("click", async () => {
+        try {
+            await signInWithRedirect(auth, provider);
+        } catch (error) {
+            console.error("Login Error:", error);
+            alert("Login Error: " + error.message);
+        }
+    });
+}
+
+
+/* =========================
+   CHECK REDIRECT RESULT
+========================= */
+
+getRedirectResult(auth)
+    .then(async (result) => {
+
+        if (result && result.user) {
+
+            const user = result.user;
+
+            console.log("Logged in:", user.email);
+
+            if (user.email !== ADMIN_EMAIL) {
+
+                alert(
+                    "Access Denied!\n\n" +
+                    "You are not the authorized administrator."
+                );
+
+                await signOut(auth);
+
+                return;
+            }
+
+            console.log("Admin login successful.");
+        }
+
+    })
+    .catch((error) => {
+
+        console.error("Redirect Login Error:", error);
+
+        if (error.code) {
+            alert(
+                "Google Login Error:\n\n" +
+                error.message
+            );
+        }
+    });
+
+
+/* =========================
+   AUTH STATE
+========================= */
+
+onAuthStateChanged(auth, async (user) => {
+
+    const loginScreen = document.getElementById("loginScreen");
+    const dashboard = document.getElementById("dashboard");
+
+    if (!user) {
+
+        if (loginScreen) {
+            loginScreen.style.display = "flex";
+        }
+
+        if (dashboard) {
+            dashboard.style.display = "none";
+        }
+
+        return;
+    }
+
+
+    /* Check Admin Email */
+
+    if (user.email !== ADMIN_EMAIL) {
+
+        alert(
+            "Access Denied!\n\n" +
+            "Only the authorized administrator can access this dashboard."
+        );
+
+        await signOut(auth);
+
+        return;
+    }
+
+
+    /* Show Dashboard */
+
+    if (loginScreen) {
+        loginScreen.style.display = "none";
+    }
+
+    if (dashboard) {
+        dashboard.style.display = "block";
+    }
+
+
+    /* Load Dashboard Data */
+
+    try {
+
+        await loadLinks();
+        await loadPlans();
+        await loadProducts();
+        await loadBlogs();
+        await loadWebsiteSettings();
+
+        console.log("Dashboard data loaded successfully.");
+
+    } catch (error) {
+
+        console.error("Dashboard Loading Error:", error);
+
+        alert(
+            "Some dashboard data could not be loaded.\n\n" +
+            error.message
+        );
+    }
+
+});
+
+
+/* =========================
+   SAVE WEBSITE SETTINGS
+========================= */
+
+const saveWebsiteSettingsBtn =
+    document.getElementById("saveWebsiteSettings");
+
+if (saveWebsiteSettingsBtn) {
+
+    saveWebsiteSettingsBtn.addEventListener("click", async () => {
+
+        try {
+
+            const websiteName =
+                document.getElementById("websiteName")?.value || "";
+
+            const websiteDescription =
+                document.getElementById("websiteDescription")?.value || "";
+
+            const contactEmail =
+                document.getElementById("contactEmail")?.value || "";
+
+            const whatsappNumber =
+                document.getElementById("whatsappNumber")?.value || "";
+
+            const footerText =
+                document.getElementById("footerText")?.value || "";
+
+            const websiteLogo =
+                document.getElementById("websiteLogo")?.value || "";
+
+
+            await setDoc(
+                doc(db, "settings", "site"),
+                {
+                    websiteName: websiteName.trim(),
+                    websiteDescription: websiteDescription.trim(),
+                    contactEmail: contactEmail.trim(),
+                    whatsappNumber: whatsappNumber.trim(),
+                    footerText: footerText.trim(),
+                    websiteLogo: websiteLogo.trim(),
+                    updatedAt: serverTimestamp()
+                },
+                { merge: true }
+            );
+
+
+            alert("Website Settings saved successfully!");
+
+
+        } catch (error) {
+
+            console.error("Save Website Settings Error:", error);
+
+            alert(
+                "Failed to save Website Settings:\n\n" +
+                error.message
+            );
+        }
+
+    });
+
+}
+
+
+/* =========================
+   SAVE ADSENSE SETTINGS
+========================= */
+
+const saveAdsBtn =
+    document.getElementById("saveAdsSettings");
+
+if (saveAdsBtn) {
+
+    saveAdsBtn.addEventListener("click", async () => {
+
+        try {
+
+            const publisherId =
+                document.getElementById("publisherId")?.value || "";
+
+            const headerAdCode =
+                document.getElementById("headerAdCode")?.value || "";
+
+            const contentAdCode =
+                document.getElementById("contentAdCode")?.value || "";
+
+            const footerAdCode =
+                document.getElementById("footerAdCode")?.value || "";
+
+
+            await setDoc(
+                doc(db, "settings", "ads"),
+                {
+                    publisherId: publisherId.trim(),
+                    headerAdCode,
+                    contentAdCode,
+                    footerAdCode,
+                    updatedAt: serverTimestamp()
+                },
+                { merge: true }
+            );
+
+
+            alert("AdSense Settings saved successfully!");
+
+
+        } catch (error) {
+
+            console.error("Save AdSense Error:", error);
+
+            alert(
+                "Failed to save AdSense Settings:\n\n" +
+                error.message
+            );
+        }
+
+    });
+
+}
+
+
+/* =========================
+   LOAD WEBSITE SETTINGS
+========================= */
+
+async function loadWebsiteSettings() {
+
+    try {
+
+        const settingsRef =
+            doc(db, "settings", "site");
+
+        const snapshot =
+            await getDoc(settingsRef);
+
+        if (!snapshot.exists()) {
+            return;
+        }
+
+        const data = snapshot.data();
+
+
+        const websiteName =
+            document.getElementById("websiteName");
+
+        const websiteDescription =
+            document.getElementById("websiteDescription");
+
+        const contactEmail =
+            document.getElementById("contactEmail");
+
+        const whatsappNumber =
+            document.getElementById("whatsappNumber");
+
+        const footerText =
+            document.getElementById("footerText");
+
+        const websiteLogo =
+            document.getElementById("websiteLogo");
+
+
+        if (websiteName)
+            websiteName.value = data.websiteName || "";
+
+        if (websiteDescription)
+            websiteDescription.value =
+                data.websiteDescription || "";
+
+        if (contactEmail)
+            contactEmail.value =
+                data.contactEmail || "";
+
+        if (whatsappNumber)
+            whatsappNumber.value =
+                data.whatsappNumber || "";
+
+        if (footerText)
+            footerText.value =
+                data.footerText || "";
+
+        if (websiteLogo)
+            websiteLogo.value =
+                data.websiteLogo || "";
+
+
+    } catch (error) {
+
+        console.error(
+            "Load Website Settings Error:",
+            error
+        );
+    }
+}
+
+
+/* =========================
+   LOAD ADSENSE SETTINGS
+========================= */
+
+async function loadAdsSettings() {
+
+    try {
+
+        const adsRef =
+            doc(db, "settings", "ads");
+
+        const snapshot =
+            await getDoc(adsRef);
+
+        if (!snapshot.exists()) {
+            return;
+        }
+
+        const data = snapshot.data();
+
+
+        const publisherId =
+            document.getElementById("publisherId");
+
+        const headerAdCode =
+            document.getElementById("headerAdCode");
+
+        const contentAdCode =
+            document.getElementById("contentAdCode");
+
+        const footerAdCode =
+            document.getElementById("footerAdCode");
+
+
+        if (publisherId)
+            publisherId.value =
+                data.publisherId || "";
+
+        if (headerAdCode)
+            headerAdCode.value =
+                data.headerAdCode || "";
+
+        if (contentAdCode)
+            contentAdCode.value =
+                data.contentAdCode || "";
+
+        if (footerAdCode)
+            footerAdCode.value =
+                data.footerAdCode || "";
+
+
+    } catch (error) {
+
+        console.error(
+            "Load AdSense Settings Error:",
+            error
+        );
+    }
+}
+
+
+/* =========================
+   ADMIN DASHBOARD INIT
+========================= */
+
+async function initializeAdminDashboard() {
+
+    try {
+
+        await loadWebsiteSettings();
+        await loadAdsSettings();
+
+        console.log(
+            "Admin Dashboard initialized."
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Dashboard initialization error:",
+            error
+        );
+    }
+}
+
+
+/* =========================
+   START
+========================= */
+
+initializeAdminDashboard();
+
+
+/* =========================
+   CONSOLE MESSAGE
+========================= */
+
+console.log(
+    "ZedLinker Admin Dashboard Loaded Successfully."
+);
+
+console.log(
+    "Authorized Admin:",
+    ADMIN_EMAIL
+);
+
+</script>
+
+</body>
+    </html>
