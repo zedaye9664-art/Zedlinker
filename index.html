@@ -2,1611 +2,836 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Zed WhatsApp Links - World's Largest Directory</title>
+<title>Zed WhatsApp Links</title>
 
 <style>
-
-/* ===============================
-GENERAL
-=============================== */
-
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-html{
-scroll-behavior:smooth;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
 }
 
 body{
-background:#f5f7fb;
-color:#111827;
+    background:#f5f7fb;
+    color:#1f2937;
 }
 
-.hidden{
-display:none!important;
+button,input,select,textarea{
+    font:inherit;
 }
 
-a{
-text-decoration:none;
-color:inherit;
-}
-
-/* ===============================
-HEADER
-=============================== */
+/* HEADER */
 
 header{
-background:white;
-position:sticky;
-top:0;
-z-index:1000;
-box-shadow:0 2px 15px rgba(0,0,0,.08);
+    background:#111827;
+    color:white;
+    padding:16px;
+    text-align:center;
 }
 
-.nav{
-max-width:1200px;
-margin:auto;
-padding:15px 20px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:20px;
+.logo{
+    width:58px;
+    height:58px;
+    margin:auto;
+    border-radius:16px;
+    background:#16a34a;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    font-weight:bold;
+    cursor:pointer;
+    user-select:none;
 }
 
-.brand{
-display:flex;
-align-items:center;
-gap:10px;
-font-weight:bold;
-font-size:20px;
+header h1{
+    margin-top:10px;
+    font-size:24px;
 }
 
-.zlogo{
-width:42px;
-height:42px;
-background:#111827;
-color:white;
-border-radius:12px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:22px;
-font-weight:bold;
+header p{
+    margin-top:7px;
+    color:#d1d5db;
+    font-size:14px;
 }
 
-.nav-links{
-display:flex;
-gap:20px;
-align-items:center;
+/* ANNOUNCEMENT */
+
+#announcement{
+    display:none;
+    background:#fef3c7;
+    color:#78350f;
+    padding:13px;
+    text-align:center;
+    font-weight:bold;
 }
 
-.nav-links a{
-font-size:14px;
-font-weight:bold;
-color:#4b5563;
-}
-
-.nav-links a:hover{
-color:#16a34a;
-}
-
-.submit-nav{
-background:#16a34a;
-color:white!important;
-padding:12px 18px;
-border-radius:10px;
-}
-
-.menu-btn{
-display:none;
-border:none;
-background:#111827;
-color:white;
-padding:10px;
-border-radius:8px;
-cursor:pointer;
-}
-
-/* ===============================
-HERO
-=============================== */
+/* HERO */
 
 .hero{
-background:linear-gradient(135deg,#111827,#1f2937);
-color:white;
-padding:70px 20px;
-text-align:center;
+    padding:25px 15px;
+    text-align:center;
 }
 
-.hero-inner{
-max-width:900px;
-margin:auto;
-}
-
-.hero-logo{
-width:85px;
-height:85px;
-margin:auto auto 20px;
-border-radius:25px;
-background:white;
-color:#111827;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:42px;
-font-weight:bold;
-}
-
-.hero small{
-color:#86efac;
-font-weight:bold;
-letter-spacing:2px;
-}
-
-.hero h1{
-font-size:42px;
-margin:15px 0;
+.hero h2{
+    font-size:24px;
+    margin-bottom:10px;
 }
 
 .hero p{
-color:#d1d5db;
-font-size:18px;
-line-height:1.7;
-max-width:750px;
-margin:auto;
+    color:#6b7280;
+    max-width:600px;
+    margin:auto;
 }
-
-.hero-buttons{
-margin-top:30px;
-display:flex;
-justify-content:center;
-gap:15px;
-flex-wrap:wrap;
-}
-
-.primary-btn{
-background:#16a34a;
-color:white;
-padding:15px 25px;
-border-radius:10px;
-font-weight:bold;
-border:none;
-cursor:pointer;
-}
-
-.secondary-btn{
-background:white;
-color:#111827;
-padding:15px 25px;
-border-radius:10px;
-font-weight:bold;
-border:none;
-cursor:pointer;
-}
-
-/* ===============================
-STATS
-=============================== */
 
 .stats{
-max-width:1100px;
-margin:-35px auto 40px;
-padding:0 20px;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
-gap:15px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:20px;
 }
 
 .stat{
-background:white;
-padding:22px;
-border-radius:15px;
-box-shadow:0 8px 25px rgba(0,0,0,.08);
-text-align:center;
+    background:white;
+    padding:12px 18px;
+    border-radius:12px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
 .stat strong{
-font-size:28px;
-display:block;
-color:#16a34a;
+    display:block;
+    font-size:20px;
+    color:#16a34a;
 }
 
-.stat span{
-font-size:13px;
-color:#6b7280;
+/* SEARCH */
+
+.controls{
+    max-width:1000px;
+    margin:auto;
+    padding:10px 15px 20px;
 }
 
-/* ===============================
-ANNOUNCEMENT
-=============================== */
-
-.announcement-wrap{
-max-width:1100px;
-margin:20px auto;
-padding:0 20px;
+.search{
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    outline:none;
 }
-
-.announcement{
-background:#fff7ed;
-border-left:5px solid #f97316;
-padding:18px;
-border-radius:10px;
-}
-
-.announcement h3{
-margin-bottom:7px;
-}
-
-/* ===============================
-MAIN
-=============================== */
-
-.container{
-max-width:1200px;
-margin:auto;
-padding:30px 20px;
-}
-
-.section-title{
-text-align:center;
-margin-bottom:25px;
-}
-
-.section-title h2{
-font-size:30px;
-}
-
-.section-title p{
-color:#6b7280;
-margin-top:8px;
-}
-
-/* ===============================
-SEARCH
-=============================== */
-
-.search-box{
-max-width:800px;
-margin:25px auto;
-display:flex;
-gap:10px;
-}
-
-.search-box input{
-flex:1;
-padding:16px;
-border:1px solid #d1d5db;
-border-radius:10px;
-font-size:16px;
-}
-
-/* ===============================
-FILTERS
-=============================== */
 
 .filters{
-display:flex;
-gap:10px;
-justify-content:center;
-flex-wrap:wrap;
-margin-bottom:30px;
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:12px;
 }
 
-.filter-btn{
-border:none;
-background:white;
-padding:12px 18px;
-border-radius:30px;
-box-shadow:0 3px 10px rgba(0,0,0,.08);
-cursor:pointer;
-font-weight:bold;
+.filter{
+    border:none;
+    background:white;
+    padding:10px 14px;
+    border-radius:20px;
+    cursor:pointer;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
 
-.filter-btn.active,
-.filter-btn:hover{
-background:#16a34a;
-color:white;
+.filter.active{
+    background:#16a34a;
+    color:white;
 }
 
-/* ===============================
-LINK CARDS
-=============================== */
+/* LINKS */
 
-.links-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:20px;
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:15px;
+}
+
+#linksList{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:15px;
 }
 
 .link-card{
-background:white;
-border-radius:16px;
-padding:20px;
-box-shadow:0 5px 20px rgba(0,0,0,.07);
-transition:.2s;
-}
-
-.link-card:hover{
-transform:translateY(-3px);
-}
-
-.card-top{
-display:flex;
-justify-content:space-between;
-gap:10px;
-margin-bottom:15px;
-}
-
-.platform{
-font-size:11px;
-font-weight:bold;
-color:#2563eb;
-text-transform:uppercase;
-}
-
-.plan-badge{
-font-size:10px;
-font-weight:bold;
-padding:6px 10px;
-border-radius:20px;
-background:#ede9fe;
-color:#6d28d9;
+    background:white;
+    padding:18px;
+    border-radius:15px;
+    box-shadow:0 3px 15px rgba(0,0,0,.08);
 }
 
 .link-card h3{
-font-size:19px;
-margin-bottom:8px;
-}
-
-.category{
-font-size:12px;
-color:#16a34a;
-font-weight:bold;
-margin-bottom:10px;
+    margin-bottom:8px;
 }
 
 .link-card p{
-font-size:14px;
-color:#6b7280;
-line-height:1.6;
-margin-bottom:15px;
+    color:#6b7280;
+    font-size:14px;
+    margin-bottom:12px;
+}
+
+.badges{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+    margin-bottom:12px;
+}
+
+.badge{
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:bold;
+    background:#e5e7eb;
+}
+
+.elite{
+    background:#f3e8ff;
+    color:#7e22ce;
+}
+
+.premium{
+    background:#fef3c7;
+    color:#92400e;
+}
+
+.pro{
+    background:#dbeafe;
+    color:#1d4ed8;
+}
+
+.basic{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.free{
+    background:#e5e7eb;
+    color:#374151;
 }
 
 .join-btn{
-display:block;
-text-align:center;
-background:#16a34a;
-color:white;
-padding:13px;
-border-radius:9px;
-font-weight:bold;
+    display:block;
+    text-align:center;
+    text-decoration:none;
+    background:#16a34a;
+    color:white;
+    padding:11px;
+    border-radius:8px;
+    font-weight:bold;
 }
 
-.empty{
-text-align:center;
-padding:50px;
-color:#6b7280;
+/* SUBMIT BUTTON */
+
+.submit-open{
+    position:fixed;
+    right:18px;
+    bottom:75px;
+    border:none;
+    background:#16a34a;
+    color:white;
+    padding:15px 18px;
+    border-radius:50px;
+    cursor:pointer;
+    box-shadow:0 4px 15px rgba(0,0,0,.2);
 }
 
-/* ===============================
-SUBMIT FORM
-=============================== */
+/* WHATSAPP */
 
-.form-section{
-background:white;
-padding:50px 20px;
-margin-top:50px;
+.whatsapp{
+    position:fixed;
+    right:18px;
+    bottom:18px;
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    background:#25D366;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    font-size:24px;
+    font-weight:bold;
 }
 
-.form-container{
-max-width:750px;
-margin:auto;
+/* MODAL */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    z-index:100;
+    padding:15px;
+    align-items:center;
+    justify-content:center;
 }
 
-.form-container h2{
-text-align:center;
-margin-bottom:10px;
+.modal.show{
+    display:flex;
 }
 
-.form-container p{
-text-align:center;
-color:#6b7280;
-margin-bottom:30px;
+.modal-box{
+    background:white;
+    width:100%;
+    max-width:500px;
+    max-height:90vh;
+    overflow:auto;
+    padding:22px;
+    border-radius:18px;
+}
+
+.modal-box h2{
+    margin-bottom:15px;
+}
+
+.close{
+    float:right;
+    border:none;
+    background:#dc2626;
+    color:white;
+    padding:7px 11px;
+    border-radius:7px;
+    cursor:pointer;
+}
+
+input,select,textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    margin-top:5px;
 }
 
 .form-group{
-margin-bottom:16px;
+    margin-bottom:14px;
 }
 
 label{
-display:block;
-margin-bottom:7px;
-font-size:13px;
-font-weight:bold;
+    font-size:13px;
+    font-weight:bold;
 }
 
-input,
-select,
-textarea{
-width:100%;
-padding:14px;
-border:1px solid #d1d5db;
-border-radius:9px;
-font-size:15px;
+.main-btn{
+    width:100%;
+    border:none;
+    padding:13px;
+    background:#16a34a;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
 }
 
-textarea{
-min-height:130px;
-resize:vertical;
-}
+/* ADMIN */
 
-.submit-form-btn{
-width:100%;
-padding:16px;
-background:#16a34a;
-color:white;
-border:none;
-border-radius:10px;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-}
-
-/* ===============================
-PLANS
-=============================== */
-
-.plans-section{
-padding:60px 20px;
-background:#f9fafb;
-}
-
-.plans-grid{
-max-width:1200px;
-margin:auto;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-.plan-card{
-background:white;
-padding:25px;
-border-radius:16px;
-box-shadow:0 5px 20px rgba(0,0,0,.07);
-}
-
-.plan-card h3{
-font-size:22px;
-margin-bottom:15px;
-}
-
-.plan-card p{
-margin:10px 0;
-color:#6b7280;
-}
-
-/* ===============================
-ABOUT
-=============================== */
-
-.about-section{
-max-width:900px;
-margin:50px auto;
-padding:40px 20px;
-text-align:center;
-}
-
-.about-section p{
-color:#6b7280;
-line-height:1.8;
-}
-
-/* ===============================
-FOOTER
-=============================== */
-
-footer{
-background:#111827;
-color:white;
-padding:50px 20px 25px;
-}
-
-.footer-grid{
-max-width:1100px;
-margin:auto;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:30px;
-}
-
-.footer-brand{
-display:flex;
-align-items:center;
-gap:10px;
-margin-bottom:15px;
-}
-
-.footer-grid h3{
-margin-bottom:15px;
-}
-
-.footer-grid a,
-.footer-grid p{
-display:block;
-color:#9ca3af;
-margin:9px 0;
-font-size:14px;
-}
-
-.footer-bottom{
-max-width:1100px;
-margin:30px auto 0;
-padding-top:20px;
-border-top:1px solid #374151;
-text-align:center;
-color:#9ca3af;
-font-size:13px;
-}
-
-.hidden-admin-logo{
-cursor:pointer;
-user-select:none;
-}
-
-/* ===============================
-WHATSAPP BUTTON
-=============================== */
-
-.whatsapp-float{
-position:fixed;
-right:20px;
-bottom:20px;
-width:60px;
-height:60px;
-border-radius:50%;
-background:#25D366;
-color:white;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:27px;
-box-shadow:0 5px 20px rgba(0,0,0,.3);
-z-index:1000;
-}
-
-/* ===============================
-ADMIN LOGIN
-=============================== */
-
-#adminLoginScreen{
-position:fixed;
-inset:0;
-background:#f4f6f9;
-z-index:5000;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
-}
-
-.admin-login-box{
-background:white;
-width:100%;
-max-width:400px;
-padding:35px;
-border-radius:20px;
-text-align:center;
-box-shadow:0 10px 40px rgba(0,0,0,.15);
-}
-
-.admin-login-box button{
-width:100%;
-margin-top:20px;
-padding:15px;
-border:none;
-border-radius:10px;
-background:#16a34a;
-color:white;
-font-size:16px;
-cursor:pointer;
-}
-
-/* ===============================
-ADMIN DASHBOARD
-=============================== */
-
-#adminDashboard{
-position:fixed;
-inset:0;
-z-index:6000;
-background:#f4f6f9;
-overflow:auto;
+#adminPanel{
+    display:none;
+    min-height:100vh;
+    background:#f5f7fb;
 }
 
 .admin-header{
-background:#111827;
-color:white;
-padding:20px;
-display:flex;
-justify-content:space-between;
-align-items:center;
+    background:#111827;
+    color:white;
+    padding:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
 }
 
 .admin-container{
-max-width:1200px;
-margin:auto;
-padding:25px 15px;
+    max-width:1000px;
+    margin:auto;
+    padding:20px 15px;
 }
 
-.admin-tabs{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-margin-bottom:20px;
+.admin-card{
+    background:white;
+    padding:18px;
+    border-radius:15px;
+    margin-bottom:20px;
+    box-shadow:0 3px 15px rgba(0,0,0,.08);
 }
 
-.admin-tabs button{
-border:none;
-padding:12px 15px;
-border-radius:8px;
-cursor:pointer;
-background:white;
+.admin-item{
+    padding:14px 0;
+    border-bottom:1px solid #e5e7eb;
 }
 
-.admin-panel{
-background:white;
-padding:20px;
-border-radius:15px;
-box-shadow:0 5px 20px rgba(0,0,0,.06);
-}
-
-.admin-table-wrap{
-overflow-x:auto;
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-min-width:750px;
-}
-
-th,
-td{
-padding:12px;
-border-bottom:1px solid #e5e7eb;
-font-size:13px;
-text-align:left;
-}
-
-.admin-btn{
-border:none;
-padding:8px 10px;
-margin:2px;
-border-radius:6px;
-cursor:pointer;
-color:white;
+.admin-actions{
+    margin-top:10px;
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
 }
 
 .approve{
-background:#16a34a;
+    background:#16a34a;
+    color:white;
 }
 
 .reject{
-background:#dc2626;
+    background:#dc2626;
+    color:white;
 }
 
 .delete{
-background:#111827;
+    background:#111827;
+    color:white;
 }
 
-.edit{
-background:#2563eb;
+.admin-actions button{
+    border:none;
+    padding:8px 12px;
+    border-radius:7px;
+    cursor:pointer;
 }
 
-.status{
-font-size:11px;
-padding:6px 9px;
-border-radius:20px;
-font-weight:bold;
+.hidden{
+    display:none !important;
 }
 
-.status-pending{
-background:#fef3c7;
-color:#92400e;
+.empty{
+    text-align:center;
+    padding:25px;
+    color:#6b7280;
 }
 
-.status-approved{
-background:#dcfce7;
-color:#166534;
+footer{
+    margin-top:30px;
+    background:#111827;
+    color:#d1d5db;
+    text-align:center;
+    padding:25px 15px;
+    padding-bottom:90px;
 }
 
-.status-rejected{
-background:#fee2e2;
-color:#991b1b;
+footer h3{
+    color:white;
+    margin-bottom:8px;
 }
 
-/* ===============================
-MOBILE
-=============================== */
+@media(max-width:600px){
 
-@media(max-width:750px){
+    header h1{
+        font-size:20px;
+    }
 
-.nav-links{
-display:none;
-position:absolute;
-top:70px;
-left:0;
-right:0;
-background:white;
-padding:20px;
-flex-direction:column;
-}
+    .hero h2{
+        font-size:21px;
+    }
 
-.nav-links.show{
-display:flex;
-}
-
-.menu-btn{
-display:block;
-}
-
-.hero h1{
-font-size:30px;
-}
-
-.search-box{
-flex-direction:column;
-}
+    .admin-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
 
 }
-
 </style>
 </head>
 
 <body>
 
+<!-- ================= WEBSITE ================= -->
 
-<!-- ===============================
-HEADER
-=============================== -->
+<div id="website">
 
 <header>
 
-<div class="nav">
+    <div class="logo" id="zLogo">Z</div>
 
-<div class="brand">
+    <h1>Zed WhatsApp Links</h1>
 
-<div class="zlogo">Z</div>
-
-<span>Zed WhatsApp Links</span>
-
-</div>
-
-<div class="nav-links" id="navLinks">
-
-<a href="#home">Home</a>
-
-<a href="#directory">Search</a>
-
-<a href="#plans">Plans</a>
-
-<a href="#about">About</a>
-
-<a href="#submit" class="submit-nav">Submit Your Link</a>
-
-</div>
-
-<button class="menu-btn" onclick="toggleMenu()">
-☰
-</button>
-
-</div>
+    <p>Discover WhatsApp & Telegram Groups and Channels</p>
 
 </header>
 
+<div id="announcement"></div>
 
-<!-- ===============================
-HOME
-=============================== -->
+<section class="hero">
 
-<section class="hero" id="home">
+    <h2>World's Largest Links Directory</h2>
 
-<div class="hero-inner">
+    <p>
+        Discover, search and join WhatsApp Groups, WhatsApp Channels,
+        Telegram Groups and Telegram Channels.
+    </p>
 
-<div class="hero-logo">Z</div>
+    <div class="stats">
 
-<small>WORLD'S LARGEST DIRECTORY</small>
+        <div class="stat">
+            <strong id="totalLinks">0</strong>
+            Links
+        </div>
 
-<h1>Zed WhatsApp Links</h1>
+        <div class="stat">
+            <strong>✓</strong>
+            Admin Verified
+        </div>
 
-<p>
-Discover, search, submit and join WhatsApp Groups,
-WhatsApp Channels, Telegram Groups and Telegram Channels
-from one powerful platform.
-</p>
+        <div class="stat">
+            <strong>⚡</strong>
+            Instant Join
+        </div>
 
-<div class="hero-buttons">
-
-<a href="#directory" class="primary-btn">
-Explore Links
-</a>
-
-<a href="#submit" class="secondary-btn">
-Submit Your Link
-</a>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
+<section class="controls">
 
-<!-- ===============================
-STATS
-=============================== -->
+    <input
+        type="text"
+        class="search"
+        id="searchInput"
+        placeholder="Search Groups and Channels..."
+    >
 
-<div class="stats">
+    <div class="filters">
 
-<div class="stat">
+        <button class="filter active" data-type="All">
+            All
+        </button>
 
-<strong id="activeLinks">0</strong>
+        <button class="filter" data-type="WhatsApp Group">
+            WhatsApp Groups
+        </button>
 
-<span>Active Links</span>
+        <button class="filter" data-type="WhatsApp Channel">
+            WhatsApp Channels
+        </button>
 
-</div>
+        <button class="filter" data-type="Telegram Group">
+            Telegram Groups
+        </button>
 
-<div class="stat">
+        <button class="filter" data-type="Telegram Channel">
+            Telegram Channels
+        </button>
 
-<strong id="approvedCount">0</strong>
-
-<span>Admin Verified</span>
-
-</div>
-
-<div class="stat">
-
-<strong>Instant</strong>
-
-<span>Join Communities</span>
-
-</div>
-
-<div class="stat">
-
-<strong>Live</strong>
-
-<span>Directory</span>
-
-</div>
-
-</div>
-
-
-<!-- ===============================
-ANNOUNCEMENT
-=============================== -->
-
-<div class="announcement-wrap">
-
-<div id="announcementArea"></div>
-
-</div>
-
-
-<!-- ===============================
-DIRECTORY
-=============================== -->
-
-<section class="container" id="directory">
-
-<div class="section-title">
-
-<h2>Explore Communities</h2>
-
-<p>
-Search thousands of WhatsApp and Telegram communities.
-</p>
-
-</div>
-
-
-<div class="search-box">
-
-<input
-type="text"
-id="searchInput"
-placeholder="Search Groups and Channels..."
-oninput="filterLinks()">
-
-</div>
-
-
-<div class="filters">
-
-<button
-class="filter-btn active"
-onclick="setFilter('All',this)">
-All
-</button>
-
-<button
-class="filter-btn"
-onclick="setFilter('WhatsApp Group',this)">
-WhatsApp Group
-</button>
-
-<button
-class="filter-btn"
-onclick="setFilter('WhatsApp Channel',this)">
-WhatsApp Channel
-</button>
-
-<button
-class="filter-btn"
-onclick="setFilter('Telegram Group',this)">
-Telegram Group
-</button>
-
-<button
-class="filter-btn"
-onclick="setFilter('Telegram Channel',this)">
-Telegram Channel
-</button>
-
-</div>
-
-
-<div
-class="links-grid"
-id="linksContainer">
-
-<div class="empty">
-
-Loading Links...
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
+<main class="container">
 
-<!-- ===============================
-SUBMIT
-=============================== -->
+    <div id="linksList">
 
-<section class="form-section" id="submit">
+        <div class="empty">
+            Loading Links...
+        </div>
 
-<div class="form-container">
+    </div>
 
-<h2>Submit Your Link</h2>
-
-<p>
-Submit your WhatsApp or Telegram community for admin approval.
-</p>
-
-
-<form id="submitForm">
-
-
-<div class="form-group">
-
-<label>
-What are you submitting?
-</label>
-
-<select
-id="linkType"
-required
-onchange="changeLabels()">
-
-<option value="">
-Select Type
-</option>
-
-<option value="WhatsApp Group">
-WhatsApp Group
-</option>
-
-<option value="WhatsApp Channel">
-WhatsApp Channel
-</option>
-
-<option value="Telegram Group">
-Telegram Group
-</option>
-
-<option value="Telegram Channel">
-Telegram Channel
-</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label id="nameLabel">
-Group / Channel Name
-</label>
-
-<input
-id="linkName"
-required
-placeholder="Enter Name">
-
-</div>
-
-
-<div class="form-group">
-
-<label id="urlLabel">
-Group / Channel Link
-</label>
-
-<input
-id="linkUrl"
-type="url"
-required
-placeholder="https://">
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Category
-</label>
-
-<input
-id="linkCategory"
-required
-placeholder="Example: Jobs, Education, Technology">
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Your Email
-</label>
-
-<input
-id="userEmail"
-type="email"
-required>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Your WhatsApp Number
-</label>
-
-<input
-id="userWhatsapp"
-required
-placeholder="03710536394">
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Description
-</label>
-
-<textarea
-id="linkDescription"
-required
-placeholder="Tell users about this group or channel..."></textarea>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Select Plan
-</label>
-
-<select
-id="linkPlan"
-required>
-
-<option value="Free">
-Free - 1 Month
-</option>
-
-<option value="Basic">
-Basic
-</option>
-
-<option value="Pro">
-Pro
-</option>
-
-<option value="Premium">
-Premium
-</option>
-
-<option value="Elite">
-Elite
-</option>
-
-</select>
-
-</div>
-
+</main>
 
 <button
-type="submit"
-class="submit-form-btn">
-
-Submit For Approval
-
+    class="submit-open"
+    id="openSubmit"
+>
+    + Submit Link
 </button>
-
-
-</form>
-
-</div>
-
-</section>
-
-
-<!-- ===============================
-PLANS
-=============================== -->
-
-<section class="plans-section" id="plans">
-
-<div class="section-title">
-
-<h2>Subscription Plans</h2>
-
-<p>
-Choose a plan for better visibility.
-</p>
-
-</div>
-
-
-<div class="plans-grid">
-
-
-<div class="plan-card">
-
-<h3>Free Plan</h3>
-
-<p>1 Month</p>
-
-<p><strong>FREE</strong></p>
-
-</div>
-
-
-<div class="plan-card">
-
-<h3>Basic Plan</h3>
-
-<p>WhatsApp Group: 299 PKR / 3 Months</p>
-
-<p>WhatsApp Channel: 399 PKR / 3 Months</p>
-
-</div>
-
-
-<div class="plan-card">
-
-<h3>Pro Plan</h3>
-
-<p>WhatsApp Group: 499 PKR / 6 Months</p>
-
-<p>WhatsApp Channel: 599 PKR / 6 Months</p>
-
-</div>
-
-
-<div class="plan-card">
-
-<h3>Premium Plan</h3>
-
-<p>WhatsApp Group: 1099 PKR / 1 Year</p>
-
-<p>WhatsApp Channel: 1199 PKR / 1 Year</p>
-
-</div>
-
-
-<div class="plan-card">
-
-<h3>Elite Plan</h3>
-
-<p>WhatsApp Group: 1499 PKR Lifetime</p>
-
-<p>WhatsApp Channel: 1599 PKR Lifetime</p>
-
-</div>
-
-
-</div>
-
-
-<p style="text-align:center;margin-top:30px;color:#6b7280;">
-
-For paid plans, contact the administrator on WhatsApp.
-
-</p>
-
-</section>
-
-
-<!-- ===============================
-ABOUT
-=============================== -->
-
-<section
-class="about-section"
-id="about">
-
-<h2>About Zed WhatsApp Links</h2>
-
-<br>
-
-<p>
-
-Zed WhatsApp Links is a community directory designed
-to help users discover WhatsApp Groups, WhatsApp Channels,
-Telegram Groups and Telegram Channels from one platform.
-
-All submitted links are reviewed by the administrator
-before becoming publicly visible.
-
-</p>
-
-</section>
-
-
-<!-- ===============================
-WHATSAPP FLOAT
-=============================== -->
 
 <a
-class="whatsapp-float"
-href="https://wa.me/923710536394"
-target="_blank"
-title="Chat with Admin">
-
-☎
-
+    class="whatsapp"
+    href="https://wa.me/923710536394"
+    target="_blank"
+    title="Contact us on WhatsApp"
+>
+    ☎
 </a>
-
-
-<!-- ===============================
-FOOTER
-=============================== -->
 
 <footer>
 
-<div class="footer-grid">
+    <h3>Zed WhatsApp Links</h3>
 
+    <p>
+        Discover and join communities from WhatsApp and Telegram.
+    </p>
 
-<div>
+    <br>
 
-<div class="footer-brand">
+    <p>
+        WhatsApp: 03710536394
+    </p>
 
-<div
-class="zlogo hidden-admin-logo"
-id="secretAdminLogo">
-
-Z
-
-</div>
-
-<h3>Zed WhatsApp Links</h3>
-
-</div>
-
-<p>
-
-The world's largest directory platform
-for WhatsApp and Telegram communities.
-
-</p>
-
-</div>
-
-
-<div>
-
-<h3>Links</h3>
-
-<a href="#about">About Us</a>
-
-<a href="#directory">Explore</a>
-
-<a href="#submit">Submit</a>
-
-<a href="#plans">Plans</a>
-
-</div>
-
-
-<div>
-
-<h3>Categories</h3>
-
-<a href="#directory">
-WhatsApp Groups
-</a>
-
-<a href="#directory">
-WhatsApp Channels
-</a>
-
-<a href="#directory">
-Telegram Groups
-</a>
-
-<a href="#directory">
-Telegram Channels
-</a>
-
-</div>
-
-
-<div>
-
-<h3>Support</h3>
-
-<p>WhatsApp: 03710536394</p>
-
-<p>Email: zedaye9664@gmail.com</p>
-
-</div>
-
-
-</div>
-
-
-<div class="footer-bottom">
-
-© 2026 Zed WhatsApp Links.
-All Rights Reserved.
-
-</div>
+    <p>
+        © 2026 Zed WhatsApp Links
+    </p>
 
 </footer>
 
-
-<!-- ===============================
-ADMIN LOGIN
-=============================== -->
-
-<div
-id="adminLoginScreen"
-class="hidden">
-
-<div class="admin-login-box">
-
-<div class="zlogo"
-style="margin:auto;">
-
-Z
-
-</div>
-
-<br>
-
-<h2>Admin Login</h2>
-
-<p style="color:#6b7280;margin-top:10px;">
-
-Authorized administrator access only.
-
-</p>
-
-<button id="googleLogin">
-
-Sign in with Google
-
-</button>
-
-</div>
-
 </div>
 
 
-<!-- ===============================
-ADMIN DASHBOARD
-=============================== -->
+<!-- ================= SUBMIT MODAL ================= -->
 
-<div
-id="adminDashboard"
-class="hidden">
+<div class="modal" id="submitModal">
 
+    <div class="modal-box">
 
-<div class="admin-header">
+        <button class="close" id="closeSubmit">
+            X
+        </button>
 
-<div>
+        <h2>Submit Your Link</h2>
 
-<strong>
-ZEDLINKER ADMIN DASHBOARD
-</strong>
+        <form id="submitForm">
 
-<br>
+            <div class="form-group">
 
-<small id="adminEmail"></small>
+                <label>Name</label>
 
-</div>
+                <input
+                    id="linkName"
+                    required
+                    placeholder="Group or Channel Name"
+                >
 
+            </div>
 
-<button
-onclick="logoutAdmin()"
-class="admin-btn reject">
+            <div class="form-group">
 
-Logout
+                <label>Type</label>
 
-</button>
+                <select id="linkType" required>
 
-</div>
+                    <option value="WhatsApp Group">
+                        WhatsApp Group
+                    </option>
 
+                    <option value="WhatsApp Channel">
+                        WhatsApp Channel
+                    </option>
 
-<div class="admin-container">
+                    <option value="Telegram Group">
+                        Telegram Group
+                    </option>
 
+                    <option value="Telegram Channel">
+                        Telegram Channel
+                    </option>
 
-<div class="admin-tabs">
+                </select>
 
-<button onclick="showAdminTab('adminLinks')">
-Manage Links
-</button>
+            </div>
 
-<button onclick="showAdminTab('adminAnnouncement')">
-Announcements
-</button>
+            <div class="form-group">
 
-</div>
+                <label>Category</label>
 
+                <input
+                    id="linkCategory"
+                    required
+                    placeholder="Example: Jobs, Education"
+                >
 
-<!-- LINKS ADMIN -->
+            </div>
 
-<div
-id="adminLinks"
-class="admin-panel">
+            <div class="form-group">
 
-<h2>Manage Submitted Links</h2>
+                <label>Plan</label>
 
-<br>
+                <select id="linkPlan">
 
-<div class="admin-table-wrap">
+                    <option value="Free">Free</option>
+                    <option value="Basic">Basic</option>
+                    <option value="Pro">Pro</option>
+                    <option value="Premium">Premium</option>
+                    <option value="Elite">Elite</option>
 
-<table>
+                </select>
 
-<thead>
+            </div>
 
-<tr>
+            <div class="form-group">
 
-<th>Name</th>
+                <label>Link</label>
 
-<th>Type</th>
+                <input
+                    type="url"
+                    id="linkUrl"
+                    required
+                    placeholder="https://chat.whatsapp.com/..."
+                >
 
-<th>Category</th>
+            </div>
 
-<th>Plan</th>
+            <div class="form-group">
 
-<th>Email</th>
+                <label>Description</label>
 
-<th>WhatsApp</th>
+                <textarea
+                    id="linkDescription"
+                    placeholder="Write a short description"
+                ></textarea>
 
-<th>Status</th>
+            </div>
 
-<th>Actions</th>
+            <div class="form-group">
 
-</tr>
+                <label>Your Email</label>
 
-</thead>
+                <input
+                    type="email"
+                    id="linkEmail"
+                    required
+                    placeholder="example@gmail.com"
+                >
 
+            </div>
 
-<tbody id="adminLinksTable">
+            <button class="main-btn" type="submit">
+                Submit for Approval
+            </button>
 
-</tbody>
+        </form>
 
-</table>
-
-</div>
+    </div>
 
 </div>
 
 
-<!-- ANNOUNCEMENT ADMIN -->
+<!-- ================= ADMIN LOGIN ================= -->
 
-<div
-id="adminAnnouncement"
-class="admin-panel hidden">
+<div class="modal" id="adminLoginModal">
 
-<h2>Announcement Manager</h2>
+    <div class="modal-box">
 
-<br>
+        <button class="close" id="closeAdminLogin">
+            X
+        </button>
 
+        <h2>Admin Login</h2>
 
-<div class="form-group">
+        <p style="margin-bottom:15px;color:#6b7280;">
+            Authorized administrator access only.
+        </p>
 
-<label>
-Announcement Title
-</label>
+        <button
+            class="main-btn"
+            id="googleLogin"
+        >
+            Sign in with Google
+        </button>
 
-<input id="announcementTitle">
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Announcement Message
-</label>
-
-<textarea
-id="announcementMessage">
-</textarea>
+    </div>
 
 </div>
 
 
-<button
-class="primary-btn"
-onclick="saveAnnouncement()">
+<!-- ================= ADMIN PANEL ================= -->
 
-Save Announcement
+<div id="adminPanel">
 
-</button>
+    <div class="admin-header">
 
+        <div>
 
-<button
-style="
-margin-left:10px;
-background:#dc2626;
-color:white;
-border:none;
-padding:15px;
-border-radius:10px;
-cursor:pointer;"
-onclick="deleteAnnouncement()">
+            <h2>🔐 ZedLinker Admin Dashboard</h2>
 
-Delete Announcement
+            <small id="adminEmail"></small>
 
-</button>
+        </div>
 
+        <button
+            class="close"
+            id="logoutBtn"
+        >
+            Logout
+        </button>
 
-</div>
+    </div>
 
+    <div class="admin-container">
 
-</div>
+        <div class="admin-card">
 
-</div>
+            <h2>📊 Website Statistics</h2>
 
+            <br>
+
+            <p>
+                Total Links:
+                <strong id="adminTotal">0</strong>
+            </p>
+
+            <p>
+                Pending:
+                <strong id="adminPending">0</strong>
+            </p>
+
+            <p>
+                Approved:
+                <strong id="adminApproved">0</strong>
+            </p>
+
+        </div>
+
+        <div class="admin-card">
+
+            <h2>📢 Announcement</h2>
+
+            <br>
+
+            <input
+                id="announcementInput"
+                placeholder="Write announcement for all users..."
+            >
+
+            <br><br>
+
+            <button
+                class="main-btn"
+                id="saveAnnouncement"
+            >
+                Save Announcement
+            </button>
+
+            <br><br>
+
+            <button
+                class="admin-actions delete"
+                id="deleteAnnouncement"
+            >
+                Delete Announcement
+            </button>
+
+        </div>
+
+        <div class="admin-card">
+
+            <h2>🔗 Manage Submitted Links</h2>
+
+            <br>
+
+            <div id="adminLinksList">
+
+                Loading...
+
+            </div>
+
+        </div>
+
+    </div>
+
+            </div>
+<!-- ================= FIREBASE & JAVASCRIPT ================= -->
 
 <script type="module">
 
-/* ======================================
-FIREBASE IMPORTS
-====================================== */
+/* =========================================
+   FIREBASE IMPORTS
+========================================= */
 
 import {
     initializeApp
@@ -1615,11 +840,12 @@ import {
 import {
     getFirestore,
     collection,
-    doc,
     addDoc,
-    setDoc,
+    doc,
     updateDoc,
     deleteDoc,
+    setDoc,
+    getDoc,
     onSnapshot,
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
@@ -1634,9 +860,9 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 
-/* ======================================
-FIREBASE CONFIGURATION
-====================================== */
+/* =========================================
+   FIREBASE CONFIGURATION
+========================================= */
 
 const firebaseConfig = {
     apiKey: "AIzaSyBpJKcOaqc99cXK-sxCTQPwPYIQD7IWmwg",
@@ -1648,177 +874,429 @@ const firebaseConfig = {
 };
 
 
-/* ======================================
-INITIALIZE FIREBASE
-====================================== */
+/* =========================================
+   INITIALIZE FIREBASE
+========================================= */
 
 const app = initializeApp(firebaseConfig);
+
 const db = getFirestore(app);
+
 const auth = getAuth(app);
+
 const provider = new GoogleAuthProvider();
 
 
-/* ======================================
-ADMIN EMAIL
-====================================== */
+/* =========================================
+   ADMIN EMAIL
+========================================= */
 
 const ADMIN_EMAIL = "zedaye9664@gmail.com";
 
 
-/* ======================================
-GLOBAL DATA
-====================================== */
+/* =========================================
+   GLOBAL VARIABLES
+========================================= */
 
 let linksData = [];
-let announcementsData = [];
+
+let activeFilter = "All";
+
+let searchText = "";
+
+let logoClicks = 0;
+
+let clickTimer;
 
 
-/* ======================================
-REDIRECT LOGIN RESULT
-====================================== */
+/* =========================================
+   REDIRECT LOGIN RESULT
+========================================= */
 
 getRedirectResult(auth)
 .then(async (result) => {
 
     if (result && result.user) {
 
-        const user = result.user;
+        if (
+            result.user.email.toLowerCase()
+            !==
+            ADMIN_EMAIL.toLowerCase()
+        ) {
 
-        if (user.email !== ADMIN_EMAIL) {
-
-            alert("Access Denied! You are not the authorized administrator.");
+            alert("Access Denied! This Google account is not authorized.");
 
             await signOut(auth);
+
         }
+
     }
 
 })
 .catch((error) => {
 
-    console.error("Redirect Login Error:", error);
-
-    alert("Google Login Error: " + error.message);
+    console.error("Login Error:", error);
 
 });
 
 
-/* ======================================
-GOOGLE LOGIN BUTTON
-====================================== */
+/* =========================================
+   GOOGLE ADMIN LOGIN
+========================================= */
 
-const googleLoginButton = document.getElementById("googleLogin");
+document
+.getElementById("googleLogin")
+.addEventListener("click", async () => {
 
-if (googleLoginButton) {
+    try {
 
-    googleLoginButton.addEventListener("click", async () => {
+        await signInWithRedirect(
+            auth,
+            provider
+        );
 
-        try {
+    } catch (error) {
 
-            await signInWithRedirect(auth, provider);
+        console.error(error);
 
-        } catch (error) {
+        alert(
+            "Google Login Error: "
+            + error.message
+        );
 
-            console.error(error);
-
-            alert("Login Error: " + error.message);
-        }
-
-    });
-
-}
-
-
-/* ======================================
-AUTH STATE
-====================================== */
-
-onAuthStateChanged(auth, (user) => {
-
-    if (user && user.email === ADMIN_EMAIL) {
-
-        const loginScreen = document.getElementById("loginScreen");
-        const dashboard = document.getElementById("dashboard");
-        const adminEmail = document.getElementById("adminEmail");
-
-        if (loginScreen) {
-            loginScreen.classList.add("hidden");
-        }
-
-        if (dashboard) {
-            dashboard.classList.remove("hidden");
-        }
-
-        if (adminEmail) {
-            adminEmail.textContent = user.email;
-        }
-
-        startDashboard();
-
-    } else {
-
-        const loginScreen = document.getElementById("loginScreen");
-        const dashboard = document.getElementById("dashboard");
-
-        if (loginScreen) {
-            loginScreen.classList.remove("hidden");
-        }
-
-        if (dashboard) {
-            dashboard.classList.add("hidden");
-        }
     }
 
 });
 
 
-/* ======================================
-LOGOUT
-====================================== */
+/* =========================================
+   AUTH STATE
+========================================= */
 
-const logoutButton = document.getElementById("logoutBtn");
+onAuthStateChanged(
+    auth,
+    (user) => {
 
-if (logoutButton) {
+        if (
+            user &&
+            user.email &&
+            user.email.toLowerCase()
+            ===
+            ADMIN_EMAIL.toLowerCase()
+        ) {
 
-    logoutButton.addEventListener("click", async () => {
+            openAdminPanel(user);
+
+        } else {
+
+            closeAdminPanel();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   OPEN ADMIN PANEL
+========================================= */
+
+function openAdminPanel(user) {
+
+    document
+    .getElementById("website")
+    .style.display = "none";
+
+    document
+    .getElementById("adminPanel")
+    .style.display = "block";
+
+    document
+    .getElementById("adminLoginModal")
+    .classList.remove("show");
+
+    document
+    .getElementById("adminEmail")
+    .textContent = user.email;
+
+    renderAdminLinks();
+
+}
+
+
+/* =========================================
+   CLOSE ADMIN PANEL
+========================================= */
+
+function closeAdminPanel() {
+
+    document
+    .getElementById("website")
+    .style.display = "block";
+
+    document
+    .getElementById("adminPanel")
+    .style.display = "none";
+
+}
+
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+document
+.getElementById("logoutBtn")
+.addEventListener("click", async () => {
+
+    try {
+
+        await signOut(auth);
+
+        alert("Logged out successfully.");
+
+    } catch (error) {
+
+        alert(error.message);
+
+    }
+
+});
+
+
+/* =========================================
+   HIDDEN ADMIN - 5 LOGO CLICKS
+========================================= */
+
+document
+.getElementById("zLogo")
+.addEventListener("click", () => {
+
+    logoClicks++;
+
+    clearTimeout(clickTimer);
+
+    clickTimer = setTimeout(() => {
+
+        logoClicks = 0;
+
+    }, 2500);
+
+
+    if (logoClicks >= 5) {
+
+        logoClicks = 0;
+
+        const user = auth.currentUser;
+
+        if (
+            user &&
+            user.email &&
+            user.email.toLowerCase()
+            ===
+            ADMIN_EMAIL.toLowerCase()
+        ) {
+
+            openAdminPanel(user);
+
+        } else {
+
+            document
+            .getElementById("adminLoginModal")
+            .classList.add("show");
+
+        }
+
+    }
+
+});
+
+
+/* =========================================
+   SUBMIT MODAL
+========================================= */
+
+const submitModal =
+document.getElementById("submitModal");
+
+
+document
+.getElementById("openSubmit")
+.addEventListener("click", () => {
+
+    submitModal.classList.add("show");
+
+});
+
+
+document
+.getElementById("closeSubmit")
+.addEventListener("click", () => {
+
+    submitModal.classList.remove("show");
+
+});
+
+
+/* =========================================
+   CLOSE ADMIN LOGIN MODAL
+========================================= */
+
+document
+.getElementById("closeAdminLogin")
+.addEventListener("click", () => {
+
+    document
+    .getElementById("adminLoginModal")
+    .classList.remove("show");
+
+});
+
+
+/* =========================================
+   CLOSE MODAL OUTSIDE CLICK
+========================================= */
+
+document
+.querySelectorAll(".modal")
+.forEach((modal) => {
+
+    modal.addEventListener(
+        "click",
+        (event) => {
+
+            if (event.target === modal) {
+
+                modal.classList.remove("show");
+
+            }
+
+        }
+    );
+
+});
+
+
+/* =========================================
+   SUBMIT LINK
+========================================= */
+
+document
+.getElementById("submitForm")
+.addEventListener(
+    "submit",
+    async (event) => {
+
+        event.preventDefault();
+
+        const button =
+        event.target.querySelector(
+            'button[type="submit"]'
+        );
+
+        button.disabled = true;
+
+        button.textContent =
+        "Submitting...";
+
 
         try {
 
-            await signOut(auth);
+            await addDoc(
+                collection(db, "links"),
+                {
+
+                    name:
+                    document
+                    .getElementById("linkName")
+                    .value
+                    .trim(),
+
+                    type:
+                    document
+                    .getElementById("linkType")
+                    .value,
+
+                    category:
+                    document
+                    .getElementById("linkCategory")
+                    .value
+                    .trim(),
+
+                    plan:
+                    document
+                    .getElementById("linkPlan")
+                    .value,
+
+                    url:
+                    document
+                    .getElementById("linkUrl")
+                    .value
+                    .trim(),
+
+                    description:
+                    document
+                    .getElementById("linkDescription")
+                    .value
+                    .trim(),
+
+                    email:
+                    document
+                    .getElementById("linkEmail")
+                    .value
+                    .trim(),
+
+                    status:
+                    "pending",
+
+                    createdAt:
+                    serverTimestamp()
+
+                }
+            );
+
+
+            alert(
+                "Link submitted successfully! "
+                +
+                "Please wait for admin approval."
+            );
+
+            event.target.reset();
+
+            submitModal
+            .classList
+            .remove("show");
+
 
         } catch (error) {
 
             console.error(error);
 
-            alert("Logout Error: " + error.message);
+            alert(
+                "Error submitting link: "
+                +
+                error.message
+            );
 
         }
 
-    });
+        button.disabled = false;
 
-}
+        button.textContent =
+        "Submit for Approval";
 
-
-/* ======================================
-START DASHBOARD
-====================================== */
-
-function startDashboard() {
-
-    loadLinks();
-    loadAnnouncements();
-
-}
+    }
+);
 
 
-/* ======================================
-LOAD LINKS
-====================================== */
+/* =========================================
+   LOAD LINKS FROM FIREBASE
+========================================= */
 
-function loadLinks() {
-
-    const linksRef = collection(db, "links");
-
-    onSnapshot(linksRef, (snapshot) => {
+onSnapshot(
+    collection(db, "links"),
+    (snapshot) => {
 
         linksData = [];
 
@@ -1831,188 +1309,495 @@ function loadLinks() {
 
         });
 
-        renderLinks();
-        renderStats();
-        renderRecentLinks();
 
-    }, (error) => {
+        sortLinks();
 
-        console.error("Links Load Error:", error);
+        renderPublicLinks();
+
+        renderAdminLinks();
+
+        updateStatistics();
+
+    },
+    (error) => {
+
+        console.error(
+            "Firebase Load Error:",
+            error
+        );
+
+        document
+        .getElementById("linksList")
+        .innerHTML =
+        `
+        <div class="empty">
+            Unable to load links.
+        </div>
+        `;
+
+    }
+);
+
+
+/* =========================================
+   SORT LINKS BY PLAN
+========================================= */
+
+function sortLinks() {
+
+    const priority = {
+
+        Elite: 1,
+
+        Premium: 2,
+
+        Pro: 3,
+
+        Basic: 4,
+
+        Free: 5
+
+    };
+
+
+    linksData.sort((a, b) => {
+
+        return (
+            (priority[a.plan] || 5)
+            -
+            (priority[b.plan] || 5)
+        );
 
     });
 
 }
 
 
-/* ======================================
-RENDER LINKS
-====================================== */
+/* =========================================
+   RENDER PUBLIC LINKS
+========================================= */
 
-function renderLinks() {
+function renderPublicLinks() {
 
-    const table = document.getElementById("linksTable");
+    const container =
+    document.getElementById("linksList");
 
-    if (!table) return;
 
-    table.innerHTML = "";
+    const approvedLinks =
+    linksData.filter((item) => {
 
-    if (linksData.length === 0) {
-
-        table.innerHTML = `
-        <tr>
-            <td colspan="8" class="empty">
-                No links submitted yet.
-            </td>
-        </tr>
-        `;
-
-        return;
-    }
-
-    linksData.forEach((item) => {
-
-        const status = item.status || "pending";
-
-        const row = document.createElement("tr");
-
-        row.innerHTML = `
-
-            <td>${escapeHTML(item.name || "-")}</td>
-
-            <td>${escapeHTML(item.type || "-")}</td>
-
-            <td>${escapeHTML(item.category || "-")}</td>
-
-            <td>
-                <span class="badge ${String(item.plan || "").toLowerCase() === "elite" ? "elite" : ""}">
-                    ${escapeHTML(item.plan || "Free")}
-                </span>
-            </td>
-
-            <td>${escapeHTML(item.email || "-")}</td>
-
-            <td>${escapeHTML(item.whatsapp || "-")}</td>
-
-            <td>
-                <span class="badge ${status}">
-                    ${escapeHTML(status)}
-                </span>
-            </td>
-
-            <td>
-
-                <button class="btn btn-approve"
-                onclick="approveLink('${item.id}')">
-                    Approve
-                </button>
-
-                <button class="btn btn-reject"
-                onclick="rejectLink('${item.id}')">
-                    Reject
-                </button>
-
-                <button class="btn btn-edit"
-                onclick="editLink('${item.id}')">
-                    Edit
-                </button>
-
-                <button class="btn btn-delete"
-                onclick="deleteLink('${item.id}')">
-                    Delete
-                </button>
-
-            </td>
-
-        `;
-
-        table.appendChild(row);
+        return (
+            item.status === "approved"
+        );
 
     });
 
-}
+
+    const filteredLinks =
+    approvedLinks.filter((item) => {
+
+        const matchesType =
+
+        activeFilter === "All"
+
+        ||
+
+        item.type === activeFilter;
 
 
-/* ======================================
-RENDER STATS
-====================================== */
+        const text = (
 
-function renderStats() {
+            (item.name || "")
+            +
 
-    const total = linksData.length;
+            " "
 
-    const approved = linksData.filter(
-        item => item.status === "approved"
-    ).length;
+            +
 
-    const pending = linksData.filter(
-        item => !item.status || item.status === "pending"
-    ).length;
+            (item.category || "")
+            +
 
-    const totalLinksElement = document.getElementById("totalLinks");
-    const approvedLinksElement = document.getElementById("approvedLinks");
-    const pendingLinksElement = document.getElementById("pendingLinks");
+            " "
 
-    if (totalLinksElement) {
-        totalLinksElement.textContent = total;
-    }
+            +
 
-    if (approvedLinksElement) {
-        approvedLinksElement.textContent = approved;
-    }
+            (item.description || "")
 
-    if (pendingLinksElement) {
-        pendingLinksElement.textContent = pending;
-    }
-
-}
+        ).toLowerCase();
 
 
-/* ======================================
-RECENT LINKS
-====================================== */
+        const matchesSearch =
 
-function renderRecentLinks() {
+        text.includes(
+            searchText.toLowerCase()
+        );
 
-    const container = document.getElementById("recentLinks");
 
-    if (!container) return;
+        return (
+            matchesType &&
+            matchesSearch
+        );
 
-    if (linksData.length === 0) {
+    });
 
-        container.innerHTML = `
-            <div class="empty">
-                No recent link submissions.
-            </div>
-        `;
-
-        return;
-    }
-
-    const recentLinks = [...linksData].slice(-5).reverse();
 
     container.innerHTML = "";
 
-    recentLinks.forEach((item) => {
 
-        const div = document.createElement("div");
+    if (
+        filteredLinks.length === 0
+    ) {
 
-        div.className = "blog-item";
+        container.innerHTML =
+        `
+        <div class="empty">
+            No approved links found.
+        </div>
+        `;
+
+        return;
+
+    }
+
+
+    filteredLinks.forEach((item) => {
+
+        const planClass =
+        (
+            item.plan || "Free"
+        )
+        .toLowerCase();
+
+
+        const card =
+        document.createElement("div");
+
+
+        card.className =
+        "link-card";
+
+
+        card.innerHTML = `
+
+            <div class="badges">
+
+                <span class="badge">
+
+                    ${escapeHTML(
+                        item.type || ""
+                    )}
+
+                </span>
+
+                <span class="badge ${planClass}">
+
+                    ${escapeHTML(
+                        item.plan || "Free"
+                    )}
+
+                </span>
+
+                <span class="badge">
+
+                    ${escapeHTML(
+                        item.category || ""
+                    )}
+
+                </span>
+
+            </div>
+
+
+            <h3>
+
+                ${escapeHTML(
+                    item.name || "Unnamed"
+                )}
+
+            </h3>
+
+
+            <p>
+
+                ${escapeHTML(
+                    item.description ||
+                    "No description available."
+                )}
+
+            </p>
+
+
+            <a
+
+                class="join-btn"
+
+                href="${safeURL(item.url)}"
+
+                target="_blank"
+
+                rel="noopener"
+
+            >
+
+                Join Now
+
+            </a>
+
+        `;
+
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
+document
+.getElementById("searchInput")
+.addEventListener(
+    "input",
+    (event) => {
+
+        searchText =
+        event.target.value;
+
+        renderPublicLinks();
+
+    }
+);
+
+
+/* =========================================
+   FILTER BUTTONS
+========================================= */
+
+document
+.querySelectorAll(".filter")
+.forEach((button) => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            document
+            .querySelectorAll(".filter")
+            .forEach((btn) => {
+
+                btn.classList
+                .remove("active");
+
+            });
+
+
+            button.classList
+            .add("active");
+
+
+            activeFilter =
+            button.dataset.type;
+
+
+            renderPublicLinks();
+
+        }
+    );
+
+});
+
+
+/* =========================================
+   UPDATE STATISTICS
+========================================= */
+
+function updateStatistics() {
+
+    const total =
+    linksData.filter(
+        item =>
+        item.status === "approved"
+    ).length;
+
+
+    document
+    .getElementById("totalLinks")
+    .textContent = total;
+
+
+    document
+    .getElementById("adminTotal")
+    .textContent =
+    linksData.length;
+
+
+    document
+    .getElementById("adminPending")
+    .textContent =
+    linksData.filter(
+        item =>
+        item.status === "pending"
+    ).length;
+
+
+    document
+    .getElementById("adminApproved")
+    .textContent =
+    linksData.filter(
+        item =>
+        item.status === "approved"
+    ).length;
+
+}
+
+
+/* =========================================
+   ADMIN RENDER LINKS
+========================================= */
+
+function renderAdminLinks() {
+
+    const container =
+    document.getElementById(
+        "adminLinksList"
+    );
+
+
+    if (!container) return;
+
+
+    container.innerHTML = "";
+
+
+    if (
+        linksData.length === 0
+    ) {
+
+        container.innerHTML =
+        `
+        <div class="empty">
+            No submitted links yet.
+        </div>
+        `;
+
+        return;
+
+    }
+
+
+    linksData.forEach((item) => {
+
+        const div =
+        document.createElement("div");
+
+
+        div.className =
+        "admin-item";
+
 
         div.innerHTML = `
 
             <strong>
-                ${escapeHTML(item.name || "Unnamed Link")}
+
+                ${escapeHTML(
+                    item.name || "Unnamed"
+                )}
+
             </strong>
 
             <br>
 
             <small>
-                ${escapeHTML(item.type || "")}
-                •
-                ${escapeHTML(item.status || "pending")}
+
+                ${escapeHTML(
+                    item.type || ""
+                )}
+
+                |
+
+                ${escapeHTML(
+                    item.category || ""
+                )}
+
+                |
+
+                Plan:
+
+                ${escapeHTML(
+                    item.plan || "Free"
+                )}
+
             </small>
 
+            <br>
+
+            <small>
+
+                Status:
+
+                <strong>
+
+                    ${escapeHTML(
+                        item.status ||
+                        "pending"
+                    )}
+
+                </strong>
+
+            </small>
+
+            <br>
+
+            <small>
+
+                ${escapeHTML(
+                    item.url || ""
+                )}
+
+            </small>
+
+
+            <div class="admin-actions">
+
+                <button
+                    class="approve"
+                    data-action="approve"
+                    data-id="${item.id}"
+                >
+
+                    Approve
+
+                </button>
+
+
+                <button
+                    class="reject"
+                    data-action="reject"
+                    data-id="${item.id}"
+                >
+
+                    Reject
+
+                </button>
+
+
+                <button
+                    class="delete"
+                    data-action="delete"
+                    data-id="${item.id}"
+                >
+
+                    Delete
+
+                </button>
+
+            </div>
+
         `;
+
 
         container.appendChild(div);
 
@@ -2021,239 +1806,400 @@ function renderRecentLinks() {
 }
 
 
-/* ======================================
-APPROVE LINK
-====================================== */
+/* =========================================
+   ADMIN BUTTON ACTIONS
+========================================= */
 
-window.approveLink = async function(id) {
+document
+.getElementById("adminLinksList")
+.addEventListener(
+    "click",
+    async (event) => {
 
-    try {
+        const button =
+        event.target.closest("button");
 
-        await updateDoc(
-            doc(db, "links", id),
-            {
-                status: "approved",
-                approvedAt: serverTimestamp()
+        if (!button) return;
+
+
+        const action =
+        button.dataset.action;
+
+        const id =
+        button.dataset.id;
+
+
+        if (!action || !id) return;
+
+
+        try {
+
+            if (
+                action === "approve"
+            ) {
+
+                await updateDoc(
+
+                    doc(
+                        db,
+                        "links",
+                        id
+                    ),
+
+                    {
+                        status:
+                        "approved"
+                    }
+
+                );
+
+
+                alert(
+                    "Link approved successfully!"
+                );
+
             }
-        );
-
-        alert("Link Approved Successfully!");
-
-    } catch (error) {
-
-        console.error(error);
-
-        alert("Error: " + error.message);
-
-    }
-
-};
 
 
-/* ======================================
-REJECT LINK
-====================================== */
+            if (
+                action === "reject"
+            ) {
 
-window.rejectLink = async function(id) {
+                await updateDoc(
 
-    try {
+                    doc(
+                        db,
+                        "links",
+                        id
+                    ),
 
-        await updateDoc(
-            doc(db, "links", id),
-            {
-                status: "rejected"
+                    {
+                        status:
+                        "rejected"
+                    }
+
+                );
+
+
+                alert(
+                    "Link rejected."
+                );
+
             }
-        );
 
-        alert("Link Rejected.");
 
-    } catch (error) {
+            if (
+                action === "delete"
+            ) {
 
-        console.error(error);
+                const confirmed =
+                confirm(
+                    "Delete this link permanently?"
+                );
 
-        alert("Error: " + error.message);
+
+                if (!confirmed) return;
+
+
+                await deleteDoc(
+
+                    doc(
+                        db,
+                        "links",
+                        id
+                    )
+
+                );
+
+
+                alert(
+                    "Link deleted."
+                );
+
+            }
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert(
+                "Error: "
+                +
+                error.message
+            );
+
+        }
 
     }
+);
 
-};
 
+/* =========================================
+   LOAD ANNOUNCEMENT
+========================================= */
 
-/* ======================================
-DELETE LINK
-====================================== */
+onSnapshot(
+    doc(
+        db,
+        "settings",
+        "announcement"
+    ),
+    (documentData) => {
 
-window.deleteLink = async function(id) {
-
-    const confirmed = confirm(
-        "Are you sure you want to permanently delete this link?"
-    );
-
-    if (!confirmed) return;
-
-    try {
-
-        await deleteDoc(
-            doc(db, "links", id)
+        const announcement =
+        document.getElementById(
+            "announcement"
         );
 
-        alert("Link Deleted Successfully!");
 
-    } catch (error) {
+        if (
+            documentData.exists()
+        ) {
 
-        console.error(error);
+            const data =
+            documentData.data();
 
-        alert("Delete Error: " + error.message);
+
+            if (
+                data.text &&
+                data.text.trim() !== ""
+            ) {
+
+                announcement.textContent =
+                "📢 "
+                +
+                data.text;
+
+                announcement.style.display =
+                "block";
+
+
+                document
+                .getElementById(
+                    "announcementInput"
+                )
+                .value =
+                data.text;
+
+            } else {
+
+                announcement.style.display =
+                "none";
+
+            }
+
+        } else {
+
+            announcement.style.display =
+            "none";
+
+        }
 
     }
-
-};
-
-
-/* ======================================
-EDIT LINK
-====================================== */
-
-window.editLink = function(id) {
-
-    const item = linksData.find(
-        link => link.id === id
-    );
-
-    if (!item) return;
-
-    document.getElementById("editLinkId").value = id;
-
-    document.getElementById("editLinkName").value =
-        item.name || "";
-
-    document.getElementById("editLinkType").value =
-        item.type || "WhatsApp Group";
-
-    document.getElementById("editLinkCategory").value =
-        item.category || "";
-
-    document.getElementById("editLinkPlan").value =
-        item.plan || "Free";
-
-    document.getElementById("editLinkUrl").value =
-        item.url || item.link || "";
-
-    document.getElementById("editLinkDescription").value =
-        item.description || "";
-
-    openModal("linkModal");
-
-};
+);
 
 
-/* ======================================
-SAVE EDITED LINK
-====================================== */
+/* =========================================
+SAVE ANNOUNCEMENT
+========================================= */
 
-window.saveEditedLink = async function() {
+async function saveAnnouncement() {
 
-    const id = document.getElementById("editLinkId").value;
+    const title = document.getElementById("announcementTitle").value.trim();
+    const message = document.getElementById("announcementMessage").value.trim();
+    const buttonText = document.getElementById("announcementButtonText").value.trim();
+    const buttonLink = document.getElementById("announcementButtonLink").value.trim();
 
-    if (!id) {
-
-        alert("Link ID not found.");
-
+    if (!title || !message) {
+        alert("Please enter announcement title and message.");
         return;
     }
 
     try {
 
-        await updateDoc(
-            doc(db, "links", id),
-            {
+        await setDoc(doc(db, "settings", "announcement"), {
 
-                name:
-                document.getElementById("editLinkName").value.trim(),
+            title: title,
+            message: message,
+            buttonText: buttonText || "",
+            buttonLink: buttonLink || "",
+            active: true,
+            updatedAt: serverTimestamp()
 
-                type:
-                document.getElementById("editLinkType").value,
+        });
 
-                category:
-                document.getElementById("editLinkCategory").value.trim(),
+        alert("Announcement saved successfully!");
 
-                plan:
-                document.getElementById("editLinkPlan").value,
+        document.getElementById("announcementTitle").value = "";
+        document.getElementById("announcementMessage").value = "";
+        document.getElementById("announcementButtonText").value = "";
+        document.getElementById("announcementButtonLink").value = "";
 
-                url:
-                document.getElementById("editLinkUrl").value.trim(),
+    } catch (error) {
 
-                description:
-                document.getElementById("editLinkDescription").value.trim()
+        console.error("Announcement Error:", error);
 
-            }
+        alert("Error saving announcement: " + error.message);
+
+    }
+
+}
+
+
+/* =========================================
+LOAD ANNOUNCEMENT
+========================================= */
+
+async function loadAnnouncement() {
+
+    try {
+
+        const announcementRef = doc(db, "settings", "announcement");
+
+        const snapshot = await getDoc(announcementRef);
+
+        if (!snapshot.exists()) return;
+
+        const data = snapshot.data();
+
+        document.getElementById("announcementTitle").value =
+            data.title || "";
+
+        document.getElementById("announcementMessage").value =
+            data.message || "";
+
+        document.getElementById("announcementButtonText").value =
+            data.buttonText || "";
+
+        document.getElementById("announcementButtonLink").value =
+            data.buttonLink || "";
+
+    } catch (error) {
+
+        console.error("Load Announcement Error:", error);
+
+    }
+
+}
+
+
+/* =========================================
+DELETE ANNOUNCEMENT
+========================================= */
+
+async function deleteAnnouncement() {
+
+    const confirmDelete = confirm(
+        "Are you sure you want to delete this announcement?"
+    );
+
+    if (!confirmDelete) return;
+
+    try {
+
+        await deleteDoc(
+            doc(db, "settings", "announcement")
         );
 
-        closeModal("linkModal");
+        document.getElementById("announcementTitle").value = "";
 
-        alert("Link Updated Successfully!");
+        document.getElementById("announcementMessage").value = "";
+
+        document.getElementById("announcementButtonText").value = "";
+
+        document.getElementById("announcementButtonLink").value = "";
+
+        alert("Announcement deleted successfully!");
 
     } catch (error) {
 
         console.error(error);
 
-        alert("Update Error: " + error.message);
+        alert("Error deleting announcement: " + error.message);
 
     }
-
-};
-
-
-/* ======================================
-LOAD ANNOUNCEMENTS
-====================================== */
-
-function loadAnnouncements() {
-
-    const announcementRef = collection(db, "announcements");
-
-    onSnapshot(announcementRef, (snapshot) => {
-
-        announcementsData = [];
-
-        snapshot.forEach((documentData) => {
-
-            announcementsData.push({
-                id: documentData.id,
-                ...documentData.data()
-            });
-
-        });
-
-    });
 
 }
 
 
-/* ======================================
-SHOW SECTION
-====================================== */
+/* =========================================
+SHOW / HIDE ANNOUNCEMENT SETTINGS
+========================================= */
 
-window.showSection = function(sectionId, button) {
+async function toggleAnnouncement() {
 
-    document.querySelectorAll(".section").forEach((section) => {
+    try {
 
-        section.classList.remove("active");
+        const announcementRef =
+            doc(db, "settings", "announcement");
 
-    });
+        const snapshot =
+            await getDoc(announcementRef);
 
-    const targetSection = document.getElementById(sectionId);
+        if (!snapshot.exists()) {
 
-    if (targetSection) {
+            alert("No announcement found.");
 
-        targetSection.classList.add("active");
+            return;
+
+        }
+
+        const data = snapshot.data();
+
+        await updateDoc(announcementRef, {
+
+            active: !data.active,
+            updatedAt: serverTimestamp()
+
+        });
+
+        alert(
+            data.active
+                ? "Announcement hidden from website."
+                : "Announcement is now visible on website."
+        );
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("Error updating announcement.");
 
     }
 
-    document.querySelectorAll(".menu button").forEach((menuButton) => {
+}
 
-        menuButton.classList.remove("active");
 
-    });
+/* =========================================
+SECTION NAVIGATION
+========================================= */
+
+window.showSection = function(sectionId, button) {
+
+    document
+        .querySelectorAll(".section")
+        .forEach(section => {
+
+            section.classList.remove("active");
+
+        });
+
+    const selectedSection =
+        document.getElementById(sectionId);
+
+    if (selectedSection) {
+
+        selectedSection.classList.add("active");
+
+    }
+
+    document
+        .querySelectorAll(".menu button")
+        .forEach(menuButton => {
+
+            menuButton.classList.remove("active");
+
+        });
 
     if (button) {
 
@@ -2261,38 +2207,31 @@ window.showSection = function(sectionId, button) {
 
     }
 
-    const title = document.getElementById("pageTitle");
+    const titles = {
 
-    if (title && button) {
+        overview: "Dashboard Overview",
 
-        title.textContent =
-            button.textContent.trim();
+        links: "Manage Links",
 
-    }
+        announcements: "Announcements",
 
-};
+        settings: "Website Settings"
 
+    };
 
-/* ======================================
-MODAL FUNCTIONS
-====================================== */
-
-window.openModal = function(id) {
-
-    const modal = document.getElementById(id);
-
-    if (modal) {
-
-        modal.classList.add("show");
-
-    }
+    document.getElementById("pageTitle").textContent =
+        titles[sectionId] || "Admin Dashboard";
 
 };
 
 
-window.closeModal = function(id) {
+/* =========================================
+CLOSE MODAL
+========================================= */
 
-    const modal = document.getElementById(id);
+window.closeModal = function(modalId) {
+
+    const modal = document.getElementById(modalId);
 
     if (modal) {
 
@@ -2303,59 +2242,209 @@ window.closeModal = function(id) {
 };
 
 
-/* ======================================
+/* =========================================
 CLOSE MODAL ON OUTSIDE CLICK
-====================================== */
+========================================= */
 
-document.querySelectorAll(".modal").forEach((modal) => {
+window.addEventListener("click", function(event) {
 
-    modal.addEventListener("click", (event) => {
+    if (
+        event.target &&
+        event.target.classList.contains("modal")
+    ) {
 
-        if (event.target === modal) {
+        event.target.classList.remove("show");
 
-            modal.classList.remove("show");
+    }
+
+});
+
+
+/* =========================================
+ESCAPE KEY CLOSE MODALS
+========================================= */
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+
+        document
+            .querySelectorAll(".modal.show")
+            .forEach(modal => {
+
+                modal.classList.remove("show");
+
+            });
+
+    }
+
+});
+
+
+/* =========================================
+START DASHBOARD
+========================================= */
+
+function startDashboard() {
+
+    loadLinks();
+
+    loadAnnouncement();
+
+}
+
+
+/* =========================================
+AUTH STATE
+========================================= */
+
+onAuthStateChanged(auth, async (user) => {
+
+    if (
+        user &&
+        user.email &&
+        user.email.toLowerCase() ===
+        ADMIN_EMAIL.toLowerCase()
+    ) {
+
+        document
+            .getElementById("loginScreen")
+            .classList.add("hidden");
+
+        document
+            .getElementById("dashboard")
+            .classList.remove("hidden");
+
+        document
+            .getElementById("adminEmail")
+            .textContent = user.email;
+
+        startDashboard();
+
+    } else {
+
+        document
+            .getElementById("loginScreen")
+            .classList.remove("hidden");
+
+        document
+            .getElementById("dashboard")
+            .classList.add("hidden");
+
+    }
+
+});
+
+
+/* =========================================
+LOGOUT
+========================================= */
+
+document
+    .getElementById("logoutBtn")
+    .addEventListener("click", async function() {
+
+        try {
+
+            await signOut(auth);
+
+            alert("Logged out successfully!");
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert("Logout Error: " + error.message);
 
         }
 
     });
 
-});
+
+/* =========================================
+GOOGLE LOGIN BUTTON
+========================================= */
+
+document
+    .getElementById("googleLogin")
+    .addEventListener("click", async function() {
+
+        try {
+
+            await signInWithRedirect(auth, provider);
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert(
+                "Google Login Error: " +
+                error.message
+            );
+
+        }
+
+    });
 
 
-/* ======================================
-ESCAPE HTML
-====================================== */
+/* =========================================
+REDIRECT LOGIN RESULT
+========================================= */
 
-function escapeHTML(value) {
+getRedirectResult(auth)
 
-    const div = document.createElement("div");
+    .then(async function(result) {
 
-    div.textContent = String(value);
+        if (result && result.user) {
 
-    return div.innerHTML;
+            const user = result.user;
 
-}
+            if (
+                user.email.toLowerCase() !==
+                ADMIN_EMAIL.toLowerCase()
+            ) {
+
+                alert(
+                    "Access Denied! You are not the authorized administrator."
+                );
+
+                await signOut(auth);
+
+            }
+
+        }
+
+    })
+
+    .catch(function(error) {
+
+        console.error(
+            "Redirect Login Error:",
+            error
+        );
+
+    });
 
 
-/* ======================================
-ERROR HANDLING
-====================================== */
+/* =========================================
+MAKE FUNCTIONS AVAILABLE TO HTML
+========================================= */
 
-window.addEventListener("unhandledrejection", (event) => {
+window.saveAnnouncement = saveAnnouncement;
 
-    console.error(
-        "Unhandled Promise Error:",
-        event.reason
-    );
+window.deleteAnnouncement = deleteAnnouncement;
 
-});
+window.toggleAnnouncement = toggleAnnouncement;
 
 
-console.log(
-    "Zed WhatsApp Links Firebase System Loaded Successfully"
-);
+/* =========================================
+END OF JAVASCRIPT
+========================================= */
 
 </script>
 
 </body>
-  </html>
+
+</html
+        
+         
